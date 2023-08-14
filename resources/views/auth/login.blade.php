@@ -29,21 +29,30 @@
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="matricula" required class="form-control input_user" value="" placeholder="Matrícula">
+							<input type="number" name="matricula" required class="form-control input_user" placeholder="Matrícula">
 						</div>
 						<div class="pt-3"></div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" name="senha" required class="form-control input_pass"  style="width: 220px;" placeholder="Senha">
+							<input type="password" name="senha" required class="form-control input_pass" style="width: 220px;" placeholder="Senha">
 						</div>
 						<div class="form-group">
 
 						</div>
 							<div class="d-flex justify-content-center mt-3 login_container pt-4">
 				 		<button class="btn login_btn">Login</button>
-				   </div>
+					</div>
+
+					<div class="row">
+						<div class="col mt-4 d-flex align-items-center justify-content-center">
+							@error('email')
+							<span class="badge bg-warning">{{$message}}</span>
+							@enderror
+						</div>
+					</div>
+
 					</form>
 				</div>
 

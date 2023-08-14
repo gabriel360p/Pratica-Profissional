@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\User;
+use Hash;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -23,21 +25,32 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(Request $request): 
+    public function store(Request $request)
     {
-
+        $matricula=$request->matricula;
+        $senha=$request->senha;
         
-        
-        // if () {
-        //     $request->session()->regenerate();
- 
-        //     return redirect()->intended('dashboard');
-        // }
+        $user = \DB::table('users')->where('matricula','=',$matricula)->get();
 
+        if(sizeof($user) != 0){
+
+            foreach($user as $u){
+                $user =User::find($u->id); 
+            }
+
+            if(($matricula==$user->matricula)&&(Hash::check($senha,$user->password))==true){
+
+                $request->session()->regenerate();
+                
+                Auth::login($user);
+
+                return redirect()->intended('dashboard');
+            }
+        }
  
-        // return back()->withErrors([
-        //     'email' => 'The provided credentials do not match our records.',
-        // ])->onlyInput('email');
+        return back()->withErrors([
+            'email' => 'Dados inválidos.',
+        ])->onlyInput('email');
     
     }
 
@@ -52,6 +65,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/logar');
     }
 }

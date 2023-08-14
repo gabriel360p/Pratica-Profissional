@@ -15,13 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// Route::get('/index', function () {
+    //     return view('index');
+    // });
+    
 Route::get('/', function () {
-    return view('welcome');
+    return view('logar');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-});//->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 
 
