@@ -1,36 +1,64 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-  <title>Login</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>My Awesome Login Page</title>
 
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+	<link rel="stylesheet" href="{{asset('/login/css/login.css')}}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
 
-<body>
-  <header>
-    <!-- place navbar here -->
-  </header>
-  <main>
-    <h3>Login</h3>
-  </main>
-  <footer>
-    <!-- place footer here -->
-  </footer>
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
+<!--Coded with love by Mutiullah Samim-->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
+
+<body>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="{{asset('/login/img/Sloganifrnlogin.jpg')}}" class="brand_logo" alt="Logo" >
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container ">
+					<form method="POST" action="{{url('logar')}}">
+						@csrf
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="matricula" required class="form-control input_user" value="" placeholder="Matrícula">
+						</div>
+						<div class="pt-3"></div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" name="senha" required class="form-control input_pass"  style="width: 220px;" placeholder="Senha">
+						</div>
+						<div class="form-group">
+
+						</div>
+							<div class="d-flex justify-content-center mt-3 login_container pt-4">
+				 		<button class="btn login_btn">Login</button>
+				   </div>
+					</form>
+				</div>
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Não tem uma conta? <a href="#" class="ml-2">Cadastra-se</a>
+					</div>
+					<div class="d-flex justify-content-center links ">
+						<a href="#">Esqueceu sua senha?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 
 </html>
