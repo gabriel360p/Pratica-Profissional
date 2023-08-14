@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>My Awesome Login Page</title>
+	<title>Login </title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -58,7 +58,7 @@
 
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
-						Não tem uma conta? <a href="#" class="ml-2">Cadastra-se</a>
+						Não tem uma conta? <a href="/register" class="ml-2">Cadastra-se</a>
 					</div>
 					<div class="d-flex justify-content-center links ">
 						<a href="#">Esqueceu sua senha?</a>
