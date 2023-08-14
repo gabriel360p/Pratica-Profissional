@@ -1,52 +1,93 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro</title>
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{{asset('cadastro/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+    <!-- Main css -->
+    <link rel="stylesheet" href="{{asset('cadastro/css/style.css')}}">
+</head>
+<body>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+<div class="main">
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Em frente</h2>
+                        <form method="POST" class="register-form " id="register-form" action="{{url('register')}}">
+                            @csrf
+                            <div class="form-group">    
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" required value="{{@old('name')}}" name="name" id="name" placeholder="Seu nome"/>
+                            </div>
+                            @error('name')
+                                <span class="badge bg-warning">{{$message}}</span>
+                            @enderror
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="number" required name="matricula" value="{{@old('matricula')}}"  id="re_pass" placeholder="Sua Matrícula"/>
+                            </div>
+                            @error('matricula')
+                                <span class="badge bg-warning">{{$message}}</span>
+                            @enderror
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" required name="email" id="email" placeholder="Seu Email" value="{{@old('email')}}" />
+                            </div>
+                            @error('email')
+                                <span class="badge bg-warning">{{$message}}</span>
+                            @enderror
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" required name="password" id="pass" placeholder="Sua senha" value="{{@old('password')}}" />
+                            </div>
+                            @error('password')
+                                <span class="badge bg-warning">{{$message}}</span>
+                            @enderror
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" required name="password_confirmation" id="re_pass" placeholder="Repita sua senha" value="{{@old('password_confirmation')}}" />
+                            </div>
+                            @error('password_confirmation')
+                                <span class="badge bg-warning">{{$message}}</span>
+                            @enderror
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+                            <div class="form-group form-button">
+                                <input type="submit" required name="signup" id="signup" class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{{asset('cadastro/images/')}}" alt="sing up image"></figure>
+                     
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        <!-- Sing in  Form -->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{{asset('cadastro/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('cadastro/js/main.js')}}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

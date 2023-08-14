@@ -21,6 +21,12 @@ class UserSeed extends Seeder
             'password'=>Hash::make(123123123),
         ]);
 
+        User::create([
+            'name'=>'Gabriel Victor ',
+            'email'=>'gabriel_victor@gmail.com',
+            'matricula'=>202011011190,
+            'password'=>Hash::make(123123123),
+        ]);
         
     }
 }
