@@ -45,7 +45,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo">Iventário</h1>
+      <h1 class="logo">Inventário</h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -54,9 +54,9 @@
           <li><a class="nav-link scrollto active" href="#hero">Início</a></li>
           <li><a class="nav-link scrollto" href="#about">Editar item</a></li>
           <li><a class="nav-link scrollto" href="#services">Historico</a></li>
-          <li><a class="nav-link scrollto o" href="#portfolio">EXemplo</a></li>
-          <li><a class="nav-link scrollto" href="#team">EXemplo</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">EXemplo</a></li>
+          <li><a class="nav-link scrollto o" href="#portfolio">Exemplo</a></li>
+          <li><a class="nav-link scrollto" href="#team">Exemplo</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">Exemplo</a></li>
           <li><a class="nav-link scrollto pe-5 " href="{{url('logout')}}">Sair</a></li>
 
 
@@ -92,7 +92,7 @@
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
           <h1>IF esports</h1>
-          <h2>Iventário de itens</h2>
+          <h2>Inventário de itens</h2>
         </div>
       </div>
      
