@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::post('/inproduction', function () {
+Route::get('/inproduction', function () {
     return view('inproduction');
 });
 

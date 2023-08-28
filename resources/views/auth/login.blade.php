@@ -61,7 +61,7 @@
 						Não tem uma conta? <a href="/register" class="ml-2">Cadastra-se</a>
 					</div>
 					<div class="d-flex justify-content-center links ">
-						<a href="#">Esqueceu sua senha?</a>
+						<a href="/inproduction">Esqueceu sua senha?</a>
 					</div>
 				</div>
 			</div>

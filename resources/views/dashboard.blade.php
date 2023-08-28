@@ -51,10 +51,10 @@
 
       <nav id="navbar" class="navbar pe-4">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Início</a></li>
+          <li><a class="nav-link scrollto active" href="/dashboard">Início</a></li>
           <li><a class="nav-link scrollto" href="/itens/create">Adicionar item</a></li>
-          <li><a class="nav-link scrollto" href="#about">Editar item</a></li>
-          <li><a class="nav-link scrollto" href="#services">Historico</a></li>
+          <li><a class="nav-link scrollto" href="/inproduction">Editar item</a></li>
+          <li><a class="nav-link scrollto" href="/inproduction">Historico</a></li>
           {{-- <li><a class="nav-link scrollto o" href="#portfolio">Exemplo</a></li>
           <li><a class="nav-link scrollto" href="#team">Exemplo</a></li>
           <li><a class="nav-link scrollto" href="#pricing">Exemplo</a></li> --}}
@@ -143,7 +143,7 @@
                 <p>Disponivel</p>
                 <div class="portfolio-links">
                   <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Não sei"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="Alugar"><i class="bx bx-link"></i></a>
+                  <a href="/inproduction" title="Alugar"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -157,7 +157,7 @@
                 <p>Disponivel</p>
                 <div class="portfolio-links">
                   <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="/inproduction" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -171,7 +171,7 @@
                 <p>Disponivel</p>
                 <div class="portfolio-links">
                   <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="/inproduction" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -185,7 +185,7 @@
                 <p>Disponivel</p>
                 <div class="portfolio-links">
                   <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="/inproduction" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -199,7 +199,7 @@
                 <p>Disponivel</p>
                 <div class="portfolio-links">
                   <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="/inproduction" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -213,7 +213,7 @@
                 <p>Disponivel</p>
                 <div class="portfolio-links">
                   <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="/inproduction" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -227,7 +227,7 @@
                 <p>Disponivel</p>
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="/inproduction" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -241,7 +241,7 @@
                 <p>Disponivel</p>
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="/inproduction" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>

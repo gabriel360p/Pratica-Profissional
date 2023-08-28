@@ -22,8 +22,8 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Cadastro de item</h2>
-                        <form method="POST" class="register-form " id="register-form" action="/inproduction">
-                            @csrf
+                        <form method="GET" class="register-form " id="register-form" action="/inproduction">
+                            {{-- @csrf --}}
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" required name="name" id="name" placeholder="Nome Do Item" value="Bola de Voleibol"/>
