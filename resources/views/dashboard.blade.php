@@ -55,9 +55,9 @@
           <li><a class="nav-link scrollto" href="/itens/create">Adicionar item</a></li>
           <li><a class="nav-link scrollto" href="#about">Editar item</a></li>
           <li><a class="nav-link scrollto" href="#services">Historico</a></li>
-          <li><a class="nav-link scrollto o" href="#portfolio">Exemplo</a></li>
+          {{-- <li><a class="nav-link scrollto o" href="#portfolio">Exemplo</a></li>
           <li><a class="nav-link scrollto" href="#team">Exemplo</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">Exemplo</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">Exemplo</a></li> --}}
           <li><a class="nav-link scrollto pe-5 " href="{{url('logout')}}">Sair</a></li>
 
 
