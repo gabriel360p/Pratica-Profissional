@@ -52,6 +52,7 @@
       <nav id="navbar" class="navbar pe-4">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Início</a></li>
+          <li><a class="nav-link scrollto" href="/itens/create">Adicionar item</a></li>
           <li><a class="nav-link scrollto" href="#about">Editar item</a></li>
           <li><a class="nav-link scrollto" href="#services">Historico</a></li>
           <li><a class="nav-link scrollto o" href="#portfolio">Exemplo</a></li>
