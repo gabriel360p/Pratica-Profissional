@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function () {
 
 Route::controller(ItemController::class)->group(function(){
     Route::get('/itens/create','create')->name('itens.create');
+    Route::get('/itens/rent','rent')->name('itens.rent');
+    Route::get('/itens/edit','edit')->name('itens.edit');
 });
 
 

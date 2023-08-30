@@ -22,6 +22,11 @@ class ItemController extends Controller
         return view('itens.create');
     }
 
+    public function rent()
+    {
+        return view('itens.rent');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -41,9 +46,9 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit()
+    {   
+        return view('itens.edit');
     }
 
     /**

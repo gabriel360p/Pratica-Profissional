@@ -1,19 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastrar Item</title>
-
-    <!-- Font Icon -->
+@extends('layouts.master')
+<!-- Font Icon -->
     <link rel="stylesheet" href="{{asset('cadastro_itens/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
 
     <!-- Main css -->
     <link rel="stylesheet" href="{{asset('cadastro_itens/css/style.css')}}">
-</head>
-<body>
 
+    <!-- Favicons -->
+  <link href="{{asset('img/favicon.png')}}" rel="icon">
+  <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{asset('main/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{asset('main/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="({asset{'main/vendor/bootstrap-icons/bootstrap-icons.css'}})" rel="stylesheet">
+  <link href="{{asset('main/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('main/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('main/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{asset('main/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{asset('main/css/style.css')}}" rel="stylesheet">  
+
+  @section('master-main')
 <div class="main">
 
         <!-- Sign up form -->
@@ -25,32 +37,30 @@
                         <form method="GET" class="register-form " id="register-form" action="/inproduction">
                             {{-- @csrf --}}
                             <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" required name="name" id="name" placeholder="Nome Do Item" value="Bola de Voleibol"/>
+                                <input type="text" required name="name" id="name" placeholder="Nome Do Item" value=""/>
                             </div>
 
                              <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" required name="name" id="name" placeholder="Quantidade" value="3"/>
+                                <input type="number" required name="name"  placeholder="Quantidade" value=""/>
                             </div>
+                            {{-- <input type="number" id="tentacles" name="tentacles" min="10" max="100" /> --}}
 
                             <div class="form-group">
                                 
                                 <select class="custom-select " required id="CustomSelect">
                                     <option selected>Categorias</option>
                                     <option value="1" >Futebol</option>
-                                    <option value="2" selected>Voleibol</option>
+                                    <option value="2">Voleibol</option>
                                     <option value="3">Basquete</option>
-                                  </select><label for="email"><i class="zmdi zmdi-email"></i></label>
+                                  </select></i></label>
                     
                             </div>
                             <div class="form-group">
 
-                             
-                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+
                             <select class="custom-select "  required id="CustomSelect">   
                                 <option selected>Local de armazenamento</option>
-                                <option value="1" selected >Depósito 1</option>
+                                <option value="1" >Depósito 1</option>
                                 <option value="1" >Depósito 2</option>
                                 <option value="1" >Depósito 3</option>
                               </select>
@@ -83,9 +93,7 @@
         </section>
 
     </div>
-
+    @endsection
     <!-- JS -->
     <script src="{{asset('cadastro_itens/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('cadastro_itens/js/main.js')}}"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-</html>
