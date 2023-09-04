@@ -26,7 +26,7 @@
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
-          <h1>IF esports</h1>
+          <h1>IF Sports</h1>
           <h2>Inventário de itens</h2>
         </div>
       </div>
@@ -61,7 +61,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-basquete" >
             <div class="portfolio-wrap">
-              <img src="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg" class="img-fluid" alt="">
+              <img src="{{asset('imagens/bbasquete.jpg')}}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Item</h4>
                 <p>Disponivel</p>
@@ -76,7 +76,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-futebol">
             <div class="portfolio-wrap">
-              <img src="{{asset('main/img/portfolio/portfolio-1.jpg')}}" class="img-fluid" alt="">
+              <img src="{{asset('imagens/bfutebol.jpg')}}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Item</h4>
                 <p>Disponivel</p>
@@ -92,92 +92,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-voleibol">
             <div class="portfolio-wrap">
-              <img src="{{asset('main/img/portfolio/portfolio-1.jpg')}}" class="img-fluid" alt="">
+              <img src="{{asset('imagens/bvolei.png')}}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Item</h4>
                 <p>Disponivel</p>
                 <div class="portfolio-links">
                   <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                  <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
-                  <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="{{asset('main/img/portfolio/portfolio-1.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Item</h4>
-                <p>Disponivel</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
-                  <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="{{asset('main/img/portfolio/portfolio-1.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Item</h4>
-                <p>Disponivel</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
-                  <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="{{asset('main/img/portfolio/portfolio-1.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Item</h4>
-                <p>Disponivel</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
-                  <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="{{asset('main/img/portfolio/portfolio-1.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Item</h4>
-                <p>Disponivel</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                  <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
-                  <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="{{asset('main/img/portfolio/portfolio-1.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Item</h4>
-                <p>Disponivel</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
                   <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
                   <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
 
@@ -210,3 +130,4 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('main/js/main.js')}}"></script>
+  <script src="{{asset('/main/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>

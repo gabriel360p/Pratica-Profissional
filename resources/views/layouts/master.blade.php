@@ -42,7 +42,7 @@
 
 <body>
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top">
+<header id="header" >
     <div class="container d-flex align-items-center justify-content-between">
         
 
@@ -55,7 +55,7 @@
           <li><a class="nav-link scrollto active" href="/dashboard">Início</a></li>
           <li><a class="nav-link scrollto" href="/itens/create">Adicionar item</a></li>
           {{-- <li><a class="nav-link scrollto" href="/itens/edit">Editar item</a></li> --}}
-          <li><a class="nav-link scrollto" href="/inproduction">Historico</a></li>
+          <li><a class="nav-link scrollto" href="/itens/alugados">Historico</a></li>
           {{-- <li><a class="nav-link scrollto o" href="#portfolio">Exemplo</a></li>
           <li><a class="nav-link scrollto" href="#team">Exemplo</a></li>
           <li><a class="nav-link scrollto" href="#pricing">Exemplo</a></li> --}}
@@ -75,11 +75,13 @@
 </header><!-- End Header -->
 
 
-<main>
+{{-- <main> --}}
   
-  @yield('master-main')
+  <div class="container">
+    @yield('master-main')
+  </div>
 
-</main>
+{{-- </main> --}}
 
   <!-- Vendor JS Files -->
   <script src="{{asset('main/vendor/purecounter/purecounter_vanilla.js')}}"></script>

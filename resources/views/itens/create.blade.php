@@ -67,6 +67,11 @@
                             
                             </div>
 
+                            <div class="mb-3">
+                              <input type="file" class="form-control" name="" id="" placeholder="" aria-describedby="fileHelpId">
+                              <div id="fileHelpId" class="form-text">Escolher Foto</div>
+                            </div>
+
                           
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />

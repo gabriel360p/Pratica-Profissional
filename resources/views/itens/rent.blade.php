@@ -33,15 +33,17 @@
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide">
-                  <img src="{{asset('main/img/portfolio/portfolio-1.jpg')}}" alt="">
+                  <img src="{{asset('imagens/bfutebol.jpg')}}" alt="">
                 </div>
 
                 <div class="swiper-slide">
-                  <img src="{{asset('main/img/portfolio/portfolio-2.jpg')}}" alt="">
+                  <img src="{{asset('imagens/bfutebol.jpg')}}" alt="">
+
                 </div>
 
                 <div class="swiper-slide">
-                  <img src="{{asset('main/img/portfolio/portfolio-3.jpg')}}" alt="">
+                  <img src="{{asset('imagens/bfutebol.jpg')}}" alt="">
+
                 </div>
 
               </div>
@@ -57,13 +59,36 @@
                 <li><strong>Quantidade Total</strong>: 3 </li>
                 <li><strong>Quantidade Disponível</strong>: 1 </li>
                 <li><strong>Data</strong>: 01 Março, 2020</li>
+                <li><strong>Local</strong>: Depósito 1</li>
               </ul>
               <hr>
-
-              <div class="d-flex justify-content-center ">
-                <a href="/inproduction" class="btn btn-success w-100">Alugar</a>
+              <form action="/itens/alugados" method="GET">
+              @csrf
+              <div class="mb-3">
+                <label for="" class="form-label">Responsável</label>
+                <select class="form-select form-select-lg" name="" id="">
+                  <option >Responsavel 1</option>
+                  <option >Responsavel 2</option>
+                  <option >Responsavel 3</option>
+                </select>
               </div>
 
+              <div class="mb-3">
+                <label for="" class="form-label">Quantidade</label>
+                <input type="number"
+                  class="form-control" name="" id="" required aria-describedby="helpId">
+              </div>
+
+              <div class="mb-3">
+                <label for="" class="form-label">Data</label>
+                <input type="date"
+                  class="form-control" name="" required id="" aria-describedby="helpId" placeholder="">
+              </div>
+
+              <div class="d-flex justify-content-center ">
+                <button  class="btn btn-success w-100">Alugar</button>
+              </div>
+            </form>
             </div>
           </div>
 

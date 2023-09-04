@@ -42,8 +42,20 @@ class ItemController extends Controller
     {
         //
     }
+    /**
+     * 
+     * Show the form for editing the specified resource.
+     */
+    public function alugados()
+    {   
+        return view('itens.alugados');
+    }
+
+
 
     /**
+     * 
+     * 
      * Show the form for editing the specified resource.
      */
     public function edit()

@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
 
 Route::get('/inproduction', function () {
     return view('inproduction');
@@ -39,6 +39,7 @@ Route::controller(ItemController::class)->group(function(){
     Route::get('/itens/create','create')->name('itens.create');
     Route::get('/itens/rent','rent')->name('itens.rent');
     Route::get('/itens/edit','edit')->name('itens.edit');
+    Route::get('/itens/alugados','alugados')->name('itens.alugados');
 });
 
 
