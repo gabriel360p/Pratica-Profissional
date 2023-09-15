@@ -43,7 +43,7 @@
 <body>
 <!-- ======= Header ======= -->
 <header id="header" >
-    <div class="container d-flex align-items-center justify-content-between">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
         
 
       <h1 class="logo">Inventário</h1>
@@ -77,7 +77,7 @@
 
 {{-- <main> --}}
   
-  <div class="container">
+  <div class="container-fluid">
     @yield('master-main')
   </div>
 
