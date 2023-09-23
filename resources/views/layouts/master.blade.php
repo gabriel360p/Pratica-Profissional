@@ -29,15 +29,6 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('main/css/style.css')}}" rel="stylesheet">  
 
-
-  <!-- =======================================================
-  * Template Name: OnePage
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstra p-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
 </head>
 
 <body>
@@ -55,7 +46,7 @@
           <li><a class="nav-link scrollto active" href="/dashboard">Início</a></li>
           <li><a class="nav-link scrollto" href="/itens/create">Adicionar item</a></li>
           {{-- <li><a class="nav-link scrollto" href="/itens/edit">Editar item</a></li> --}}
-          <li><a class="nav-link scrollto" href="/itens/alugados">Historico</a></li>
+          <li><a class="nav-link scrollto" href="/itens/rented">Historico</a></li>
           {{-- <li><a class="nav-link scrollto o" href="#portfolio">Exemplo</a></li>
           <li><a class="nav-link scrollto" href="#team">Exemplo</a></li>
           <li><a class="nav-link scrollto" href="#pricing">Exemplo</a></li> --}}
@@ -77,7 +68,7 @@
 
 {{-- <main> --}}
   
-  <div class="container-fluid">
+  <div class="container-fluid" >
     @yield('master-main')
   </div>
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ItemController extends Controller
+class CategorieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,22 +13,13 @@ class ItemController extends Controller
     {
         //
     }
-    public function refund()
-    {
-        return view('itens.refund');
-    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('itens.create');
-    }
-
-    public function rent()
-    {
-        return view('itens.rent');
+        return view('categories.create');
     }
 
     /**
@@ -46,25 +37,13 @@ class ItemController extends Controller
     {
         //
     }
-    /**
-     * 
-     * Show the form for editing the specified resource.
-     */
-    public function rented()
-    {   
-        return view('itens.rented');
-    }
-
-
 
     /**
-     * 
-     * 
      * Show the form for editing the specified resource.
      */
-    public function edit()
-    {   
-        return view('itens.edit');
+    public function edit(string $id)
+    {
+        //
     }
 
     /**

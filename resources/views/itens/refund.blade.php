@@ -30,42 +30,35 @@
  <div class="container">
     <div class="signup-content">
         <div class="signup-form">
-            <h2 class="form-title">Editar item</h2>
+            <h2 class="form-title">Devolver Item</h2>
             <form method="GET" class="register-form " id="register-form" action="/inproduction">
                 @csrf
                 <div class="form-group">
-                    <input type="text" required name="name" id="name" placeholder="Nome Do Item" value=""/>
+                    <input type="text" name="name" readonly id="name" placeholder="Nome Do Item" value="Bola de Futebol"/>
+                    <small id="helpId" class="form-text text-muted">Nome do Item</small>
                 </div>
 
                 <div class="form-group">
-                    <select class="custom-select " required id="CustomSelect">
-                        <option selected>Categoria</option>
-                        <option value="1" >Futebol</option>
-                        <option value="2">Voleibol</option>
-                        <option value="3">Basquete</option>
+                    <input type="date" required name=""/>
+                    <small id="helpId" class="form-text text-muted">Data de Devolução</small>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" required name="name" id="name" placeholder="Nome Do Item" value="Marcos"/>
+                    <small id="helpId" class="form-text text-muted">Quem devolveu</small>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" required name="name" id="name" placeholder="Nome Do Item" value="Poliana"/>
+                    <small id="helpId" class="form-text text-muted">Quem Recebeu</small>
+                </div>
+
+                <div class="form-group">
+                    <select class="form-select form-select-lg" name="" id="">
+                        <option value="">Bom</option>
                     </select>
+                    <small id="helpId" class="form-text text-muted">Estado do Item</small>
                 </div>
-                
-                <div class="form-group">
-
-                <select class="custom-select "  required id="CustomSelect">   
-                    <option selected>Local de armazenamento</option>
-                    <option value="1" >Depósito 1</option>
-                    <option value="2" >Depósito 2</option>
-                    <option value="3" >Depósito 3</option>
-                    </select>
-                </div>                            
-
-                <div class="form-group">
-                    <input type="date" readonly name="" id="name"/>
-                    <div class="form-text">Data de Entrada</div>
-                </div>
-
-                <div class="mb-3">
-                    <input type="file" class="form-control" name="" id="" placeholder="" aria-describedby="fileHelpId">
-                    <div id="fileHelpId" class="form-text">Escolher Foto</div>
-                </div>
-
                 <div class="form-group form-button">
                     <button class="form-submit border border-none">Salvar</button>
                 </div>

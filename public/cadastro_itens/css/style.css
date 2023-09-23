@@ -112,7 +112,8 @@ body {
 
 .form-title {
   margin-bottom: 33px;
-color: #2E9946;}
+color: #2E9946;
+}
 
 .signup-image {
   margin-top: 45px; }
@@ -136,7 +137,8 @@ figure {
   margin-top: 25px;
   cursor: pointer; }
   .form-submit:hover {
-    background: #599C68; }
+    background: #599C68; 
+  }
 
 
 
@@ -230,8 +232,6 @@ label {
   -o-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   color: #222; }
-
-
 
 
 .label-agree-term {

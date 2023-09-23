@@ -55,38 +55,52 @@
             <div class="portfolio-info">
               <h3>Bola de Basquete </h3>
               <ul>
-                <li><strong>Categoria</strong>: Basquete </li>
-                <li><strong>Quantidade Total</strong>: 3 </li>
-                <li><strong>Quantidade Disponível</strong>: 1 </li>
-                <li><strong>Data</strong>: 01 Março, 2020</li>
+                <li><strong>Categorias</strong>: Basquete </li>
+                <li><strong>Quantidade Total</strong>: 5 </li>
+                <li><strong>Quantidade Disponível</strong>: 3 </li>
+                <li><strong>Estado</strong>:  </li>
+                <li><strong>Data de Entrada</strong>: 01 Março, 2020</li>
                 <li><strong>Local</strong>: Depósito 1</li>
               </ul>
               <hr>
               <form action="/itens/alugados" method="GET">
               @csrf
+              
               <div class="mb-3">
-                <label for="" class="form-label">Responsável</label>
+                <label for="" class="form-label">Responsável que Autorizou</label>
                 <select class="form-select form-select-lg" name="" id="">
                   <option >Responsavel 1</option>
                   <option >Responsavel 2</option>
                   <option >Responsavel 3</option>
                 </select>
               </div>
-
+              
               <div class="mb-3">
-                <label for="" class="form-label">Quantidade</label>
-                <input type="number"
-                  class="form-control" name="" id="" required aria-describedby="helpId">
+                <label for="" class="form-label"> Item </label>
+                <select class="form-select form-select-lg" name="" id="">
+                  <option >Item 1</option>
+                  <option >Item 2</option>
+                  <option >Item 3</option>
+                </select>
               </div>
-
+              
               <div class="mb-3">
-                <label for="" class="form-label">Data</label>
+                <label for="" class="form-label">Data do Empréstimo</label>
                 <input type="date"
                   class="form-control" name="" required id="" aria-describedby="helpId" placeholder="">
               </div>
 
+              <div class="mb-3">
+                <label for="" class="form-label"> Empréstimo </label>
+                <select class="form-select form-select-lg" name="emprestimo" id="">
+                  {{-- Isso vai ser tratado pelo servidor, um simples if irar diferenciar se a pessoa quer alugar imediatamente ou agendar --}}
+                  <option value="1">Alugar Item</option>
+                  <option value="2">Agendar empréstimo do Item</option>
+                </select>
+              </div>
+
               <div class="d-flex justify-content-center ">
-                <button  class="btn btn-success w-100">Alugar</button>
+                <button  class="btn btn-success w-100">Confirmar</button>
               </div>
             </form>
             </div>

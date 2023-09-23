@@ -3,7 +3,6 @@
   <link href="{{asset('img/favicon.png')}}" rel="icon">
   <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">  
 
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -52,8 +51,25 @@
               <li data-filter="*" class="filter-active">Todos</li>
               <li data-filter=".filter-basquete">Basquete</li>
               <li data-filter=".filter-futebol">Futebol</li>
+              <li data-filter=".filter-futebol">Natação</li>
               <li data-filter=".filter-voleibol">Voleibol</li>
+              <li data-filter=".filter-">Medalhas</li>
+              <li data-filter=".filter-">Troféus</li>
+              <li data-filter=".filter-">Fardamento</li>
+              <li data-filter=".filter-">Permanente</li>
+              <li data-filter=".filter-">Consumo</li>
+              <li data-filter=".filter-">Outros</li>
+
+              <a href="/categorias/create" class="mx-3" title="Nova Categoria">
+                  <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                    </svg>
+                  </i>
+              </a>
+              
             </ul>
+
           </div>
         </div>
 
@@ -66,7 +82,7 @@
                 <h4>Item</h4>
                 <p>Disponivel</p>
                 <div class="portfolio-links">
-                  <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Expandir Foto"><i class="bx bx-plus"></i></a>
+                  <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Ampliar Foto"><i class="bx bx-plus"></i></a>
                   <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
                   <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
                 </div>
@@ -81,7 +97,7 @@
                 <h4>Item</h4>
                 <p>Disponivel</p>
                 <div class="portfolio-links">
-                  <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                  <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Ampliar Foto"><i class="bx bx-plus"></i></a>
                   <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
                   <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
 
@@ -91,13 +107,13 @@
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-voleibol">
-            <div class="portfolio-wrap">
+            <div class="portfolio-wrap">  
               <img src="{{asset('imagens/bvolei.png')}}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Item</h4>
                 <p>Disponivel</p>
                 <div class="portfolio-links">
-                  <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                  <a href="{{asset('main/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Ampliar Foto"><i class="bx bx-plus"></i></a>
                   <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
                   <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
 

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -39,7 +41,16 @@ Route::controller(ItemController::class)->group(function(){
     Route::get('/itens/create','create')->name('itens.create');
     Route::get('/itens/rent','rent')->name('itens.rent');
     Route::get('/itens/edit','edit')->name('itens.edit');
-    Route::get('/itens/alugados','alugados')->name('itens.alugados');
+    Route::get('/itens/rented','rented')->name('itens.rented');
+    Route::get('/itens/refund','refund')->name('itens.refund');
+});
+
+Route::controller(CategorieController::class)->group(function(){
+    Route::get('/categorias/create','create');
+    // Route::get('/itens/rent','rent')->name('itens.rent');
+    // Route::get('/itens/edit','edit')->name('itens.edit');
+    // Route::get('/itens/alugados','alugados')->name('itens.alugados');
+    // Route::get('/itens/devolver','devolver')->name('itens.alugados');
 });
 
 
