@@ -67,15 +67,6 @@
               @csrf
               
               <div class="mb-3">
-                <label for="" class="form-label">Responsável que Autorizou</label>
-                <select class="form-select form-select-lg" name="" id="">
-                  <option >Responsavel 1</option>
-                  <option >Responsavel 2</option>
-                  <option >Responsavel 3</option>
-                </select>
-              </div>
-              
-              <div class="mb-3">
                 <label for="" class="form-label"> Item </label>
                 <select class="form-select form-select-lg" name="" id="">
                   <option >Item 1</option>

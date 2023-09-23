@@ -59,6 +59,13 @@
                     </select>
                     <small id="helpId" class="form-text text-muted">Estado do Item</small>
                 </div>
+
+                <div class="mb-3">
+                  <label for="" class="form-label"></label>
+                  <textarea class="form-control" name="" id="" rows="3"></textarea>
+                  <small id="helpId" class="form-text text-muted">Observação</small>
+                </div>
+
                 <div class="form-group form-button">
                     <button class="form-submit border border-none">Salvar</button>
                 </div>
