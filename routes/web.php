@@ -46,7 +46,8 @@ Route::controller(ItemController::class)->group(function(){
 });
 
 Route::controller(CategorieController::class)->group(function(){
-    Route::get('/categorias/create','create');
+    Route::get('/categories/create','create');
+    Route::get('/categories','index');
     // Route::get('/itens/rent','rent')->name('itens.rent');
     // Route::get('/itens/edit','edit')->name('itens.edit');
     // Route::get('/itens/alugados','alugados')->name('itens.alugados');
