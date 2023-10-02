@@ -17,15 +17,17 @@ class UserSeed extends Seeder
         User::create([
             'name'=>'Mariana Freitas',
             'email'=>'mariana_freitas@gmail.com',
-            'matricula'=>202011011187,
+            'registration'=>202011011187,
             'password'=>Hash::make(123123123),
+            'permission'=>0,
         ]);
 
         User::create([
             'name'=>'Gabriel Victor ',
             'email'=>'gabriel_victor@gmail.com',
-            'matricula'=>202011011190,
+            'registration'=>202011011190,
             'password'=>Hash::make(123123123),
+            'permission'=>1,
         ]);
         
     }

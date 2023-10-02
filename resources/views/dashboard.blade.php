@@ -44,22 +44,17 @@
           <h2 id="portfolioname">Itens</h2>
           
         </div>
-
+        
         <div class="row" data-aos="fade-up" data-aos-delay="150">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">Todos</li>
-              <li data-filter=".filter-basquete">Basquete</li>
-              <li data-filter=".filter-futebol">Futebol</li>
-              <li data-filter=".filter-futebol">Natação</li>
-              <li data-filter=".filter-voleibol">Voleibol</li>
-              <li data-filter=".filter-">Medalhas</li>
-              <li data-filter=".filter-">Troféus</li>
-              <li data-filter=".filter-">Fardamento</li>
-              <li data-filter=".filter-">Permanente</li>
-              <li data-filter=".filter-">Consumo</li>
-              <li data-filter=".filter-">Outros</li>
 
+
+              @foreach ($categories as $categorie)
+                <li data-filter=".filter-{{$categorie->name}}" >{{$categorie->name}}</li>
+              @endforeach
+
+              
               <a href="/categories/create" class="mx-3" title="Nova Categoria">
                   <i>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
@@ -135,6 +130,24 @@
 
       </div>
     </section><!-- End Portfolio Section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   </main><!-- End #main -->
     

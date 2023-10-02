@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Categorie;
 
 
 /*
@@ -22,9 +22,14 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $categories= Categorie::all();
+    return view('dashboard',['categories'=>$categories]);
 })->name('dashboard');
+
+
 
 Route::get('/inproduction', function () {
     return view('inproduction');
@@ -45,13 +50,22 @@ Route::controller(ItemController::class)->group(function(){
     Route::get('/itens/refund','refund')->name('itens.refund');
 });
 
+// Route::resource('categories',CategorieController::class);   
+
 Route::controller(CategorieController::class)->group(function(){
+
+    Route::get('/categories','index');  
+
+    Route::post('/categories','store');
+
     Route::get('/categories/create','create');
-    Route::get('/categories','index');
-    // Route::get('/itens/rent','rent')->name('itens.rent');
-    // Route::get('/itens/edit','edit')->name('itens.edit');
-    // Route::get('/itens/alugados','alugados')->name('itens.alugados');
-    // Route::get('/itens/devolver','devolver')->name('itens.alugados');
+
+    Route::post('/categories/{categorie}','update')->name('categories.update');
+    
+    Route::get('/categories/{categorie}/edit','edit')->name('categories.edit');
+
+    Route::get('/categories/destroy/{categorie}','delete');
+    
 });
 
 
