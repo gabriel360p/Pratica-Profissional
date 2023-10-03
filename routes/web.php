@@ -37,8 +37,6 @@ Route::get('/painel', function () {
 })->name('dashboard');
 
 
-
-
 Route::get('/inproduction', function () {
     return view('inproduction');
 });
@@ -74,7 +72,7 @@ Route::controller(CategorieController::class)->group(function(){
     Route::get('/categorias','index');  
 
     /*Esta rota leva ao armazenamento de uma nova categoria*/
-    Route::post('/categorias','store');
+    Route::post('/categorias','store'); 
     
     /*Esta rota está retornando a view create*/
     Route::get('/categorias/nova','create');
