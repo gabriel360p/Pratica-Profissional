@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', function () {
+Route::get('/painel', function () {
     $categories= Categorie::all();
     $materials= Material::all();
 
@@ -39,25 +39,9 @@ Route::get('/dashboard', function () {
 
 
 
-
-
-
 Route::get('/inproduction', function () {
     return view('inproduction');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -72,15 +56,6 @@ Route::get('/inproduction', function () {
 // });
 
 Route::controller(ItemController::class)->group(function(){
-
-     /*
-        Rotas para o controlador de Item
-        Nesta situação está sendo usado uma "rota grupo", referenciando o ItemController,
-        todas as rotas que são feitas dentro desse grupo irão ter o ItemController como 
-        "referência".
-    */
-
-    /*Rota GET que acessa a função 'create' na classe ItemController, o seu retorno devolve uma página para preencher com dados sobre um novo item a ser adicionado*/
     Route::get('/itens/create','create')->name('itens.create');
     Route::get('/itens/rent','rent')->name('itens.rent');
     Route::get('/itens/edit','edit')->name('itens.edit');
@@ -89,38 +64,30 @@ Route::controller(ItemController::class)->group(function(){
 });
 
 
+
 Route::controller(CategorieController::class)->group(function(){
 
     /*
-        Rotas para o controlador de Categorias
-        Nesta situação está sendo usado uma "rota grupo", referenciando o CategorieController,
-        todas as rotas que são feitas dentro desse grupo irão ter o CategorieController como 
-        "referência".
+        Rotas para o controlador de Categorias.
     */
 
-    /*Rota GET que acessa a função 'index' na classe CategorieController, o seu retorno devolve uma página e uma array de objetos*/
-    Route::get('/categories','index');  
+    /*Esta rota está retornando a view index com uma lista de objetos da tabela categorias*/
+    Route::get('/categorias','index');  
 
-    /*Rota POST que acessa a função 'store' na classe CategorieController, essa função ela serve para salvar os dados no banco de dados*/
-    Route::post('/categories','store');
+    /*Esta rota leva ao armazenamento de uma nova categoria*/
+    Route::post('/categorias','store');
     
-    /*Rota GET que acessa a função 'create' na classe CategorieController, ela devolve uma página de cadastro para salvar os dados de uma nova categoria*/
-    Route::get('/categories/create','create');
+    /*Esta rota está retornando a view create*/
+    Route::get('/categorias/nova','create');
 
-    /*Rota POST que acessa a função 'update' na classe CategorieController, nesta rota está passando o 'id' do objeto para que assim ele possa ser identificado no banco,
-    a função dela é de atualizar os dados de um determinado objeto no banco
-    */
-    Route::post('/categories/{categorie}','update')->name('categories.update');
+    /*Esta rota serve para atualizar um objeto no banco, ela recebe um parâmetro que servirá para identifcar o objeto no banco*/
+    Route::post('/categorias/{categorie}','update')->name('categorias.atualizar');
 
-    /*Rota GET que acessa a função 'edit' na classe CategorieController, nesta rota está passando o 'id' do objeto para que assim ele possa ser identificado no banco,
-    a função dela é mostrar carregar uma página que contém os dados desse determinado objeto que será identificado a partir do id passado.
-    */
-    Route::get('/categories/{categorie}/edit','edit')->name('categories.edit');
+    /*Esta rota está retornando a view edit, ela está recebendo um parâmetro que serve para identificar o objeto no banco*/  
+    Route::get('/categorias/{categorie}/editar','edit')->name('categorias.editar');
 
-    /*Rota GET que acessa a função 'destroy' na classe CategorieController, nesta rota está passando o 'id' do objeto para que assim ele possa ser identificado no banco,
-    a função dela é poder apagar esse objeto do banco
-    */
-    Route::get('/categories/destroy/{categorie}','delete');
+    /*Esta rota está serve para deletar um objeto do banco, ela recebe um parâmetro para identifcar o obejto no banco*/  
+    Route::get('/categorias/apagar/{categorie}','delete');
 });
 
 
