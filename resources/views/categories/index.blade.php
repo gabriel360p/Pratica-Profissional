@@ -31,7 +31,7 @@
         <span class="display-4">Categorias</span>
     </div>
 
-    <div class="container-fluid p-2">
+    <div class="container p-2">
         <div class="row justify-content-center">
           <div class="col-12">
             <div class="table-responsive bg-white">
@@ -44,12 +44,17 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Futebol</td>
+                    @foreach ($categories as $categorie)
+                        
+                    <td>{{$categorie->name}}</td>
+
                     <td>
-                        <a class="btn btn-success" href="/inproduction">Editar</a>
-                        <a  class="btn btn-success" href="/inproduction">Deletar</a>
+                      <a class="btn btn-success" href="{{url('/categorias/deletar',['categorie'=>$categorie->id])}}">Apagar</a>
+                      <a class="btn btn-success" href="{{route('categorias.editar',['categorie'=>$categorie->id])}}">Editar</a>
                     </td>
                   </tr>
+                  @endforeach
+
                 </tbody>
               </table>
             </div>

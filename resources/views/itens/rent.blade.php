@@ -58,7 +58,7 @@
                 <li><strong>Categorias</strong>: Basquete </li>
                 <li><strong>Quantidade Total</strong>: 5 </li>
                 <li><strong>Quantidade Disponível</strong>: 3 </li>
-                <li><strong>Estado</strong>:  </li>
+                <li><strong>Estado</strong>: Bem Conservado </li>
                 <li><strong>Data de Entrada</strong>: 01 Março, 2020</li>
                 <li><strong>Local</strong>: Depósito 1</li>
               </ul>
@@ -82,14 +82,13 @@
               </div>
 
               <div class="mb-3">
-                <label for="" class="form-label"> Empréstimo </label>
-                <select class="form-select form-select-lg" name="emprestimo" id="">
-                  {{-- Isso vai ser tratado pelo servidor, um simples if irar diferenciar se a pessoa quer alugar imediatamente ou agendar --}}
-                  <option value="1">Alugar Item</option>
-                  <option value="2">Agendar empréstimo do Item</option>
-                </select>
+                <p>Empréstimo</p>
+                <input type="radio" id="html" name="rent" value="0" checked>
+                <label for="html">Emprestar Agora</label><br>
+                <input type="radio" id="css" name="rent" value="1">
+                <label for="css">Agendar Empréstimo</label><br>
               </div>
-
+            
               <div class="d-flex justify-content-center ">
                 <button  class="btn btn-success w-100">Confirmar</button>
               </div>
