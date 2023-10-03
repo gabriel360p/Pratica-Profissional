@@ -2,9 +2,11 @@
 
 // use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Categorie;
+use App\Models\Material;
 
 
 /*
@@ -25,8 +27,18 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $categories= Categorie::all();
-    return view('dashboard',['categories'=>$categories]);
+    $materials= Material::all();
+
+    return view('dashboard',[
+        'categories'=>$categories,
+        'materials'=>$materials
+
+    ]);
 })->name('dashboard');
+
+
+
+
 
 
 
@@ -34,13 +46,41 @@ Route::get('/inproduction', function () {
     return view('inproduction');
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
+// Route::controller(MaterialController::class)->group(function(){
+// });
+
 Route::controller(ItemController::class)->group(function(){
+
+     /*
+        Rotas para o controlador de Item
+        Nesta situação está sendo usado uma "rota grupo", referenciando o ItemController,
+        todas as rotas que são feitas dentro desse grupo irão ter o ItemController como 
+        "referência".
+    */
+
+    /*Rota GET que acessa a função 'create' na classe ItemController, o seu retorno devolve uma página para preencher com dados sobre um novo item a ser adicionado*/
     Route::get('/itens/create','create')->name('itens.create');
     Route::get('/itens/rent','rent')->name('itens.rent');
     Route::get('/itens/edit','edit')->name('itens.edit');
@@ -53,7 +93,7 @@ Route::controller(CategorieController::class)->group(function(){
 
     /*
         Rotas para o controlador de Categorias
-        Nesta situação está sendo usado uma "rota grupo", refernciando o CategorieController,
+        Nesta situação está sendo usado uma "rota grupo", referenciando o CategorieController,
         todas as rotas que são feitas dentro desse grupo irão ter o CategorieController como 
         "referência".
     */

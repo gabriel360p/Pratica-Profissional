@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('materials', function (Blueprint $table) {
-            $table->id();
-            $table->string('name',255)->unique();
-            
+        Schema::create('item_loan', function (Blueprint $table) {
             $table->unsignedBigInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
-
-            $table->timestamps();
+            $table->unsignedBigInteger('loan_id');
+            $table->foreign('loan_id')->references('id')->on('loans');
+            //Estado de quando foi emprestado
+            $table->text('loan_status');
+            //Estado de quando foi devolvido
+            $table->text('return_status');
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('materials');
+        Schema::dropIfExists('item_loan');
     }
 };

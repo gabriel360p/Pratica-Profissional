@@ -14,8 +14,5 @@ class Loan extends Model
         'user_who_delivered_id',
         'user_who_received_id',
         'user_who_returned_id',
-        'item_id',
-        'loan_status',
-        'return_status',
-    ]
+    ];
 }

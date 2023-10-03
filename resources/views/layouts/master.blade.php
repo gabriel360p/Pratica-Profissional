@@ -38,9 +38,7 @@
         
 
       <a href="/dashboard"><h1 class="logo">Inventário</h1></a>
-      <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
       <nav id="navbar" class="navbar pe-4">
         <ul>
           <li><a class="nav-link scrollto active" href="/dashboard">Início</a></li>

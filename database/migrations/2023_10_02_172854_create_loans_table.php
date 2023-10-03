@@ -34,12 +34,6 @@ return new class extends Migration
             $table->unsignedBigInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
 
-            //Estado de quando foi emprestado
-            $table->text('loan_status');
-            
-            //Estado de quando foi devolvido
-            $table->text('return_status');
-
             $table->timestamps();
         });
     }
