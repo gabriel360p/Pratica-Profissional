@@ -44,12 +44,12 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" required name="name" id="name" placeholder="Nome Do Item" value="Marcos"/>
+                    <input type="number" required name="name" id="name" placeholder="Matrícula" value=""/>
                     <small id="helpId" class="form-text text-muted">Quem devolveu</small>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" required name="name" id="name" placeholder="Nome Do Item" value="Poliana"/>
+                    <input type="number" required name="name" id="name" placeholder="Matrícula" value=""/>
                     <small id="helpId" class="form-text text-muted">Quem Recebeu</small>
                 </div>
 
