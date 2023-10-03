@@ -45,7 +45,6 @@ Route::get('/inproduction', function () {
 
 
 
-
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -56,7 +55,7 @@ Route::get('/inproduction', function () {
 // });
 
 Route::controller(ItemController::class)->group(function(){
-    Route::get('/itens/create','create')->name('itens.create');
+    Route::get('/itens/novo','create')->name('itens.create');
     Route::get('/itens/rent','rent')->name('itens.rent');
     Route::get('/itens/edit','edit')->name('itens.edit');
     Route::get('/itens/rented','rented')->name('itens.rented');

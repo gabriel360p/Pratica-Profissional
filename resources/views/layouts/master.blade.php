@@ -37,7 +37,7 @@
     <div class="container-fluid d-flex align-items-center justify-content-between">
         
 
-      <a href="/dashboard"><h1 class="logo">Inventário</h1></a>
+      <a href="/painel"><h1 class="logo">Inventário</h1></a>
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       <nav id="navbar" class="navbar pe-4">
         <ul>
