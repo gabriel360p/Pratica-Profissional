@@ -42,22 +42,21 @@
       <nav id="navbar" class="navbar pe-4">
         <ul>
           <li><a class="nav-link scrollto active" href="/painel">Início</a></li>
-          <li><a class="nav-link scrollto" href="/itens/novo">Adicionar item</a></li>
 
+          <li><a class="nav-link scrollto" href="/itens/novo">Adicionar Item</a></li>
 
-          {{-- <li><a class="nav-link scrollto" href="/itens/edit">Editar item</a></li> --}}
+          <li><a class="nav-link scrollto" href="/materiais/novo">Adicionar Material</a></li>
 
-
-          <li><a class="nav-link scrollto" href="/itens/alugados">Historico</a></li>
-
-
-          {{-- <li><a class="nav-link scrollto o" href="#portfolio">Exemplo</a></li>
-          <li><a class="nav-link scrollto" href="#team">Exemplo</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">Exemplo</a></li> --}}
-
+          <li><a class="nav-link scrollto" href="/categorias/nova">Adicionar Categoria</a></li>
 
           <li><a class="nav-link scrollto pe-5 " href="{{url('logout')}}">Sair</a></li>
 
+
+          {{-- <li><a class="nav-link scrollto" href="/itens/edit">Editar item</a></li> --}}
+          {{-- <li><a class="nav-link scrollto" href="/itens/alugados">Historico</a></li> --}}
+          {{-- <li><a class="nav-link scrollto o" href="#portfolio">Exemplo</a></li>
+          <li><a class="nav-link scrollto" href="#team">Exemplo</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">Exemplo</a></li> --}}
 
       </ul>
 

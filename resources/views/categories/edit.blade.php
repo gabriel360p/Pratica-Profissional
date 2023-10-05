@@ -35,8 +35,12 @@
             <form method="POST" class="register-form " action="{{route('categories.update',['categorie'=>$categorie->id])}}">
                 @csrf
                 <div class="form-group">
-                    <input type="text" value="{{$categorie->name}}" required name="name" id="name" placeholder="Nome Da Categoria" value=""/>
+                    <input type="text" value="{{$categorie->name}}" required name="name" id="name" placeholder="Nome Da Categoria" />
                 </div>
+
+                @error('name')
+                    <span class="badge bg-warning">{{$message}}</span>
+                @enderror
 
                 <div class="form-group form-button">
                     <button class="form-submit border border-none">Salvar</button>

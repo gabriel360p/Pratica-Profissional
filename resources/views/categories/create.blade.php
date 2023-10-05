@@ -32,11 +32,14 @@
         <div class="signup-form">
             <h2 class="form-title">Cadastro de Categoria/Departamento</h2>
 
-            <form method="POST" class="register-form " action="/categories">
+            <form method="POST" class="register-form " action="/categorias">
                 @csrf
                 <div class="form-group">
-                    <input type="text" required name="name" id="name" placeholder="Nome Da Categoria" value=""/>
+                    <input type="text" required name="name" id="name" placeholder="Nome Da Categoria" value="{{@old('name')}}" />
                 </div>
+                @error('name')
+                    <span class="badge bg-warning">{{$message}}</span>
+                @enderror
 
                 <div class="form-group form-button">
                     <button class="form-submit border border-none">Salvar</button>

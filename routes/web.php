@@ -26,7 +26,15 @@ Route::get('/', function () {
 
 
 Route::get('/painel', function () {
+
+    /* 
+        Esta rota esta renderizando o painel principal (dashboard)
+    */
+
+    /* Pegandos todas as categorias salvas no sistema*/
     $categories= Categorie::all();
+
+    /* Pegandos todos os materiais salvos no sistema*/
     $materials= Material::all();
 
     return view('dashboard',[
@@ -41,9 +49,7 @@ Route::get('/inproduction', function () {
     return view('inproduction');
 });
 
-
-
-// Route::middleware('auth')->group(function () {
+    // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -52,16 +58,32 @@ Route::get('/inproduction', function () {
 // Route::controller(MaterialController::class)->group(function(){
 // });
 
+
+Route::controller(MaterialController::class)->group(function(){
+    Route::get('/materiais/novo','create')->name('materiais.novo');
+    Route::post('/materiais','store');
+});
+
+
 Route::controller(ItemController::class)->group(function(){
 
+    /*
+        Rotas para o controlador de Item.
+    */
+
+    /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
     Route::get('/itens/novo','create')->name('itens.novo');
 
+    /*Esta rota está levando para a função vai processar o empréstimo do item*/
     Route::get('/itens/alugar','rent')->name('itens.alugar');
 
+    /*Esta rota está retornando a view onde mostra o formulário para editar um item*/
     Route::get('/itens/editar','edit')->name('itens.editar');
-
+    
+    /*Esta rota está retornando a página que lista os items que estão alugados*/
     Route::get('/itens/alugados','rented')->name('itens.alugados');
-
+    
+    /*Esta rota está levando para a função que processa a devolução do item*/
     Route::get('/itens/devolver','refund')->name('itens.devolver');
 });
 
