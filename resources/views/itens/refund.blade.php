@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="number" required name="name" id="name" placeholder="Matrícula" value=""/>
+                    <input type="number" readonly name="name" id="name" placeholder="Matrícula" value=""/>
                     <small id="helpId" class="form-text text-muted">Quem Recebeu</small>
                 </div>
 

@@ -53,11 +53,16 @@ Route::get('/inproduction', function () {
 // });
 
 Route::controller(ItemController::class)->group(function(){
-    Route::get('/itens/novo','create')->name('itens.create');
-    Route::get('/itens/rent','rent')->name('itens.rent');
-    Route::get('/itens/edit','edit')->name('itens.edit');
-    Route::get('/itens/rented','rented')->name('itens.rented');
-    Route::get('/itens/refund','refund')->name('itens.refund');
+
+    Route::get('/itens/novo','create')->name('itens.novo');
+
+    Route::get('/itens/alugar','rent')->name('itens.alugar');
+
+    Route::get('/itens/editar','edit')->name('itens.editar');
+
+    Route::get('/itens/alugados','rented')->name('itens.alugados');
+
+    Route::get('/itens/devolver','refund')->name('itens.devolver');
 });
 
 
