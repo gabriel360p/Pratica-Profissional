@@ -39,7 +39,9 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="date" required name=""/>
+                    {{-- <input type="date" required name=" " value='<?php //echo date("d/m/y"); ?> '/> --}}
+                    
+                    <input id='data' type='text' required value='<?php echo date("d/m/Y"); ?>'  name="input_date">
                     <small id="helpId" class="form-text text-muted">Data de Devolução</small>
                 </div>
 
