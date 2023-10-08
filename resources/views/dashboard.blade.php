@@ -145,8 +145,8 @@
                                     <a href="{{ asset('main/img/portfolio/portfolio-1.jpg') }}"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox"
                                         title="Ampliar Foto"><i class="bx bx-plus"></i></a>
-                                    <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
-                                    <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
+                                        <a href="/itens/alugar" title="Alugar"><i class="bx bx-link"></i></a>
+                                        <a href="/itens/editar" title="Editar"><i class="bx bx-edit"></i></a>
 
                                 </div>
                             </div>
@@ -163,8 +163,8 @@
                                     <a href="{{ asset('main/img/portfolio/portfolio-1.jpg') }}"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox"
                                         title="Ampliar Foto"><i class="bx bx-plus"></i></a>
-                                    <a href="/itens/rent" title="Alugar"><i class="bx bx-link"></i></a>
-                                    <a href="/itens/edit" title="Editar"><i class="bx bx-edit"></i></a>
+                                        <a href="/itens/alugar" title="Alugar"><i class="bx bx-link"></i></a>
+                                        <a href="/itens/editar" title="Editar"><i class="bx bx-edit"></i></a>
 
                                 </div>
                             </div>
