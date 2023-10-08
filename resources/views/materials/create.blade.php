@@ -32,10 +32,19 @@
         <div class="signup-form">
             <h2 class="form-title">Cadastro de Material</h2>
 
-            <form method="POST" class="register-form " action="/materiais">
+            <form method="POST" class="register-form " action="{{url('materiais')}}">
                 @csrf
                 <div class="form-group">
                     <input type="text" required name="name" id="name" value="{{@old('name')}}" placeholder="Nome do material" value=""/>
+                </div>
+
+                <div class="form-group">
+                    <select class="custom-select" name="categorie_id" required
+                        id="CustomSelect">
+                        @foreach ($categories as $categorie)
+                            <option value="{{$categorie->id}}">{{$categorie->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 @error('name')

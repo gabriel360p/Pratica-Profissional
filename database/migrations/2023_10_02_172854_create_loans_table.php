@@ -16,23 +16,33 @@ return new class extends Migration
 
             // usuario que autorizou
             $table->unsignedBigInteger('user_who_authorized_id');
-            $table->foreign('user_who_authorized_id')->references('id')->on('users');
+            $table->foreign('user_who_authorized_id')->references('id')->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             //usuario que entregou
             $table->unsignedBigInteger('user_who_delivered_id');
-            $table->foreign('user_who_delivered_id')->references('id')->on('users');
+            $table->foreign('user_who_delivered_id')->references('id')->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             //usuario que recebeu  
             $table->unsignedBigInteger('user_who_received_id');
-            $table->foreign('user_who_received_id')->references('id')->on('users');
+            $table->foreign('user_who_received_id')->references('id')->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             //usuario que entregou
             $table->unsignedBigInteger('user_who_returned_id');
-            $table->foreign('user_who_returned_id')->references('id')->on('users');
+            $table->foreign('user_who_returned_id')->references('id')->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             
             //item que foi pego
             $table->unsignedBigInteger('item_id');
-            $table->foreign('item_id')->references('id')->on('items');
+            $table->foreign('item_id')->references('id')->on('items')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             $table->timestamps();
         });

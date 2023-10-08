@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Material;
 use Illuminate\Http\Request;
 use App\Http\Requests\MaterialRequest;
+use App\Models\Categorie;
 
 class MaterialController extends Controller
 {
@@ -21,7 +22,8 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        return view('materials.create');
+        $categories=Categorie::all();
+        return view('materials.create',['categories'=>$categories]);
     }
 
     /**
@@ -29,8 +31,7 @@ class MaterialController extends Controller
      */
     public function store(MaterialRequest $request)
     {
-        // Material::create($request->all());
-        //id do item ?
+        Material::create($request->all());
         return back();
     }
 

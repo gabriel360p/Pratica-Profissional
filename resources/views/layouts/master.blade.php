@@ -47,6 +47,8 @@
 
           <li><a class="nav-link scrollto" href="/materiais/novo">Adicionar Material</a></li>
 
+          <li><a class="nav-link scrollto" href="/locais/novo">Adicionar Local</a></li>
+
           <li><a class="nav-link scrollto" href="/categorias/nova">Adicionar Categoria</a></li>
 
           <li><a class="nav-link scrollto pe-5 " href="{{url('logout')}}">Sair</a></li>

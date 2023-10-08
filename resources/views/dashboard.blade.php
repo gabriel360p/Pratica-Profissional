@@ -21,11 +21,12 @@
 
   @section('master-main')
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
+  <section class="d-flex align-items-center">
     <div class="container-fluid position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
+        
         <div class="col-xl-7 col-lg-9 text-center">
-          <h1>IF Sports</h1>
+          <h1> Deff - Ifrn - CA</h1>
           <h2>Inventário de itens</h2>
         </div>
       </div>

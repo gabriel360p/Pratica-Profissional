@@ -1,9 +1,10 @@
 <?php
 
-// use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\LoanController;
+use App\Http\Controllers\PlaceController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Categorie;
 use App\Models\Material;
@@ -20,8 +21,13 @@ use App\Models\Material;
 |
 */
 
+Route::get('/inproduction', function () {
+    return view('inproduction');
+});
+
+
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect(url('painel'));
 });
 
 
@@ -45,20 +51,6 @@ Route::get('/painel', function () {
 })->name('dashboard');
 
 
-Route::get('/inproduction', function () {
-    return view('inproduction');
-});
-
-    // Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
-// Route::controller(MaterialController::class)->group(function(){
-// });
-
-
 Route::controller(MaterialController::class)->group(function(){
     Route::get('/materiais/novo','create')->name('materiais.novo');
     Route::post('/materiais','store');
@@ -73,6 +65,8 @@ Route::controller(ItemController::class)->group(function(){
 
     /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
     Route::get('/itens/novo','create')->name('itens.novo');
+    
+    Route::post('/itens','store')->name('itens.salvar');
 
     /*Esta rota está levando para a função vai processar o empréstimo do item*/
     Route::get('/itens/alugar','rent')->name('itens.alugar');
@@ -111,8 +105,16 @@ Route::controller(CategorieController::class)->group(function(){
     Route::get('/categorias/{categorie}/editar','edit')->name('categorias.editar');
 
     /*Esta rota está serve para deletar um objeto do banco, ela recebe um parâmetro para identifcar o obejto no banco*/  
-    Route::get('/categorias/apagar/{categorie}','delete');
+    Route::get('/categorias/deletar/{categorie}','delete');
 });
 
 
+Route::controller(LoanController::class)->group(function(){
+    Route::get('emprestimos','create')->name('emprestimo.pagina');
+});
+
+Route::controller(PlaceController::class)->group(function(){
+    Route::get('/locais/novo','create');
+    Route::post('/locais','store');
+});
 require __DIR__.'/auth.php';

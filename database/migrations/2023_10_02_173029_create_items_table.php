@@ -14,9 +14,21 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('state',255);
+            $table->string('name',255);
             $table->timestamps();
+            $table->date('input_date');
+
+            $table->text('photo')->nullable();
+            
             $table->unsignedBigInteger('place_id');
-            $table->foreign('place_id')->references('id')->on('places');
+            $table->foreign('place_id')->references('id')->on('places')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            
+            $table->unsignedBigInteger('material_id');
+            $table->foreign('material_id')->references('id')->on('materials')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
