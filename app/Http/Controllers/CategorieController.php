@@ -30,7 +30,7 @@ class CategorieController extends Controller
     public function store(CategorieRequest $categorieRequest,)
     {
         Categorie::Create($categorieRequest->all());
-        return redirect(url('/dashboard'));
+        return redirect(url('/painel'));
     }
 
     /**

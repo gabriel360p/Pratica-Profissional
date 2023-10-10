@@ -11,5 +11,6 @@ class Material extends Model
     protected $fillable=[
         'name',
         'item_id',
+        'categorie_id',
     ];
 }

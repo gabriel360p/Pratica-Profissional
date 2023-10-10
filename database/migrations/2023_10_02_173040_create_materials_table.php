@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->string('name',255)->unique();
-            
-            $table->unsignedBigInteger('item_id');
-            $table->foreign('item_id')->references('id')->on('items');
+
+            $table->unsignedBigInteger('categorie_id');
+            $table->foreign('categorie_id')->references('id')->on('categories')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             $table->timestamps();
         });

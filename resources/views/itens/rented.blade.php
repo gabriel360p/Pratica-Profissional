@@ -35,7 +35,7 @@
                 {{-- <td>61</td> --}}
                 {{-- <td>Edinburgh</td>
                 <td>$320,800</td> --}}
-                <td><a href="/itens/refund">Devolver</a></td>
+                <td><a href="/itens/devolver">Devolver</a></td>
               </tr>
             </tbody>
           </table>

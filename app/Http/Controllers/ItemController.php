@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
+use App\Models\Item;
+use App\Models\Material;
+use App\Models\Place;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -23,7 +27,17 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('itens.create');
+        $places=Place::all();
+        $categories = Categorie::all();
+        $materials=Material::all();
+
+        return view('itens.create',
+            [
+                'places'=>$places,            
+                'categories'=>$categories,            
+                'materials'=>$materials,            
+            ]
+        );
     }
 
     public function rent()
@@ -36,7 +50,8 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Item::create($request->all());
+        return back();
     }
 
     /**
