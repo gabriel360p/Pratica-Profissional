@@ -89,10 +89,6 @@
             if (suap.isAuthenticated()) {
                 await meusDados()
                 console.log("Vc esta logado")
-                document.querySelector('div#container-login').style.display = 'none'
-                document.querySelector('div#container-after-login').style.display = 'show'
-                let status = document.querySelector('h5#login-status-h5')
-                status.style.color = "black"
             } 
         }
 
@@ -132,12 +128,14 @@
                         }
                     }).then(res => {
                         console.log(res)
+
+                        //essa é uma parte importante!
+                        //após os dados terem sido enviado COM SUCESSO para o back-end, o sistema faz o redirecionamento para página dashboard/painel
                         window.location.href = "http://localhost:8000/painel";
                     }).catch(err => {
                         console.log(err)
                     })
                     
-                //   <p> Foto: ${user.foto} </p>
                 };
                 suap.getResource(scope, callback)
             }
