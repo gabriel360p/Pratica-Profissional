@@ -80,40 +80,33 @@
         document.querySelector('a#login').addEventListener('click', logar)
 
         //captura do evento ao clicar em deslogar
-        document.querySelector('button#deslogar').addEventListener('click', deslogar)
+        // document.querySelector('button#deslogar').addEventListener('click', deslogar)
 
         //captura do evento ao clicar em deslogar
-        document.querySelector('button#logar').href = suap.getLoginURL()
+        // document.querySelector('button#logar').href = suap.getLoginURL()
 
         async function auth() { //essa função verifica como está o usuário, se ele está autenticado ou não
             if (suap.isAuthenticated()) {
                 await meusDados()
-
                 console.log("Vc esta logado")
                 document.querySelector('div#container-login').style.display = 'none'
                 document.querySelector('div#container-after-login').style.display = 'show'
                 let status = document.querySelector('h5#login-status-h5')
                 status.style.color = "black"
-                status.innerHTML = 'Você esta logado'
-
-            } else {
-                console.log("Vc não esta logado")
-                document.querySelector('div#container-login').style.display = 'show'
-                document.querySelector('div#container-after-login').style.display = 'none'
-                let status = document.querySelector('h5#login-status-h5')
-                status.style.color = "red"
-                status.innerHTML = 'Você não esta logado'
-            }
+            } 
         }
 
         function meusDados() { //pegando os dados do usuário, daqui posso até mandar para um banco de dados
             if (suap.isAuthenticated()) {
+
                 //definindo os scopos
                 var scope = "identificacao email documentos_pessoais"
                 var callback = function(response) {
 
-                    //salvando os dados do usuário no localStorage do Js
+                    //recuperando os dados
                     let dados = response.data
+
+                    //mandando os dados para os servidor
                     axios({
                         method: 'post',
                         url: 'http://localhost:8000/data/user',
@@ -144,37 +137,15 @@
                         console.log(err)
                     })
                     
-
-                    // axios.post('http://localhost:8000/api/data/user',data:{dados})
-                    // localStorage.setItem("user", JSON.stringify(dados));
-                    // var user = JSON.parse(localStorage.getItem("user"))
-
-                    // //mostrando uma saudação para o usuário logado
-                    // document.querySelector('span#welcome-user').innerHTML = `Bem Vindo ${user.nome_usual}!`
-
-                    // //foto do usuário
-                    // document.querySelector('img#user-avatar').setAttribute('src',`https://suap.ifrn.edu.br${user.foto}`)
-
-                    // //dados do usuário
-                    // let div = document.querySelector('div#user-data-div').innerHTML =
-                    // `
-                //   <p> Nome: ${user.nome_usual} </p>
-                //   <p> Matricula: ${user.identificacao} </p>
-                //   <p> Campus: ${user.campus} </p>
-                //   <p> Email: ${user.email}</p>
-                //   <p> Tipo de usuário: ${user.tipo_usuario} </p>
-                //   <p> Sexo: ${user.sexo} </p>""
-                //   <p> CPF: ${user.cpf} </p>
                 //   <p> Foto: ${user.foto} </p>
-                // `
                 };
                 suap.getResource(scope, callback)
             }
         }
 
-        function deslogar() { //logout do usuário
-            suap.logout();
-        }
+        // function deslogar() { //logout do usuário
+        //     suap.logout();
+        // }
 
         function logar() { //encaminhamento para logar o usuário caso ele não esteja logado no suap
             let a = document.querySelector('a#login')

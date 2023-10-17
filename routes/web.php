@@ -29,24 +29,23 @@ Route::get('/inproduction', function () {
 
 
 Route::get('/', function () {
+    //como o suap esá centrado na rota padrão "/"
+    //estou fazendo um "teste"
     try {
+        //caso o cookie suapToken exista, significa que o usuário fez login e pode ir para a dashboard/painel
         if ($_COOKIE['suapToken']) {
             return redirect(url('/painel'));
         }
     } catch (\Throwable $th) {
+        //caso o token não exista significa que o usuário não fez login por algum motivo, nesse caso ele é levado para página de login novamente
         return view('welcome');
     }
 });
 
 
-
-
-
-
-
-
-Route::middleware(['suapToken'])->group(function () {
+Route::middleware(['suapToken'])->group(function () {//middleware de proteção
    
+//essa rota pega os dados que foram enviados pelo axios/javascript, são os dados do usuário que acabou de fazer login
 Route::post('/data/user',function(Request $request){
     Login::create($request->all());
 });
@@ -68,8 +67,7 @@ Route::get('/painel', function () {
         'materials' => $materials
 
     ]);
-})->name('dashboard');//->middleware(['suapToken']);
-
+})->name('dashboard');
 
 Route::controller(MaterialController::class)->group(function () {
     Route::get('/materiais/novo', 'create')->name('materiais.novo');
