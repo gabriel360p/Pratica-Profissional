@@ -38,9 +38,17 @@ Route::get('/', function () {
     }
 });
 
+
+
+
+
+
+
+
+Route::middleware(['suapToken'])->group(function () {
+   
 Route::post('/data/user',function(Request $request){
     Login::create($request->all());
-    // return redirect(url('/painel'));
 });
 
 Route::get('/painel', function () {
@@ -60,7 +68,7 @@ Route::get('/painel', function () {
         'materials' => $materials
 
     ]);
-})->name('dashboard')->middleware(['suapToken']);
+})->name('dashboard');//->middleware(['suapToken']);
 
 
 Route::controller(MaterialController::class)->group(function () {
@@ -147,5 +155,7 @@ Route::controller(LoanController::class)->group(function () {
 Route::controller(PlaceController::class)->group(function () {
     Route::get('/locais/novo', 'create');
     Route::post('/locais', 'store');
+});
+
 });
 require __DIR__ . '/auth.php';
