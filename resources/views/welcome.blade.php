@@ -85,9 +85,9 @@
         //captura do evento ao clicar em deslogar
         // document.querySelector('button#logar').href = suap.getLoginURL()
 
-        async function auth() { //essa função verifica como está o usuário, se ele está autenticado ou não
+        function auth() { //essa função verifica como está o usuário, se ele está autenticado ou não
             if (suap.isAuthenticated()) {
-                await meusDados()
+                meusDados()
                 console.log("Vc esta logado")
             } 
         }
