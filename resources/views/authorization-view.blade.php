@@ -17,15 +17,21 @@
       if (suap.isAuthenticated()) {
         // Aguarda o documento carregar para exibir o conteúdo
         $(document).ready(function () {
-          let token = suap.getToken().getValue();
-
+          // Token de autenticação do SUAP
+          const suapToken = suap.getToken().getValue();
+          // Token CSRF fornecido pelo Laravel
+          const csrfToken = document.getElementsByName('_token')[0].value;
+          
+          // Envia a o token do SUAP para o callback
           $.ajax({
-            url: '/api/authorization-callback',
-            data: {'token': token},
+            url: '/authorization-callback',
+            data: {
+              '_token' : csrfToken,
+              'suap_token' : suapToken,
+            },
             type: 'POST',
             success: function(response) {
-              // console.log(response);
-              window.location='http://localhost:8000/painel'
+              window.location='/painel'
             },
             error: function(response) {
               alert('Falha na comunicação com o servidor');
@@ -39,5 +45,6 @@
         window.location = HOME_URI;
       }
     </script>
+    @csrf <!-- Necessário para evitar ataques CSRF, não remova -->
   </body>
 </html>
