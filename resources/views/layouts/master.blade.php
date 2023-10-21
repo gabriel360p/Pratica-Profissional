@@ -43,7 +43,7 @@
           use App\Models\Login;
           $user = Login::first();    
           @endphp
-          {{$user->nome_usual}}
+          {{-- {{$user->nome_usual}} --}}
       </h1></a>
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       <nav id="navbar" class="navbar pe-4">
