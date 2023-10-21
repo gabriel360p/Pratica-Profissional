@@ -12,7 +12,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y \
     php-curl \
     php-xml \
     php-mbstring \
-    php-xdebug
+    php-xdebug \
+    unzip \
+    7zip
 
 
 # Install Composer
