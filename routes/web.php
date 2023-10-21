@@ -7,7 +7,6 @@ use App\Http\Controllers\LoanController;
 use App\Http\Controllers\PlaceController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Categorie;
-use App\Models\Login;
 use App\Models\Material;
 use App\Models\Session;
 use Illuminate\Http\Request;
@@ -144,4 +143,3 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
         Route::post('/locais', 'store');
     });
 });
-require __DIR__ . '/auth.php';
