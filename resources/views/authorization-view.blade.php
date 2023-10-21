@@ -29,7 +29,7 @@
             },
             error: function(response) {
               alert('Falha na comunicação com o servidor');
-              // console.log(response);
+              console.log(response);
             }
           });
         });
