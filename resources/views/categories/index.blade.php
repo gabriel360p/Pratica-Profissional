@@ -49,8 +49,8 @@
                     <td>{{$categorie->name}}</td>
 
                     <td>
-                      <a class="btn btn-success" href="{{url('/categorias/deletar',['categorie'=>$categorie->id])}}">Apagar</a>
-                      <a class="btn btn-success" href="{{route('categorias.editar',['categorie'=>$categorie->id])}}">Editar</a>
+                      <a class="btn btn-success" href="{{route('categorias.delete',['categorie'=>$categorie->id])}}">Apagar</a>
+                      <a class="btn btn-success" href="{{route('categorias.edit',['categorie'=>$categorie->id])}}">Editar</a>
                     </td>
                   </tr>
                   @endforeach
