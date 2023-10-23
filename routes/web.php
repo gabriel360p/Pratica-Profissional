@@ -42,7 +42,7 @@ Route::post('/authorization-callback', function (Request $request) {
     ])
     ->withToken($request->suap_token)
     ->acceptJson()
-    ->get('https://suap.ifrn.edu.br/api/eu/');
+    ->get(config('suap.uri_eu'));
 
     Session::create([
         'nome_usual'=>$res['nome_usual'],
