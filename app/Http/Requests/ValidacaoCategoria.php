@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategorieRequest extends FormRequest
+class ValidacaoCategoria extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,14 +22,7 @@ class CategorieRequest extends FormRequest
     public function rules(): array
     {
         return [
-          'name'=>['required','unique:categories','max:50']
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'name.unique'=>'Este nome já está registrado no banco',
+            'name'=>['required','unique:categories','max:50']
         ];
     }
 }

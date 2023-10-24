@@ -44,11 +44,11 @@
                     Deff - Ifrn - CA
                     @php
 
-                        if (\App\Models\Session::first()->nome_social) {
-                            echo \App\Models\Session::first()->nome_social;
-                        } else {
-                            echo \App\Models\Session::first()->nome;
-                        }
+                        // if (\App\Models\Session::first()->nome_social) {
+                        //     echo \App\Models\Session::first()->nome_social;
+                        // } else {
+                        //     echo \App\Models\Session::first()->nome;
+                        // }
 
                     @endphp
                 </h1>

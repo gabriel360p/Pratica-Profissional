@@ -30,15 +30,14 @@
 
     <div class="signup-content">
         <div class="signup-form">
-            <h2 class="form-title">Editar de Categoria/Departamento</h2>
+            <h2 class="form-title">Cadastro de Categoria/Departamento</h2>
 
-            <form method="POST" class="register-form " action="{{route('categories.update',['categorie'=>$categorie->id])}}">
+            <form method="POST" class="register-form " action="/categorias">
                 @csrf
                 <div class="form-group">
-                    <input type="text" value="{{$categorie->name}}" required name="name" id="name" placeholder="Nome Da Categoria" />
+                    <input type="text" required name="nome" id="name" placeholder="Nome Da Categoria" value="{{@old('name')}}" />
                 </div>
-
-                @error('name')
+                @error('nome')
                     <span class="badge bg-warning">{{$message}}</span>
                 @enderror
 
