@@ -3,7 +3,7 @@
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\LoanController;
+use App\Http\Controllers\EmprestimoController;
 use App\Http\Controllers\PlaceController;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Route;
@@ -134,8 +134,8 @@ Route::get('/authorization-view', function () {
     });
 
 
-    Route::controller(LoanController::class)->group(function () {
-        Route::get('emprestimos', 'create')->name('emprestimo.pagina');
+    Route::controller(EmprestimoController::class)->group(function () {
+        Route::get('emprestimos/novo', 'create')->name('emprestimos.pagina');
     });
 
     Route::controller(PlaceController::class)->group(function () {
