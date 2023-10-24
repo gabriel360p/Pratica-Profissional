@@ -35,14 +35,14 @@
             <form method="POST" class="register-form " action="{{url('materiais')}}">
                 @csrf
                 <div class="form-group">
-                    <input type="text" required name="name" id="name" value="{{@old('name')}}" placeholder="Nome do material" value=""/>
+                    <input type="text" required name="nome" id="name" value="{{@old('nome')}}" placeholder="Nome do material" value=""/>
                 </div>
 
                 <div class="form-group">
-                    <select class="custom-select" name="categorie_id" required
+                    <select class="custom-select" name="categoria_id" required
                         id="CustomSelect">
-                        @foreach ($categories as $categorie)
-                            <option value="{{$categorie->id}}">{{$categorie->name}}</option>
+                        @foreach ($categorias as $categoria)
+                            <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
                         @endforeach
                     </select>
                 </div>

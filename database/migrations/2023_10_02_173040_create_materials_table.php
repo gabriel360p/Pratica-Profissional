@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255)->unique();
+            $table->string('nome',255)->unique();
 
-            $table->unsignedBigInteger('categorie_id');
-            $table->foreign('categorie_id')->references('id')->on('categories')
+            $table->unsignedBigInteger('categoria_id');
+            $table->foreign('categoria_id')->references('id')->on('categorias')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 

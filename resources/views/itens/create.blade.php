@@ -32,24 +32,24 @@
          <div class="signup-content">
              <div class="signup-form">
                  <h2 class="form-title">Cadastro de item</h2>
-                 <form method="post" class="register-form " id="register-form" action="{{url('itens'    )}}">
+                 <form method="post" class="register-form " id="register-form" action="{{url('itens')}}">
                      @csrf
-                     <div class="form-group">
-                         <input type="text" required name="name" placeholder="Nome Do Item"
-                             value="{{ @old('name') }}" />
-                     </div>
+                     {{-- <div class="form-group">
+                         <input type="text" required name="nome" placeholder="Nome Do Item"
+                             value="{{ @old('nome') }}" />
+                     </div> --}}
 
                      <div class="form-group">
-                        <input type="text" required name="state" placeholder="Estado do item"
-                            value="{{ @old('state') }}" />
+                        <input type="text" required name="estado" placeholder="Estado do item"
+                            value="{{ @old('estado') }}" />
                     </div>
                     
 
                      <div class="form-group">
 
-                         <select class="custom-select " required id="CustomSelect" name="place_id" value="{{ @old('place') }}">
-                            @foreach ($places as $place)
-                                <option value="{{$place->id}}">{{$place->name}}</option>
+                         <select class="custom-select " required id="CustomSelect" name="local_id" value="{{ @old('local') }}">
+                         @foreach ($locais as $local)
+                                <option value="{{$local->id}}">{{$local->nome}}</option>
                             @endforeach
                          </select>
                          <div id="fileHelpId" class="form-text">Escolher Lugar</div>
@@ -57,20 +57,15 @@
 
                      <div class="form-group">
                          <select class="custom-select " required id="CustomSelect" name="material_id">
-                            @foreach ($materials as $material)
-                                <option value="{{$material->id}}">{{$material->name}}</option>
+                            @foreach ($materiais as $material)
+                                <option value="{{$material->id}}">{{$material->nome}}</option>
                             @endforeach
                          </select>
                          <div id="fileHelpId" class="form-text">Escolher Material</div>
                      </div>
 
-                     <div class="form-group">
-                         <input id='data' type='text'required value='<?php echo date("d/m/Y"); ?>'  name="input_date">
-                         <div id="fileHelpId" class="form-text">Data de Entrada</div>
-                     </div>
-
                      <div class="mb-3">
-                         <input type="file" class="form-control" value="{{ @old('photo') }}" name="photo"
+                         <input type="file" class="form-control" value="{{ @old('foto') }}" name="photo"
                              aria-describedby="fileHelpId">
                          <div id="fileHelpId" class="form-text">Escolher Foto</div>
                      </div>

@@ -3,17 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-use App\Models\Material;
 
-class MaterialRequest extends FormRequest
+class ValidacaoMaterial extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,13 +22,7 @@ class MaterialRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome'=>['required','max:50','unique:categorias'],
-        ];
-    }
-    public function messages(): array
-    {
-        return [
-            'nome.unique'=>'Este nome já está registrado no banco',
+            //
         ];
     }
 }
