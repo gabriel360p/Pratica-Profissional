@@ -4,7 +4,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\EmprestimoController;
-use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\LocalController;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Route;
 use App\Models\Material;
@@ -46,13 +46,13 @@ Route::get('/authorization-view', function () {
     */
 
         /* Pegandos todas as categorias salvas no sistema*/
-        $categories = Categoria::all();
+        $categorias = Categoria::all();
 
         /* Pegandos todos os materiais salvos no sistema*/
         $materials = Material::all();
 
         return view('dashboard', [
-            'categories' => $categories,
+            'categorias' => $categorias,
             'materials' => $materials
 
         ]);
@@ -138,7 +138,7 @@ Route::get('/authorization-view', function () {
         Route::get('emprestimos/novo', 'create')->name('emprestimos.pagina');
     });
 
-    Route::controller(PlaceController::class)->group(function () {
+    Route::controller(LocalController::class)->group(function () {
         Route::get('/locais/novo', 'create');
         Route::post('/locais', 'store');
     });

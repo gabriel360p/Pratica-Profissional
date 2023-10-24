@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Place;
+use App\Models\Local;
 use Illuminate\Http\Request;
 
-class PlaceController extends Controller
+class LocalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        return view('places.create');
+        return view('locais.create');
     }
 
     /**
@@ -28,14 +28,14 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        Place::create($request->all());
+        Local::create($request->all());
         return back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Place $place)
+    public function show(Local $local)
     {
         //
     }
@@ -43,7 +43,7 @@ class PlaceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Place $place)
+    public function edit(Local $local)
     {
         //
     }
@@ -51,7 +51,7 @@ class PlaceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Place $place)
+    public function update(Request $request, Local $local)
     {
         //
     }
@@ -59,7 +59,7 @@ class PlaceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Place $place)
+    public function destroy(Local $local)
     {
         //
     }
