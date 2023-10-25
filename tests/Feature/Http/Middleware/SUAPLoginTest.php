@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Session;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Http;
@@ -57,7 +58,7 @@ class SUAPLoginTest extends TestCase
             config('suap.uri_eu') . '*' => Http::response($resposta_suap, 200),
         ]);
 
-        $response = $this->post('/authorization-callback',[
+        $response = $this->post(route('login.callback'),[
             'suap_token' => 'token-que-veio-do-suap'
         ]);
 
@@ -119,6 +120,23 @@ class SUAPLoginTest extends TestCase
         $this->get($uri)->assertRedirect(route('home'));
     }
 
+    /**
+     * Acesso concedido a páginas restritas.
+     */
+    #[DataProvider('rotas_que_requerem_login_provider')]
+    public function test_acessa_pagina_restrita($rota, $params): void
+    {
+        # Aplica os parâmetros à rota para produzir o URI final
+        $uri = route('materiais.create');
+        $s = Session::factory()->create();
+
+        # Verifica se acessa
+        $res = $this->withCookies(['suapToken' => 'token-falso'])->get($uri);
+        
+        # TODO: Por que $res->assertLocation($uri); não funciona?
+        $res->assertStatus(200);
+    }
+
 
     /**
      * Acesso a páginas públicas.
@@ -133,7 +151,6 @@ class SUAPLoginTest extends TestCase
         $this->get($uri)->assertOk();
     }
 
-
     /* TODO: Testar as seguintes rotas [
         ['itens.salvar', []],
         ['locais.store', []],
@@ -141,6 +158,8 @@ class SUAPLoginTest extends TestCase
         ['categorias.store', []], # Não deveria aceitar get
         ['categorias.delete', ['categorie' => 'fake']],
         ['categorias.update', ['categorie' => 'fake']]
-        ['login.callback', []],
     ]; */
+
+    # TODO: Adicionar teste de logar um usuário quando já existe uma sessão para ele.
+
 }
