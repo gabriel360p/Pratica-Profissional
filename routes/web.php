@@ -175,6 +175,7 @@ Route::middleware(['suapToken'])
 
             /*Esta rota serve para atualizar um objeto no banco, ela recebe um parâmetro que servirá para identifcar o objeto no banco*/
             # TODO: Deveria ser uma requisição PATCH
+            Route::name('update')->patch('/categorias/{categorie}', 'update');
 
             /*Esta rota está retornando a view edit, ela está recebendo um parâmetro que serve para identificar o objeto no banco*/
             Route::name('edit')->get('/categorias/{categorie}/editar', 'edit');
