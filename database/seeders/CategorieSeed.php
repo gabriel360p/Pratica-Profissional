@@ -13,7 +13,6 @@ class CategorieSeed extends Seeder
      */
     public function run(): void
     {
-        Categoria::create(['nome'=>'Todos']);
         Categoria::create(['nome'=>'Basquete']);
         Categoria::create(['nome'=>'Futebol']);
         Categoria::create(['nome'=>'Natação']);

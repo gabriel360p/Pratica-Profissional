@@ -30,7 +30,8 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         Categoria::Create($request->all());
-        return redirect(url('/painel'));
+        // return redirect(url('/painel'));
+        return back();
     }
 
     /**

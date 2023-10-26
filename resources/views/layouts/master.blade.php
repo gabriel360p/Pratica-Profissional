@@ -30,14 +30,13 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('main/css/style.css') }}" rel="stylesheet">
-
+    
 </head>
 
 <body>
     <!-- ======= Header ======= -->
-    <header id="header">
+    <header style="position: fixed; width:100%;" id="header">
         <div class="container-fluid d-flex align-items-center justify-content-between">
-
 
             <a href="/painel">
                 <h1 class="logo">
@@ -54,7 +53,7 @@
                 </h1>
             </a>
             <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-            <nav id="navbar" class="navbar pe-4">
+            <nav id="navbar" class="navbar pe-4" style="">
                 <ul>
                     <li><a class="nav-link scrollto active" href="/painel">Início</a></li>
 

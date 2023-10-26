@@ -85,6 +85,7 @@
 
 
                             @foreach ($categorias as $categoria)
+                                <li data-filter=".filter-todos">Todos</li>
                                 <li data-filter=".filter-{{ $categoria->nome }}">{{ $categoria->nome }}</li>
                             @endforeach
 

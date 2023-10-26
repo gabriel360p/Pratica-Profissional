@@ -26,19 +26,21 @@ Route::get('/inproduction', function () {
     return view('inproduction');
 });
 
+Route::middleware(['GuestMiddleware'])->group(function () { //middleware de proteção
 
-Route::get('/', function () {
-    return view('welcome');
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('/authorization-view', function () {
+        return view('authorization-view');
+    });
+
 });
 
 
-Route::get('/authorization-view', function () {
-    return view('authorization-view');
-});
-
-
-// Route::middleware(['suapToken'])->group(function () { //middleware de proteção
-
+Route::middleware(['suapToken'])->group(function () { //middleware de proteção
+    
     Route::get('/painel', function () {
 
         /* 
@@ -142,4 +144,4 @@ Route::get('/authorization-view', function () {
         Route::get('/locais/novo', 'create');
         Route::post('/locais', 'store');
     });
-// });
+});
