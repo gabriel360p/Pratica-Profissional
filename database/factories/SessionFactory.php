@@ -25,7 +25,7 @@ class SessionFactory extends Factory
             'email' => fake()->email(),
             'sexo' => fake()->randomElement(['M', 'F']),
             'cpf' => fake()->numerify('#######'),
-            'foto'=> 'sem-foto',
+            'foto'=> '/media/fotos/75x100/' . fake()->bothify('/######.????##-#?.jpg'),
             'data_de_nascimento'=> fake()->date(),
             'email_academico' => fake()->email(),
             'email_google_classroom' => fake()->email(),
