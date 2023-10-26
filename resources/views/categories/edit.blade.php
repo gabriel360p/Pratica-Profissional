@@ -32,7 +32,7 @@
         <div class="signup-form">
             <h2 class="form-title">Editar de Categoria/Departamento</h2>
 
-            <form method="POST" class="register-form " action="{{route('categories.update',['categorie'=>$categorie->id])}}">
+            <form method="POST" class="register-form " action="{{route('categorias.update',['categorie'=>$categorie->id])}}">
                 @csrf
                 <div class="form-group">
                     <input type="text" value="{{$categorie->name}}" required name="name" id="name" placeholder="Nome Da Categoria" />
