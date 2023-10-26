@@ -25,32 +25,44 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('main/css/style.css')}}" rel="stylesheet">  
 
- @section('master-main')
 
-
-    <div class="signup-content">
-        <div class="signup-form">
-            <h2 class="form-title">Cadastro de Categoria/Departamento</h2>
-
-            <form method="POST" class="register-form " action="/categorias">
-                @csrf
-                <div class="form-group">
-                    <input type="text" required name="name" id="name" placeholder="Nome Da Categoria" value="{{@old('name')}}" />
-                </div>
-                @error('name')
-                    <span class="badge bg-warning">{{$message}}</span>
-                @enderror
-
-                <div class="form-group form-button">
-                    <button class="form-submit border border-none">Salvar</button>
-                </div>
-
-            </form>
-            
-        </div>
-        
+@section('master-main')
+    <div class="row text-center mb-3">
+        <span class="display-4">Categorias</span>
     </div>
 
+    <div class="container p-2">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="table-responsive bg-white">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col">Categorias</th>
+                    <th scope="col">Ação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    @foreach ($categorias as $categoria)
+                        
+                    <td>{{$categoria->nome}}</td>
+
+                    <td>
+                      <a class="btn btn-success" href="{{url('/categorias/deletar',['categoria'=>$categoria->id])}}">Apagar</a>
+                      <a class="btn btn-success" href="{{route('categorias.editar',['categoria'=>$categoria->id])}}">Editar</a>
+                    </td>
+                  </tr>
+                  @endforeach
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    
 
 @endsection
 <!-- JS -->

@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('places', function (Blueprint $table) {
+        Schema::create('emprestimos', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255)->unique();
+            $table->unsignedBigInteger('usuario_que_autorizou');
+            $table->unsignedBigInteger('usuario_que_emprestou');
+            $table->unsignedBigInteger('usuario_que_recebeu');
+            $table->unsignedBigInteger('usuario_que_devolveu');
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('places');
+        Schema::dropIfExists('emprestimos');
     }
 };

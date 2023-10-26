@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MaterialController;
-use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\LoanController;
-use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\EmprestimoController;
+use App\Http\Controllers\LocalController;
+use App\Models\Categoria;
 use Illuminate\Support\Facades\Route;
-use App\Models\Categorie;
 use App\Models\Material;
 use App\Models\Session;
 use Illuminate\Http\Request;
@@ -26,19 +26,21 @@ Route::get('/inproduction', function () {
     return view('inproduction');
 });
 
+Route::middleware(['GuestMiddleware'])->group(function () { //middleware de proteção
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
+    Route::get('/authorization-view', function () {
+        return view('authorization-view');
+    });
 
-Route::get('/authorization-view', function () {
-    return view('authorization-view');
 });
 
 
 Route::middleware(['suapToken'])->group(function () { //middleware de proteção
-
+    
     Route::get('/painel', function () {
 
         /* 
@@ -46,13 +48,13 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
     */
 
         /* Pegandos todas as categorias salvas no sistema*/
-        $categories = Categorie::all();
+        $categorias = Categoria::all();
 
         /* Pegandos todos os materiais salvos no sistema*/
         $materials = Material::all();
 
         return view('dashboard', [
-            'categories' => $categories,
+            'categorias' => $categorias,
             'materials' => $materials
 
         ]);
@@ -108,7 +110,7 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
 
 
 
-    Route::controller(CategorieController::class)->group(function () {
+    Route::controller(CategoriaController::class)->group(function () {
 
         /*
         Rotas para o controlador de Categorias.
@@ -124,21 +126,21 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
         Route::get('/categorias/nova', 'create');
 
         /*Esta rota serve para atualizar um objeto no banco, ela recebe um parâmetro que servirá para identifcar o objeto no banco*/
-        Route::post('/categorias/{categorie}', 'update')->name('categorias.atualizar');
+        Route::post('/categorias/{categoria}', 'update')->name('categorias.atualizar');
 
         /*Esta rota está retornando a view edit, ela está recebendo um parâmetro que serve para identificar o objeto no banco*/
-        Route::get('/categorias/{categorie}/editar', 'edit')->name('categorias.editar');
+        Route::get('/categorias/{categoria}/editar', 'edit')->name('categorias.editar');
 
         /*Esta rota está serve para deletar um objeto do banco, ela recebe um parâmetro para identifcar o obejto no banco*/
-        Route::get('/categorias/deletar/{categorie}', 'delete');
+        Route::get('/categorias/deletar/{categoria}', 'destroy');
     });
 
 
-    Route::controller(LoanController::class)->group(function () {
-        Route::get('emprestimos', 'create')->name('emprestimo.pagina');
+    Route::controller(EmprestimoController::class)->group(function () {
+        Route::get('emprestimos/novo', 'create')->name('emprestimos.pagina');
     });
 
-    Route::controller(PlaceController::class)->group(function () {
+    Route::controller(LocalController::class)->group(function () {
         Route::get('/locais/novo', 'create');
         Route::post('/locais', 'store');
     });

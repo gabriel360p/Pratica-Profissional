@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('state',255);
-            $table->string('name',255);
-            $table->timestamps();
-            $table->date('input_date');
+            $table->string('estado',255);
+            // $table->string('nome',255);
 
-            $table->text('photo')->nullable();
+            //vai registrar a data de entrada do item
+            $table->timestamps();
+
+            $table->text('foto')->nullable();
             
-            $table->unsignedBigInteger('place_id');
-            $table->foreign('place_id')->references('id')->on('places')
+            $table->unsignedBigInteger('local_id');
+            $table->foreign('local_id')->references('id')->on('locals')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             

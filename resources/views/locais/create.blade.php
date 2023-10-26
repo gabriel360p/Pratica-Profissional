@@ -36,8 +36,8 @@
                     @csrf
 
                     <div class="form-group">
-                        <input type="text" required name="name" placeholder="Nome Do Local"
-                            value="{{ @old('name') }}" />
+                        <input type="text" required name="nome" placeholder="Nome Do Local"
+                            value="{{ @old('nome') }}" />
                     </div>
 
                     <div class="form-group form-button">

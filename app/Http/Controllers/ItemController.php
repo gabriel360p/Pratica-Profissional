@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categorie;
+use App\Models\Categoria;
 use App\Models\Item;
+use App\Models\Local;
 use App\Models\Material;
-use App\Models\Place;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -27,15 +27,16 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $places=Place::all();
-        $categories = Categorie::all();
-        $materials=Material::all();
+        $locais = Local::all();
+        // $categorias = Categoria::all();
+        $materiais = Material::all();
 
-        return view('itens.create',
+        return view(
+            'itens.create',
             [
-                'places'=>$places,            
-                'categories'=>$categories,            
-                'materials'=>$materials,            
+                'locais' => $locais,
+                // 'categorias' => $categorias,
+                'materiais' => $materiais,
             ]
         );
     }
@@ -66,10 +67,9 @@ class ItemController extends Controller
      * Show the form for editing the specified resource.
      */
     public function rented()
-    {   
+    {
         return view('itens.rented');
     }
-
 
 
     /**
@@ -78,7 +78,7 @@ class ItemController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit()
-    {   
+    {
         return view('itens.edit');
     }
 
