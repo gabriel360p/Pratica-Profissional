@@ -73,6 +73,7 @@ class SUAPLoginTest extends TestCase
 
     /**
      * DataProvider de rotas que não requerem login.
+     * TODO: Renomear para rotas_publicas_provider.
      */
     public static function rotas_que_nao_requerem_login_provider(): array
     {   
@@ -86,6 +87,7 @@ class SUAPLoginTest extends TestCase
 
     /**
      * DataProvider de nomes de rotas que requerem login.
+     * TODO: Renomear para rotas_privadas_provider.
      */
     public static function rotas_que_requerem_login_provider(): array
     {   

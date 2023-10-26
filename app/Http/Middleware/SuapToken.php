@@ -18,6 +18,7 @@ class SuapToken
     {
         if ($request->cookie('suapToken'))
             # TODO: Verificar se o token é válido no SUAP?
+            # TODO: Vertificar se o token passado é o mesmo da Session atual
             return $next($request);
 
         /* Se a requisição for GET, redireciona para a página inicial.
