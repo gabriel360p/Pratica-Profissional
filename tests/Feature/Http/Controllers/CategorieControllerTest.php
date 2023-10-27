@@ -76,7 +76,6 @@ class CategorieControllerTest extends TestCase
 
     /**
      * Testar se atualiza uma categoria.
-     * TODO: Verificar por que não está contando no relatório de cobertura.
      */
     public function test_CategorieController_update(): void
     {
@@ -84,7 +83,6 @@ class CategorieControllerTest extends TestCase
 
         $dados = ['name' => 'novo_nome'];
         $this->withCookies(['suapToken' => 'token-falso'])
-            # TODO: Deveria ser ->patch(route('categorias.update', $categoria));
             ->patch(route('categorias.update', $categoria), $dados);
 
         $this->assertDatabaseHas('categories', $dados);
