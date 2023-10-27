@@ -16,7 +16,8 @@ class CategorieControllerTest extends TestCase
     {
         parent::setUp();
 
-        $this->artisan('db:seed'); # TODO: Investigar por que isto é necessário
+        $this->artisan('db:seed --class=CategorieSeed');
+        $this->artisan('db:seed --class=SessionSeeder');
     }
 
     /**
