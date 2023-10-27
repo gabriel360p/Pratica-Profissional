@@ -17,23 +17,10 @@
   	<section class="section">
 		  <div class="container">
 	  		<div class="is-anonymous content">
-					<h2>Você não está autenticado</h2>
-					<a class="button is-success is-large" id="suap-login-button">Login</a>
+				<h2>Você não está autenticado</h2>
+				<a class="button is-success is-large" href="{{ config('suap.uri_login') }}">Login com SUAP</a>
 		  	</div>
 		  </div>
 	  </section>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="js/js.cookie.js"></script>
-  		<script src="js/client.js"></script>
-		<script src="js/settings.js"></script>
-    <script>
-      var suap = new SuapClient(
-		SUAP_URL, CLIENT_ID, HOME_URI, REDIRECT_URI, SCOPE
-	  );
-      suap.init();
-      $(document).ready(function () {
-          $("#suap-login-button").attr('href', suap.getLoginURL());
-      });
-    </script>
   </body>
 </html>
