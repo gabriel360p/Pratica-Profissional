@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     use HasFactory;
+
+    /**
+     * Nome da tabela no banco.
+     *
+     * @var string
+     */
+    protected $table = 'itens';
+
     protected $fillable=[
         // 'nome',
         'estado',
