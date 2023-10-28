@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('foto')->nullable();
             
             $table->unsignedBigInteger('local_id');
-            $table->foreign('local_id')->references('id')->on('locals')
+            $table->foreign('local_id')->references('id')->on('locais')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             
