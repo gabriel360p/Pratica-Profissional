@@ -67,7 +67,7 @@
       } else {
         // O usuário não está autenticado
         alert('A autenticação via SUAP falhou.');
-        window.location = HOME_URI;
+        window.location = "{{route('home')}}";
       }
     </script>
     @csrf <!-- Necessário para evitar ataques CSRF, não remova -->
