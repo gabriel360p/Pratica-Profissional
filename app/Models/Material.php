@@ -13,4 +13,12 @@ class Material extends Model
         'item_id',
         'categoria_id',
     ];
+
+    /**
+     * Nome da tabela no banco.
+     *
+     * @var string
+     */
+    protected $table = 'materiais';
+
 }

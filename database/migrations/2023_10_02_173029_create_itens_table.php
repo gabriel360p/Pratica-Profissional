@@ -27,7 +27,7 @@ return new class extends Migration
             ->onUpdate('cascade');
             
             $table->unsignedBigInteger('material_id');
-            $table->foreign('material_id')->references('id')->on('materials')
+            $table->foreign('material_id')->references('id')->on('materiais')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });
