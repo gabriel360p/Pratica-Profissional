@@ -13,10 +13,6 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
     public function refund()
     {
         return view('itens.refund');
@@ -41,11 +37,6 @@ class ItemController extends Controller
         );
     }
 
-    public function rent()
-    {
-        return view('itens.rent');
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -56,14 +47,6 @@ class ItemController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-    /**
-     * 
      * Show the form for editing the specified resource.
      */
     public function rented()
@@ -73,28 +56,10 @@ class ItemController extends Controller
 
 
     /**
-     * 
-     * 
      * Show the form for editing the specified resource.
      */
     public function edit()
     {
         return view('itens.edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
