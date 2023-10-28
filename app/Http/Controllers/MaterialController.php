@@ -23,7 +23,7 @@ class MaterialController extends Controller
     public function create()
     {
         $categorias=Categoria::all();
-        return view('materials.create',['categorias'=>$categorias]);
+        return view('materiais.create',['categorias' => $categorias]);
     }
 
     /**
