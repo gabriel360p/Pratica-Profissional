@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locals', function (Blueprint $table) {
+        Schema::create('locais', function (Blueprint $table) {
             $table->id();
             $table->string('nome',255)->unique();
             $table->timestamps();
