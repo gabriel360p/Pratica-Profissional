@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Models\Place as Local;
+use App\Models\Local;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tests\TestCase;
 
-#[CoversClass('\App\Http\Controllers\PlaceController')]
+#[CoversClass('\App\Http\Controllers\LocalController')]
 class LocalControllerTest extends TestCase
 {
     use RefreshDatabase;
@@ -72,7 +72,7 @@ class LocalControllerTest extends TestCase
             ->get(route('locais.delete', $local));
 
         $this->assertModelMissing($local);
-        $this->assertDatabaseCount('places', $total - 1);
+        $this->assertDatabaseCount('locais', $total - 1);
     }
 
     /**
@@ -82,11 +82,11 @@ class LocalControllerTest extends TestCase
     {
         $local = Local::first();
 
-        $dados = ['name' => 'novo_nome'];
+        $dados = ['nome' => 'novo_nome'];
         $this->withCookies(['suapToken' => 'token-falso'])
             ->patch(route('locais.update', $local), $dados);
 
-        $this->assertDatabaseHas('places', $dados);
+        $this->assertDatabaseHas('locais', $dados);
     }
 
     /**
@@ -94,13 +94,13 @@ class LocalControllerTest extends TestCase
      */
     public function test_LocalController_store(): void
     {
-        $dados = ['name' => 'Novo Local'];
+        $dados = ['nome' => 'Novo Local'];
         $total = Local::count();
 
         $this->withCookies(['suapToken' => 'token-falso'])
             ->post(route('locais.store'), $dados);
             
-        $this->assertDatabaseHas('places', $dados);
-        $this->assertDatabaseCount('places', $total + 1);
+        $this->assertDatabaseHas('locais', $dados);
+        $this->assertDatabaseCount('locais', $total + 1);
     }
 }

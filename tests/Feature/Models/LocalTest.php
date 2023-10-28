@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Models;
 
-use App\Models\Place;
+use App\Models\Local;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class PlaceTest extends TestCase
+class LocalTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -16,7 +16,7 @@ class PlaceTest extends TestCase
      */
     public function test_cria_local(): void
     {
-        $local = Place::factory()->create();
+        $local = Local::factory()->create();
         $this->assertModelExists($local);
     }
 
@@ -26,14 +26,14 @@ class PlaceTest extends TestCase
      */
     public function test_altera_local(): void
     {
-        $local = Place::factory()->create();
+        $local = Local::factory()->create();
 
         $novo_nome = 'Meu Local';
-        $local->name = $novo_nome;
+        $local->nome = $novo_nome;
         $local->save();
 
-        $this->assertDatabaseHas('places', [
-            'name' => $novo_nome
+        $this->assertDatabaseHas('locais', [
+            'nome' => $novo_nome
         ]);
     }
 
@@ -43,7 +43,7 @@ class PlaceTest extends TestCase
      */
     public function test_apaga_local(): void
     {
-        $local = Place::factory()->create();
+        $local = Local::factory()->create();
 
         $local->delete();
 

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Place as Local;
+use App\Models\Local;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,9 +13,9 @@ class LocalSeeder extends Seeder
      */
     public function run(): void
     {
-        Local::create(['name' => 'Ginásio']);
-        Local::create(['name' => 'Sala dos Servidores']);
-        Local::create(['name' => 'COAPAC']);
-        Local::create(['name' => 'Academia']);
+        Local::create(['nome' => 'Ginásio']);
+        Local::create(['nome' => 'Sala dos Servidores']);
+        Local::create(['nome' => 'COAPAC']);
+        Local::create(['nome' => 'Academia']);
     }
 }
