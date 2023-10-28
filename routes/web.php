@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MaterialController;
-use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\LoanController;
-use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\EmprestimoController;
+use App\Http\Controllers\LocalController;
+use App\Models\Categoria;
 use Illuminate\Support\Facades\Route;
-use App\Models\Categorie;
 use App\Models\Material;
 use App\Models\Session;
 use Illuminate\Http\Request;
@@ -28,13 +28,13 @@ Route::name('todo')
     }
 );
 
-
-Route::name('home')
-    ->get('/', function () {
-        return view('welcome');
-    }
-);
-
+Route::middleware(['GuestMiddleware'])
+    ->group(function () {
+        Route::name('home')
+            ->get('/', function () {
+                return view('welcome');
+            });
+    });
 
 # TODO: Mudar para /login-view
 Route::name('login.')
@@ -89,14 +89,14 @@ Route::middleware(['suapToken'])
             */
 
             /* Pegandos todas as categorias salvas no sistema*/
-            $categories = Categorie::all();
+            $categorias = Categoria::all();
 
             /* Pegandos todos os materiais salvos no sistema*/
-            $materials = Material::all();
+            $materiais = Material::all();
 
             return view('dashboard', [
-                'categories' => $categories,
-                'materials' => $materials
+                'categorias' => $categorias,
+                'materiais' => $materiais
             ]);
         });
 
@@ -140,7 +140,7 @@ Route::middleware(['suapToken'])
             /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
             Route::get('/itens/novo', 'create')->name('create');
 
-            Route::post('/itens', 'store')->name('salvar');
+            Route::post('/itens', 'store')->name('store');
 
             /*Esta rota está levando para a função vai processar o empréstimo do item*/
             Route::get('/itens/alugar', 'alugar')->name('alugar');
@@ -157,7 +157,7 @@ Route::middleware(['suapToken'])
 
 
         Route::name('categorias.')
-            ->controller(CategorieController::class)
+            ->controller(CategoriaController::class)
             ->group(function () {
             /*
                 Rotas para o controlador de Categorias.
@@ -173,28 +173,27 @@ Route::middleware(['suapToken'])
             Route::name('create')->get('/categorias/nova', 'create');
 
             /*Esta rota serve para atualizar um objeto no banco, ela recebe um parâmetro que servirá para identifcar o objeto no banco*/
-            Route::name('update')->post('/categorias/{categorie}', 'update');
+            Route::name('update')->post('/categorias/{categoria}', 'update');
 
             /*Esta rota está retornando a view edit, ela está recebendo um parâmetro que serve para identificar o objeto no banco*/
-            Route::name('edit')->get('/categorias/{categorie}/editar', 'edit');
+            Route::name('edit')->get('/categorias/{categoria}/editar', 'edit');
 
             /*Esta rota está serve para deletar um objeto do banco, ela recebe um parâmetro para identifcar o obejto no banco*/
-            Route::name('delete')->get('/categorias/deletar/{categorie}', 'delete');
+            Route::name('delete')->get('/categorias/deletar/{categoria}', 'delete');
         });
 
 
         Route::name('emprestimos.')
-            ->controller(LoanController::class)
+            ->controller(EmprestimoController::class)
             ->group(function () {
             Route::name('create')->get('emprestimos', 'create');
         });
 
 
         Route::name('locais.')
-            ->controller(PlaceController::class)->group(function () {
+            ->controller(LocalController::class)->group(function () {
             Route::name('create')->get('/locais/novo', 'create');
             Route::name('store')->post('/locais', 'store');
         });
     }
 );
-

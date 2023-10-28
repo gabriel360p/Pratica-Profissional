@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Categorie;
+use App\Models\Categoria;
 
 class CategorieSeed extends Seeder
 {
@@ -13,16 +13,15 @@ class CategorieSeed extends Seeder
      */
     public function run(): void
     {
-        Categorie::create(['name'=>'Todos']);
-        Categorie::create(['name'=>'Basquete']);
-        Categorie::create(['name'=>'Futebol']);
-        Categorie::create(['name'=>'Natação']);
-        Categorie::create(['name'=>'Voleibol']);
-        Categorie::create(['name'=>'Medalhas']);
-        Categorie::create(['name'=>'Troféus']);
-        Categorie::create(['name'=>'Fardamento']);
-        Categorie::create(['name'=>'Permanente']);
-        Categorie::create(['name'=>'Consumo']);
-        Categorie::create(['name'=>'Outros']);
+        Categoria::create(['nome'=>'Basquete']);
+        Categoria::create(['nome'=>'Futebol']);
+        Categoria::create(['nome'=>'Natação']);
+        Categoria::create(['nome'=>'Voleibol']);
+        Categoria::create(['nome'=>'Medalhas']);
+        Categoria::create(['nome'=>'Troféus']);
+        Categoria::create(['nome'=>'Fardamento']);
+        Categoria::create(['nome'=>'Permanente']);
+        Categoria::create(['nome'=>'Consumo']);
+        Categoria::create(['nome'=>'Outros']);
     }
 }

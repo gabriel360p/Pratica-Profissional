@@ -84,8 +84,9 @@
                         <ul id="portfolio-flters">
 
 
-                            @foreach ($categories as $categorie)
-                                <li data-filter=".filter-{{ $categorie->name }}">{{ $categorie->name }}</li>
+                            @foreach ($categorias as $categoria)
+                                <li data-filter=".filter-todos">Todos</li>
+                                <li data-filter=".filter-{{ $categoria->nome }}">{{ $categoria->nome }}</li>
                             @endforeach
 
 

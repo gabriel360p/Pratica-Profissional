@@ -9,8 +9,8 @@ class Material extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'name',
+        'nome',
         'item_id',
-        'categorie_id',
+        'categoria_id',
     ];
 }

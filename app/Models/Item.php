@@ -9,11 +9,10 @@ class Item extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'name',
-        'state',
-        'place_id',
+        // 'nome',
+        'estado',
+        'local_id',
         'material_id',
-        'input_date',
-        'photo',
+        'foto',
     ];
 }

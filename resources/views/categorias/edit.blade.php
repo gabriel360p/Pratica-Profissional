@@ -25,44 +25,33 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('main/css/style.css')}}" rel="stylesheet">  
 
+ @section('master-main')
 
-@section('master-main')
-    <div class="row text-center mb-3">
-        <span class="display-4">Categorias</span>
+
+    <div class="signup-content">
+        <div class="signup-form">
+            <h2 class="form-title">Editar de Categoria/Departamento</h2>
+
+            <form method="POST" class="register-form " action="{{route('categorias.atualizar',['categoria'=>$categoria->id])}}">
+                @csrf
+                <div class="form-group">
+                    <input type="text" value="{{$categoria->nome}}" required name="nome" id="name" placeholder="Nome Da Categoria" />
+                </div>
+
+                @error('nome')
+                    <span class="badge bg-warning">{{$message}}</span>
+                @enderror
+
+                <div class="form-group form-button">
+                    <button class="form-submit border border-none">Salvar</button>
+                </div>
+
+            </form>
+            
+        </div>
+        
     </div>
 
-    <div class="container p-2">
-        <div class="row justify-content-center">
-          <div class="col-12">
-            <div class="table-responsive bg-white">
-              <table class="table mb-0">
-                <thead>
-                  <tr>
-                    <th scope="col">Categorias</th>
-                    <th scope="col">Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    @foreach ($categories as $categorie)
-                        
-                    <td>{{$categorie->name}}</td>
-
-                    <td>
-                      <a class="btn btn-success" href="{{route('categorias.delete',['categorie'=>$categorie->id])}}">Apagar</a>
-                      <a class="btn btn-success" href="{{route('categorias.edit',['categorie'=>$categorie->id])}}">Editar</a>
-                    </td>
-                  </tr>
-                  @endforeach
-
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    
 
 @endsection
 <!-- JS -->
