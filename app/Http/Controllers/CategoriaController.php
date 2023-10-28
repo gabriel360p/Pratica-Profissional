@@ -62,7 +62,7 @@ class CategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categoria $categoria)
+    public function delete(Categoria $categoria)
     {
         $categoria->delete(); 
         return back();

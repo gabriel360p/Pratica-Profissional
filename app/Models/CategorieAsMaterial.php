@@ -10,6 +10,6 @@ class CategorieAsMaterial extends Model
     use HasFactory;
     protected $fillable=[
         'material_id',
-        'categorie_id',
+        'categoria_id',
     ];
 }

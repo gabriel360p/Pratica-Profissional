@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Controllers;
 
-use \App\Models\Categorie as Categorie;
+use \App\Models\Categoria;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tests\TestCase;
 
-#[CoversClass('\App\Http\Controllers\CategorieController')]
-class CategorieControllerTest extends TestCase
+#[CoversClass('\App\Http\Controllers\CategoriaController')]
+class CategoriaControllerTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -16,14 +16,14 @@ class CategorieControllerTest extends TestCase
     {
         parent::setUp();
 
-        $this->artisan('db:seed --class=CategorieSeed');
+        $this->artisan('db:seed --class=CategoriaSeeder');
         $this->artisan('db:seed --class=SessionSeeder');
     }
 
     /**
      * Testar se exibe a lista de categorias.
      */
-    public function test_CategorieController_index(): void
+    public function test_CategoriaController_index(): void
     {
         $response = $this->withCookies(['suapToken' => 'token-falso'])
             ->get(route('categorias.index'));
@@ -35,7 +35,7 @@ class CategorieControllerTest extends TestCase
     /**
      * Testar se exibe a página de criação.
      */
-    public function test_CategorieController_create(): void
+    public function test_CategoriaController_create(): void
     {
         $response = $this->withCookies(['suapToken' => 'token-falso'])
             ->get(route('categorias.create'));
@@ -47,13 +47,13 @@ class CategorieControllerTest extends TestCase
     /**
      * Testar se exibe a página de edição.
      */
-    public function test_CategorieController_edit(): void
+    public function test_CategoriaController_edit(): void
     {
-        $categoria = Categorie::first();
+        $categoria = Categoria::first();
 
         $response = $this
             ->withCookies(['suapToken' => 'token-falso'])
-            ->get(route('categorias.edit', $categoria));
+            ->get(route('categorias.editar', $categoria));
 
         $response->assertStatus(200);
         $response->assertSee('_token'); # Verificar se tem proteção CSRF
@@ -62,44 +62,44 @@ class CategorieControllerTest extends TestCase
     /**
      * Testar se deleta uma categoria.
      */
-    public function test_CategorieController_delete(): void
+    public function test_CategoriaController_delete(): void
     {
-        $categoria = Categorie::first();
-        $total = Categorie::count();
+        $categoria = Categoria::first();
+        $total = Categoria::count();
 
         $this->withCookies(['suapToken' => 'token-falso'])
             ->get(route('categorias.delete', $categoria));
 
         $this->assertModelMissing($categoria);
-        $this->assertDatabaseCount('categories', $total - 1);
+        $this->assertDatabaseCount('categorias', $total - 1);
     }
 
     /**
      * Testar se atualiza uma categoria.
      */
-    public function test_CategorieController_update(): void
+    public function test_CategoriaController_update(): void
     {
-        $categoria = Categorie::first();
+        $categoria = Categoria::first();
 
-        $dados = ['name' => 'novo_nome'];
+        $dados = ['nome' => 'novo_nome'];
         $this->withCookies(['suapToken' => 'token-falso'])
-            ->patch(route('categorias.update', $categoria), $dados);
+            ->patch(route('categorias.atualizar', $categoria), $dados);
 
-        $this->assertDatabaseHas('categories', $dados);
+        $this->assertDatabaseHas('categorias', $dados);
     }
 
     /**
      * Testar se cria uma categoria.
      */
-    public function test_CategorieController_store(): void
+    public function test_CategoriaController_store(): void
     {
-        $dados = ['name' => 'Minha nova categoria'];
-        $total = Categorie::count();
+        $dados = ['nome' => 'Minha nova categoria'];
+        $total = Categoria::count();
 
         $this->withCookies(['suapToken' => 'token-falso'])
             ->post(route('categorias.store'), $dados);
             
-        $this->assertDatabaseHas('categories', ['name' => $dados['name']]);
-        $this->assertDatabaseCount('categories', $total + 1);
+        $this->assertDatabaseHas('categorias', $dados);
+        $this->assertDatabaseCount('categorias', $total + 1);
     }
 }

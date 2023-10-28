@@ -94,7 +94,7 @@ class SUAPLoginTest extends TestCase
         return [
             ['categorias.index', []],
             ['categorias.create', []],
-            # TODO: Criar categoria fake para evitar o erro 404 ['categorias.edit', ['categorie' => 'fake']],
+            # TODO: Criar categoria fake para evitar o erro 404 ['categorias.edit', ['categoria' => 'fake']],
             ['emprestimos.create', []],
             ['itens.alugados', []],
             ['itens.alugar', []],
@@ -158,8 +158,8 @@ class SUAPLoginTest extends TestCase
         ['locais.store', []],
         ['materiais.store', []],
         ['categorias.store', []], # Não deveria aceitar get
-        ['categorias.delete', ['categorie' => 'fake']],
-        ['categorias.update', ['categorie' => 'fake']]
+        ['categorias.delete', ['categoria' => 'fake']],
+        ['categorias.update', ['categoria' => 'fake']]
     ]; */
 
     # TODO: Adicionar teste de logar um usuário quando já existe uma sessão para ele.

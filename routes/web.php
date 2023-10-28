@@ -174,14 +174,14 @@ Route::middleware(['suapToken'])
             Route::name('create')->get('/categorias/nova', 'create');
 
             /*Esta rota serve para atualizar um objeto no banco, ela recebe um parâmetro que servirá para identifcar o objeto no banco*/
-            Route::name('update')->patch('/categorias/{categorie}', 'update');
+            Route::name('atualizar')->patch('/categorias/{categoria}', 'update');
 
             /*Esta rota está retornando a view edit, ela está recebendo um parâmetro que serve para identificar o objeto no banco*/
-            Route::name('edit')->get('/categorias/{categoria}/editar', 'edit');
+            Route::name('editar')->get('/categorias/{categoria}/editar', 'edit');
 
             /*Esta rota está serve para deletar um objeto do banco, ela recebe um parâmetro para identifcar o obejto no banco*/
             # TODO: Deveria ser uma requisição DELETE
-            Route::name('delete')->get('/categorias/deletar/{categorie}', 'delete');
+            Route::name('delete')->get('/categorias/deletar/{categoria}', 'delete');
         });
 
 

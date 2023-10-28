@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\Categorie;
+use App\Models\Categoria;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -16,7 +16,7 @@ class CategoriaTest extends TestCase
      */
     public function test_cria_categoria(): void
     {
-        $cat = Categorie::factory()->create();
+        $cat = Categoria::factory()->create();
         $this->assertModelExists($cat);
     }
 
@@ -26,14 +26,14 @@ class CategoriaTest extends TestCase
      */
     public function test_altera_categoria(): void
     {
-        $cat = Categorie::factory()->create();
+        $cat = Categoria::factory()->create();
 
         $novo_nome = 'Minha Categoria';
-        $cat->name = $novo_nome;
+        $cat->nome = $novo_nome;
         $cat->save();
 
-        $this->assertDatabaseHas('categories', [
-            'name' => $novo_nome
+        $this->assertDatabaseHas('categorias', [
+            'nome' => $novo_nome
         ]);
     }
 
@@ -43,7 +43,7 @@ class CategoriaTest extends TestCase
      */
     public function test_apaga_categoria(): void
     {
-        $cat = Categorie::factory()->create();
+        $cat = Categoria::factory()->create();
 
         $cat->delete();
 
