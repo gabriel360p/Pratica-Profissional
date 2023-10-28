@@ -32,7 +32,12 @@
     <script src="js/client.js"></script>
     <script src="js/settings.js"></script>
     <script>
-      var suap = new SuapClient(SUAP_URL, CLIENT_ID, HOME_URI, REDIRECT_URI, SCOPE);
+      var suap = new SuapClient(
+        "{{ config('suap.uri') }}",
+        "{{ config('suap.client_id') }}",
+        "{{ config('suap.redirect_uri') }}", 
+        "{{ config('suap.scope') }}"
+      );
       suap.init();
       if (suap.isAuthenticated()) {
         // Aguarda o documento carregar para exibir o conteúdo

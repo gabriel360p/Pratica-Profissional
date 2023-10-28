@@ -47,35 +47,36 @@ Route::name('login.')
         Route::name('callback')
             ->post('/authorization-callback', function (Request $request) {
                 $res = Http::withUrlParameters([
-                'scope' => 'identificacao'
-            ])
-            ->withToken($request->suap_token)
-            ->acceptJson()
-            ->get(config('suap.uri_eu'));
+                    'scope' => 'identificacao'
+                ])
+                ->withToken($request->suap_token)
+                ->acceptJson()
+                ->get(config('suap.uri_eu'));
+
+                Session::create([
+                    'nome_usual'=>$res['nome_usual'],
+                    'identificacao'=>$res['identificacao'],
+                    'campus'=>$res['campus'],
+                    'email'=>$res['email'],
+                    'sexo'=>$res['sexo'],
+                    'cpf'=>$res['cpf'],
+                    'foto'=>$res['foto'],
+                    'data_de_nascimento'=>$res['data_de_nascimento'],
+                    'email_academico'=>$res['email_academico'],
+                    'email_google_classroom'=>$res['email_google_classroom'],
+                    'email_preferencial'=>$res['email_preferencial'],
+                    'email_secundario'=>$res['email_secundario'],
+                    'nome'=>$res['nome'],
+                    'nome_registro'=>$res['nome_registro'],
+                    'nome_social'=>$res['nome_social'],
+                    'primeiro_nome'=>$res['primeiro_nome'],
+                    'tipo_usuario'=>$res['tipo_usuario'],
+                    'ultimo_nome'=>$res['ultimo_nome'],
+                ]);
         
-            Session::create([
-                'nome_usual'=>$res['nome_usual'],
-                'identificacao'=>$res['identificacao'],
-                'campus'=>$res['campus'],
-                'email'=>$res['email'],
-                'sexo'=>$res['sexo'],
-                'cpf'=>$res['cpf'],
-                'foto'=>$res['foto'],
-                'data_de_nascimento'=>$res['data_de_nascimento'],
-                'email_academico'=>$res['email_academico'],
-                'email_google_classroom'=>$res['email_google_classroom'],
-                'email_preferencial'=>$res['email_preferencial'],
-                'email_secundario'=>$res['email_secundario'],
-                'nome'=>$res['nome'],
-                'nome_registro'=>$res['nome_registro'],
-                'nome_social'=>$res['nome_social'],
-                'primeiro_nome'=>$res['primeiro_nome'],
-                'tipo_usuario'=>$res['tipo_usuario'],
-                'ultimo_nome'=>$res['ultimo_nome'],
-            ]);
-        
-            return response($res,200);
-        });        
+                return response($res)->cookie('suapToken', $request->suap_token);
+            }
+        );        
     }
 );
 
@@ -173,13 +174,14 @@ Route::middleware(['suapToken'])
             Route::name('create')->get('/categorias/nova', 'create');
 
             /*Esta rota serve para atualizar um objeto no banco, ela recebe um parâmetro que servirá para identifcar o objeto no banco*/
-            Route::name('update')->post('/categorias/{categoria}', 'update');
+            Route::name('update')->patch('/categorias/{categorie}', 'update');
 
             /*Esta rota está retornando a view edit, ela está recebendo um parâmetro que serve para identificar o objeto no banco*/
             Route::name('edit')->get('/categorias/{categoria}/editar', 'edit');
 
             /*Esta rota está serve para deletar um objeto do banco, ela recebe um parâmetro para identifcar o obejto no banco*/
-            Route::name('delete')->get('/categorias/deletar/{categoria}', 'delete');
+            # TODO: Deveria ser uma requisição DELETE
+            Route::name('delete')->get('/categorias/deletar/{categorie}', 'delete');
         });
 
 
