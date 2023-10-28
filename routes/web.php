@@ -28,13 +28,14 @@ Route::name('todo')
     }
 );
 
-Route::middleware(['GuestMiddleware'])
-    ->group(function () {
-        Route::name('home')
-            ->get('/', function () {
-                return view('welcome');
-            });
+// GuestMiddleware desativado temporariamente porque estava entrando em loop de redirecionamento
+// Route::middleware(['GuestMiddleware'])
+//     ->group(function () {
+Route::name('home')
+    ->get('/', function () {
+        return view('welcome');
     });
+// });
 
 # TODO: Mudar para /login-view
 Route::name('login.')
@@ -147,7 +148,7 @@ Route::middleware(['suapToken'])
             Route::get('/itens/alugar', 'alugar')->name('alugar');
 
             /*Esta rota está retornando a view onde mostra o formulário para editar um item*/
-            Route::get('/itens/editar', 'edit')->name('edit');
+            Route::get('/itens/editar', 'edit')->name('editar');
 
             /*Esta rota está retornando a página que lista os items que estão alugados*/
             Route::get('/itens/alugados', 'alugados')->name('alugados');

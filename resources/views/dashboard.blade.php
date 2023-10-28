@@ -129,8 +129,8 @@
                                     <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox" title="Ampliar Foto"><i
                                             class="bx bx-plus"></i></a>
-                                    <a href="/itens/alugar" title="Alugar"><i class="bx bx-link"></i></a>
-                                    <a href="/itens/editar" title="Editar"><i class="bx bx-edit"></i></a>
+                                    <a href="{{route('itens.alugar')}}" title="Alugar"><i class="bx bx-link"></i></a>
+                                    <a href="{{route('itens.editar')}}" title="Editar"><i class="bx bx-edit"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -146,8 +146,8 @@
                                     <a href="{{ asset('main/img/portfolio/portfolio-1.jpg') }}"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox"
                                         title="Ampliar Foto"><i class="bx bx-plus"></i></a>
-                                        <a href="/itens/alugar" title="Alugar"><i class="bx bx-link"></i></a>
-                                        <a href="/itens/editar" title="Editar"><i class="bx bx-edit"></i></a>
+                                        <a href="{{route('itens.alugar')}}" title="Alugar"><i class="bx bx-link"></i></a>
+                                        <a href="{{route('itens.editar')}}" title="Editar"><i class="bx bx-edit"></i></a>
 
                                 </div>
                             </div>
@@ -164,8 +164,8 @@
                                     <a href="{{ asset('main/img/portfolio/portfolio-1.jpg') }}"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox"
                                         title="Ampliar Foto"><i class="bx bx-plus"></i></a>
-                                        <a href="/itens/alugar" title="Alugar"><i class="bx bx-link"></i></a>
-                                        <a href="/itens/editar" title="Editar"><i class="bx bx-edit"></i></a>
+                                        <a href="{{route('itens.alugar')}}" title="Alugar"><i class="bx bx-link"></i></a>
+                                        <a href="{{route('itens.editar')}}" title="Editar"><i class="bx bx-edit"></i></a>
 
                                 </div>
                             </div>

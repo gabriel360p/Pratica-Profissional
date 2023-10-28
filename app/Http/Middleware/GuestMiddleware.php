@@ -20,9 +20,10 @@ class GuestMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (isset($_COOKIE['suapToken'])) {
-            return back();
-        }
+        // TODO: Reativar. Desativado temporariamente porque estava entrando em loop de redirecionamento.
+        // if (isset($_COOKIE['suapToken'])) {
+        //     return back();
+        // }
         return $next($request);
     }
 }

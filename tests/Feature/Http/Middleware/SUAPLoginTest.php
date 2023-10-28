@@ -99,7 +99,7 @@ class SUAPLoginTest extends TestCase
             ['itens.alugados', []],
             ['itens.alugar', []],
             ['itens.devolver', []],
-            ['itens.edit', []],
+            ['itens.editar', []],
             ['itens.create', []],
             ['locais.create', []],
             ['logout', []], # TODO: retirar
