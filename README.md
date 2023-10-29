@@ -2,9 +2,9 @@
 
 ## Como Executar
 
-1. Instale o PHP, Composer e as seguintes extensões: 
+1. Instale o PHP, Composer, SQLite3 e as seguintes extensões: 
     ```bash
-    php-common libapache2-mod-php php-cli php-curl php-xml php-mbstring php-xdebug
+    php-common libapache2-mod-php php-cli php-curl php-xml php-mbstring php-xdebug php-sqlite3
     ```
 
 1. Clone ou baixe este repositório.
