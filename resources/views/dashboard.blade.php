@@ -3,7 +3,7 @@
 @section('master-main')
     <!-- ======= Hero Section ======= -->
     <section class="d-flex align-items-center">
-        <div class="container-fluid position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div class="container-fluid position-relative mt-4" data-aos="fade-up" data-aos-delay="100">
             <div class="row justify-content-center">
 
                 <div class="section-title">

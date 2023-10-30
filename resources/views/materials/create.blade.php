@@ -4,7 +4,7 @@
 
 @section('master-main')
     <div class="signup-content">
-        <div class="signup-form">
+        <div class="signup-form mt-4">
             <h2 class="form-title">Cadastro de Material</h2>
 
             <form method="POST" class="register-form " action="{{ url('materiais') }}">
