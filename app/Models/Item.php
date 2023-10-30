@@ -9,10 +9,20 @@ class Item extends Model
 {
     use HasFactory;
     protected $fillable=[
-        // 'nome',
         'estado',
         'local_id',
         'material_id',
         'foto',
     ];
+
+    public function material()
+    {
+        return $this->belongsTo(Material::class);
+    }
+    
+    public function local()
+    {
+        return $this->belongsTo(Local::class);
+    }
+
 }

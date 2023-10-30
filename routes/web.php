@@ -26,21 +26,21 @@ Route::get('/inproduction', function () {
     return view('inproduction');
 });
 
-Route::middleware(['GuestMiddleware'])->group(function () { //middleware de proteção
+// Route::middleware(['GuestMiddleware'])->group(function () { //middleware de proteção
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
-    Route::get('/authorization-view', function () {
-        return view('authorization-view');
-    });
-
+Route::get('/', function () {
+    return view('welcome');
 });
+
+Route::get('/authorization-view', function () {
+    return view('authorization-view');
+});
+
+// });
 
 
 Route::middleware(['suapToken'])->group(function () { //middleware de proteção
-    
+
     Route::get('/painel', function () {
 
         /* 
@@ -102,7 +102,7 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
         Route::get('/itens/editar', 'edit')->name('itens.editar');
 
         /*Esta rota está retornando a página que lista os items que estão alugados*/
-        Route::get('/itens/alugados', 'rented')->name('itens.alugados');
+        // Route::get('/itens/alugados', 'rented')->name('itens.alugados');
 
         /*Esta rota está levando para a função que processa a devolução do item*/
         Route::get('/itens/devolver', 'refund')->name('itens.devolver');

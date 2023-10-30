@@ -15,12 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('nome',255)->unique();
 
-            $table->unsignedBigInteger('categoria_id');
-            $table->foreign('categoria_id')->references('id')->on('categorias')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-
             $table->timestamps();
+        });
+        Schema::create('categoria_material', function (Blueprint $table) 
+        {
+            //tabela pivot NxN
+            $table->id();
+            $table->unsignedBigInteger('material_id');
+            $table->unsignedBigInteger('categoria_id');
+            $table->foreign('material_id')->references('id')->on('materials')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 

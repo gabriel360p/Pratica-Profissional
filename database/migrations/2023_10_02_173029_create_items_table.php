@@ -30,6 +30,7 @@ return new class extends Migration
             $table->foreign('material_id')->references('id')->on('materials')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+            
         });
     }
 

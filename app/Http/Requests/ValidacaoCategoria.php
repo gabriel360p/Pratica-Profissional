@@ -11,7 +11,7 @@ class ValidacaoCategoria extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class ValidacaoCategoria extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>['required','unique:categories','max:50']
+            'nome'=>['required','unique:categorias','max:50']
         ];
     }
 }

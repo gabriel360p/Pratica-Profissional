@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Material;
 use Illuminate\Http\Request;
-use App\Http\Requests\MaterialRequest;
+use App\Http\Requests\ValidacaoMaterial;
 use App\Models\Categoria;
 
 class MaterialController extends Controller
@@ -22,16 +22,24 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        $categorias=Categoria::all();
-        return view('materials.create',['categorias'=>$categorias]);
+        $categorias = Categoria::all();
+        return view('materials.create', ['categorias' => $categorias]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(MaterialRequest $request)
+    public function store(ValidacaoMaterial $request)
     {
-        Material::create($request->all());
+        $material = Material::create($request->all());
+
+        
+        $categorias = $request->categorias;
+
+        for ($i = 0; $i < sizeof($categorias); $i++) {
+            $material->categorias()->attach($categorias[$i]);
+        }
+        
         return back();
     }
 
@@ -54,7 +62,7 @@ class MaterialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(MaterialRequest $request, Material $material)
+    public function update(ValidacaoMaterial $request, Material $material)
     {
         //
     }

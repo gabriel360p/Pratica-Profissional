@@ -10,7 +10,18 @@ class Material extends Model
     use HasFactory;
     protected $fillable=[
         'nome',
-        'item_id',
-        'categoria_id',
     ];
+
+
+    public function item()
+    {
+        return $this->hasOne(Item::class);
+    }
+    
+    //o mesmo material pode pertencer a vários categorias
+    public function categorias(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Categoria::class);
+    }
+
 }
