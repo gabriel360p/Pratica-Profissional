@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Local;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidacaoLocal;
 
 class LocalController extends Controller
 {
@@ -26,7 +27,7 @@ class LocalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ValidacaoLocal $request)
     {
         Local::create($request->all());
         return back();
@@ -51,7 +52,7 @@ class LocalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Local $local)
+    public function update(ValidacaoLocal $request, Local $local)
     {
         //
     }

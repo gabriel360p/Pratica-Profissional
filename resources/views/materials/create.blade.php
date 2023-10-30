@@ -1,31 +1,6 @@
 @extends('layouts.master')
-<!-- Font Icon -->
-<link rel="stylesheet" href="">
 
-<!-- Main css -->
 <link rel="stylesheet" href="{{ asset('cadastro_itens/css/style.css') }}">
-
-<!-- Favicons -->
-<link href="{{ asset('img/favicon.png') }}" rel="icon">
-<link href="{{ asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
-
-
-<!-- Google Fonts -->
-<link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
-
-<!-- Vendor CSS Files -->
-<link href="{{ asset('main/vendor/aos/aos.css') }}" rel="stylesheet">
-<link href="{{ asset('main/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('main/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-<link href="{{ asset('main/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-<link href="{{ asset('main/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-<link href="{{ asset('main/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-<link href="{{ asset('main/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-
-<!-- Template Main CSS File -->
-<link href="{{ asset('main/css/style.css') }}" rel="stylesheet">
 
 @section('master-main')
     <div class="signup-content">
@@ -35,17 +10,25 @@
             <form method="POST" class="register-form " action="{{ url('materiais') }}">
                 @csrf
                 <div class="form-group">
-                    <input type="text" required name="nome" id="name" value="{{ @old('nome') }}"
-                        placeholder="Nome do material" value="" />
+                    <input type="text" required name="nome"value="{{ @old('nome') }}" placeholder="Nome do material"
+                        value="" />
                 </div>
-
+                {{-- 
                 <div class="form-group">
                     <select class="custom-select" name="categoria_id" required id="CustomSelect">
                         @foreach ($categorias as $categoria)
                             <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div> --}}
+
+                @foreach ($categorias as $categoria)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{ $categoria->id }}" name="categorias[]"
+                            id="flexCheckDefault">
+                        {{ $categoria->nome }}
+                    </div>
+                @endforeach
 
                 @error('name')
                     <span class="badge bg-warning">{{ $message }}</span>

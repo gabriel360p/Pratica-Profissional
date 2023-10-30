@@ -8,7 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'nome',
     ];
+
+    /**
+     * The roles that belong to the Material
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    //a mesma categoria pode pertencer a vários materiais
+    public function materiais(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Material::class);
+    }
 }

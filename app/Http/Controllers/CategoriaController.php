@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\ValidacaoCategoria;
 class CategoriaController extends Controller
 {
     /**
@@ -27,10 +27,9 @@ class CategoriaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ValidacaoCategoria $request)
     {
         Categoria::Create($request->all());
-        // return redirect(url('/painel'));
         return back();
     }
 
@@ -53,7 +52,7 @@ class CategoriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(ValidacaoCategoria $request, Categoria $categoria)
     {
         $categoria->update($request->all());
         return back();

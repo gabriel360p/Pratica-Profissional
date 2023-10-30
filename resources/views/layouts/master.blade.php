@@ -30,7 +30,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('main/css/style.css') }}" rel="stylesheet">
-    
+
 </head>
 
 <body>
@@ -43,16 +43,15 @@
                     Deff - Ifrn - CA
                     @php
 
-                        // if (\App\Models\Session::first()->nome_social) {
-                        //     echo \App\Models\Session::first()->nome_social;
-                        // } else {
-                        //     echo \App\Models\Session::first()->nome;
-                        // }
-
+                        if (\App\Models\Session::first()->nome_social) {
+                            echo \App\Models\Session::first()->nome_social;
+                        } else {
+                            echo \App\Models\Session::first()->nome;
+                        }
                     @endphp
                 </h1>
             </a>
-            <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            {{-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> --}}
             <nav id="navbar" class="navbar pe-4" style="">
                 <ul>
                     <li><a class="nav-link scrollto active" href="/painel">Início</a></li>
@@ -83,25 +82,20 @@
 
     </header><!-- End Header -->
 
-
-    {{-- <main> --}}
-
     <div class="container-fluid">
         @yield('master-main')
+
+        <script src="{{ asset('main/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+        <script src="{{ asset('main/vendor/aos/aos.js') }}"></script>
+        <script src="{{ asset('main/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('main/vendor/glightbox/js/glightbox.min.js') }}"></script>
+        <script src="{{ asset('main/vendor/swiper/swiper-bundle.min.js') }}"></script>
+        <script src="{{ asset('main/vendor/php-email-form/validate.js') }}"></script>
+
+        <!-- Template Main JS File -->
+        <script src="{{ asset('main/js/main.js') }}"></script>
     </div>
 
-    {{-- </main> --}}
-
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('main/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-    <script src="{{ asset('main/vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('main/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('main/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('main/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('main/vendor/php-email-form/validate.js') }}"></script>
-
-    <!-- Template Main JS File -->
-    <script src="{{ asset('main/js/main.js') }}"></script>
 </body>
 
 </html>
