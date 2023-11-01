@@ -48,6 +48,7 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    # TODO: Traduzir para `alugados`.
     public function rented(Item $item)
     {
         return view('itens.rented');
