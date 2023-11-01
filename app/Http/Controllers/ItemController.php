@@ -13,8 +13,9 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function refund()
+    public function devolver()
     {
+        // TODO: Renomear para `devolver`.
         return view('itens.refund');
     }
 
