@@ -56,4 +56,17 @@ class ItemControllerTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('_token'); # Verificar se tem proteção CSRF
     }
+
+    /**
+     * Testa se exibe a página de itens alugados.
+     */
+    public function test_ItemController_alugados(): void
+    {
+        $this->markTestSkipped('Funcionalidade não implementada ainda.');
+        $response = $this->withCookies(['suapToken' => 'token-falso'])
+            ->get(route('itens.alugados'));
+
+        $response->assertStatus(200);
+        $response->assertSee('_token'); # Verificar se tem proteção CSRF
+    }
 }
