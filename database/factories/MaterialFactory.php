@@ -17,7 +17,9 @@ class MaterialFactory extends Factory
     public function definition(): array
     {
         return [
-            'nome' => fake()->word(),
+            // Usar duas palavras diminui a chance dois materiais terem o
+            // mesmo nome
+            'nome' => fake()->word() . ' ' . fake()->word(),
         ];
     }
 }
