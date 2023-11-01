@@ -29,6 +29,3 @@
 
 
 @endsection
-<!-- JS -->
-<script src="{{asset('cadastro_itens/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('cadastro_itens/js/main.js')}}"></script>

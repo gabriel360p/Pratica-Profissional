@@ -7,20 +7,36 @@
         <div class="signup-form mt-4">
             <h2 class="form-title">Cadastro de Material</h2>
 
-            <form method="POST" class="register-form " action="{{ url('materiais') }}">
+            <form method="POST" class="register-form " action="{{ route('materiais.atualizar', $material->id) }}">
                 @csrf
                 <div class="form-group">
-                    <input type="text" required name="nome"value="{{ @old('nome') }}" placeholder="Nome do material"
+                    <input type="text" required name="nome"value="{{ $material->nome }}" placeholder="Nome do material"
                         value="" />
                 </div>
 
+
+
                 @foreach ($categorias as $categoria)
                     <div class="form-check">
+
                         <input class="form-check-input" type="checkbox" value="{{ $categoria->id }}" name="categorias[]"
                             id="flexCheckDefault">
                         {{ $categoria->nome }}
+
                     </div>
                 @endforeach
+
+                {{-- <hr> --}}
+                {{-- @foreach ($material->categorias as $categoria)
+                    <div class="form-check">
+
+                        <input class="form-check-input" type="checkbox" value="{{ $categoria->id }}"
+                            name="categorias[]">
+                        {{ $categoria->nome }}
+
+                    </div>
+                @endforeach --}}
+
 
                 @error('name')
                     <span class="badge bg-warning">{{ $message }}</span>

@@ -89,6 +89,5 @@
             </div>
         </section>
     </main>
-    
     <script src="{{asset('emprestimos/data-emprestimo-show.js')}}"></script>
 @endsection

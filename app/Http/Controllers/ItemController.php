@@ -6,7 +6,7 @@ use App\Models\Item;
 use App\Models\Local;
 use App\Models\Material;
 use Illuminate\Http\Request;
-use App\Http\Requests\ValidacaoCategoria;
+use App\Http\Requests\ValidacaoItem;
 
 class ItemController extends Controller
 {
@@ -15,8 +15,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        return view("itens.index", ['itens' => Item::with(['local', 'material'])->get()]);
     }
+
     public function refund()
     {
         return view('itens.refund');
@@ -47,7 +48,7 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ValidacaoCategoria $request)
+    public function store(ValidacaoItem $request)
     {
         Item::create($request->all());
         return back();
@@ -77,15 +78,17 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        return view('itens.edit');
+        
+        return view('itens.edit', ['item' => $item, 'materiais' => \App\Models\Material::all(), 'locais' => \App\Models\Local::all()]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ValidacaoCategoria $request, Item $item)
+    public function update(ValidacaoItem $request, Item $item)
     {
-        //
+        $item->update($request->all());
+        return back();
     }
 
     /**
@@ -93,6 +96,7 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
+        return back();
     }
 }

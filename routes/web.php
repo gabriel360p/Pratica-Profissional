@@ -22,7 +22,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/inproduction', function () {
+Route::get('/em-producao', function () {
     return view('inproduction');
 });
 
@@ -44,25 +44,28 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
     Route::get('/painel', function () {
 
         /* 
-        Esta rota esta renderizando o painel principal (dashboard)
-    */
-
-        /* Pegandos todas as categorias salvas no sistema*/
-        $categorias = Categoria::all();
-
-        /* Pegandos todos os materiais salvos no sistema*/
-        $materials = Material::all();
+          Esta rota esta renderizando o painel principal (dashboard)
+        */
 
         return view('dashboard', [
-            'categorias' => $categorias,
-            'materials' => $materials
-
+            /* Pegandos todas as categorias salvas no sistema*/
+            'categorias' => Categoria::all(),
+            /* Pegandos todos os materiais salvos no sistema*/
+            'materials' => Material::all()
         ]);
     })->name('dashboard');
 
     Route::controller(MaterialController::class)->group(function () {
         Route::get('/materiais/novo', 'create')->name('materiais.novo');
         Route::post('/materiais', 'store');
+
+        Route::get('/materiais/deletar/{material}', 'destroy');
+
+        Route::get('/materiais', 'index');
+
+        Route::post('/materiais/{material}', 'update')->name('materiais.atualizar');
+
+        Route::get('/materiais/{material}/editar', 'edit')->name('materiais.editar');
     });
 
 
@@ -90,6 +93,11 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
         Rotas para o controlador de Item.
     */
 
+
+        Route::get('/itens', 'index')->name('itens.index');
+
+
+
         /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
         Route::get('/itens/novo', 'create')->name('itens.novo');
 
@@ -99,13 +107,16 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
         Route::get('/itens/alugar', 'rent')->name('itens.alugar');
 
         /*Esta rota está retornando a view onde mostra o formulário para editar um item*/
-        Route::get('/itens/editar', 'edit')->name('itens.editar');
+        Route::post('/itens/{item}', 'update')->name('itens.atualizar');
+        Route::get('/itens/editar/{item}', 'edit')->name('itens.editar');
 
         /*Esta rota está retornando a página que lista os items que estão alugados*/
         // Route::get('/itens/alugados', 'rented')->name('itens.alugados');
 
         /*Esta rota está levando para a função que processa a devolução do item*/
         Route::get('/itens/devolver', 'refund')->name('itens.devolver');
+
+        Route::get('/itens/deletar/{item}', 'destroy')->name('itens.deletar');
     });
 
 
@@ -140,8 +151,14 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
         Route::get('emprestimos/novo', 'create')->name('emprestimos.pagina');
     });
 
+
     Route::controller(LocalController::class)->group(function () {
         Route::get('/locais/novo', 'create');
         Route::post('/locais', 'store');
+        Route::get('/locais/deletar/{local}', 'destroy')->name('locais.delete');
+        Route::get('/locais/{local}/edit', 'edit')->name('locais.editar');
+        Route::post('/locais/{local}', 'update')->name('locais.update');
+
+        Route::get('/locais', 'index');
     });
 });

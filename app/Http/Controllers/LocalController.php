@@ -13,7 +13,7 @@ class LocalController extends Controller
      */
     public function index()
     {
-        //
+        return view('locais.index',['locais'=>\App\Models\Local::all()]);
     }
 
     /**
@@ -46,7 +46,7 @@ class LocalController extends Controller
      */
     public function edit(Local $local)
     {
-        //
+        return view('locais.edit',['local'=>$local]);
     }
 
     /**
@@ -54,7 +54,8 @@ class LocalController extends Controller
      */
     public function update(ValidacaoLocal $request, Local $local)
     {
-        //
+        $local->update($request->all());
+        return back();
     }
 
     /**
@@ -62,6 +63,7 @@ class LocalController extends Controller
      */
     public function destroy(Local $local)
     {
-        //
+        $local->delete();
+        return back();
     }
 }
