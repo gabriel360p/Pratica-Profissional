@@ -65,14 +65,14 @@ class LocalTest extends TestCase
      */
     public function test_adiciona_item(): void
     {
-        $item = Item::factory()->create();
         $local = Local::factory()->create();
-
-        $local->itens()->save($item);
+        $total = count($local->itens);
+        
+        $item = Item::factory()->create(['local_id' => $local->id]);
 
         // Verifica se o local no banco tem o item
         $local_no_banco = Local::find($local->id);
-        $this->assertCount(1, $local_no_banco->itens);
+        $this->assertCount($total + 1, $local_no_banco->itens);
         $this->assertEquals($local_no_banco->itens[0]->id, $item->id);
     }
 }
