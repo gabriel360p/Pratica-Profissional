@@ -4,7 +4,7 @@
       <div class="p-3">
           <div class="row justify-content-center" style="margin-top: 90px">
               <div>
-                  <a class="btn btn-success mt-3" href="/locais/novo">Adicionar Local</a>
+                  <a class="btn btn-success mb-4" href="/locais/novo">Adicionar Local</a>
               </div>
               <div class="col-12">
                   @if (sizeof($locais) != 0)

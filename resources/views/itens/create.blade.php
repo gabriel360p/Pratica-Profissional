@@ -64,7 +64,7 @@
              <div class="modal-content">
 
                  <div class="m-5">
-                     <h2 class="form-title">Nova Categoria</h2>
+                     <h2 class="form-title">Novo Local</h2>
 
                      <form method="POST" class="register-form " action="/locais">
                          @csrf
