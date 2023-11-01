@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
 use App\Models\Item;
 use App\Models\Local;
 use App\Models\Material;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidacaoCategoria;
 
 class ItemController extends Controller
 {
@@ -24,14 +24,12 @@ class ItemController extends Controller
     public function create()
     {
         $locais = Local::all();
-        // $categorias = Categoria::all();
         $materiais = Material::all();
 
         return view(
             'itens.create',
             [
                 'locais' => $locais,
-                // 'categorias' => $categorias,
                 'materiais' => $materiais,
             ]
         );
@@ -40,7 +38,7 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ValidacaoCategoria $request)
     {
         Item::create($request->all());
         return back();
@@ -49,7 +47,7 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function rented()
+    public function rented(Item $item)
     {
         return view('itens.rented');
     }
@@ -58,7 +56,7 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(Item $item)
     {
         return view('itens.edit');
     }

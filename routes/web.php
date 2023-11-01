@@ -150,8 +150,8 @@ Route::middleware(['suapToken'])
             /*Esta rota está retornando a view onde mostra o formulário para editar um item*/
             Route::get('/itens/editar', 'edit')->name('editar');
 
-            /*Esta rota está retornando a página que lista os items que estão alugados*/
-            Route::get('/itens/alugados', 'alugados')->name('alugados');
+        /*Esta rota está retornando a página que lista os items que estão alugados*/
+        // Route::get('/itens/alugados', 'rented')->name('itens.alugados');
 
             /*Esta rota está levando para a função que processa a devolução do item*/
             Route::get('/itens/devolver', 'devolver')->name('devolver');

@@ -11,7 +11,7 @@ class ValidacaoMaterial extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class ValidacaoMaterial extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome' => ['required', 'max:50', 'unique:categorias'],
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'nome.unique' => 'Este nome já está registrado no banco',
         ];
     }
 }

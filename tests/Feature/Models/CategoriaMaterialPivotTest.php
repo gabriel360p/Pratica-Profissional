@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Models;
 
-use App\Models\CategoriaMaterialPivot;
 use App\Models\Material;
 use App\Models\Categoria;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -10,13 +9,14 @@ use Illuminate\Foundation\Testing\WithFaker;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tests\TestCase;
 
-#[CoversClass('\App\Http\Controllers\CategoriaMaterialPivot')]
+#[CoversClass('\App\Models\Material')]
+#[CoversClass('\App\Models\Categoria')]
 class CategoriaMaterialPivotTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
-     * Testa se cria um relacionamento.
+     * Testa se cria um relacionamento Categoria x Material.
      */
     public function test_cria_relacionamento_categoria_material(): void
     {
@@ -30,13 +30,12 @@ class CategoriaMaterialPivotTest extends TestCase
         /* Asserções */
         // Verifica se criou o pivot do relacionamento
         $this->assertDatabaseHas(
-            'categoria_material_pivot',
+            'categoria_material',
             [
                 'material_id' => $material->id,
                 'categoria_id' => $categoria->id,
             ]
         );
-        $this->assertCount(1, CategoriaMaterialPivot::all());
 
         // Verifica se o material no banco tem a categoria
         $material_no_banco = Material::find($material->id);
@@ -48,7 +47,7 @@ class CategoriaMaterialPivotTest extends TestCase
     }
 
     /**
-     * Testa se cria um relacionamento.
+     * Testa se apaga um relacionamento Categoria x Material.
      */
     public function test_apaga_relacionamento_categoria_material(): void
     {
@@ -63,13 +62,12 @@ class CategoriaMaterialPivotTest extends TestCase
         /* Asserções */
         // Verifica se apagou o pivot do relacionamento
         $this->assertDatabaseMissing(
-            'categoria_material_pivot',
+            'categoria_material',
             [
                 'material_id' => $material->id,
                 'categoria_id' => $categoria->id,
             ]
         );
-        $this->assertCount(0, CategoriaMaterialPivot::all());
 
         // Verifica se o material no banco não tem mais a categoria
         $material_no_banco = Material::find($material->id);

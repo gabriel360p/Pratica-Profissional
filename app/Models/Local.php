@@ -20,4 +20,10 @@ class Local extends Model
         'nome'
     ];
 
+
+    public function item()
+    {
+        return $this->hasOne(Item::class);
+    }
+
 }
