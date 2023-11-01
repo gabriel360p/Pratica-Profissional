@@ -16,6 +16,8 @@ class ItemControllerTest extends TestCase
     {
         parent::setUp();
 
+        $this->artisan('db:seed --class=MaterialSeeder');
+        $this->artisan('db:seed --class=LocalSeeder');
         $this->artisan('db:seed --class=SessionSeeder');
     }
 
@@ -26,6 +28,30 @@ class ItemControllerTest extends TestCase
     {
         $response = $this->withCookies(['suapToken' => 'token-falso'])
             ->get(route('itens.devolver'));
+
+        $response->assertStatus(200);
+        $response->assertSee('_token'); # Verificar se tem proteção CSRF
+    }
+
+    /**
+     * Testa se exibe a página de criação de itens.
+     */
+    public function test_ItemController_create(): void
+    {
+        $response = $this->withCookies(['suapToken' => 'token-falso'])
+            ->get(route('itens.create'));
+
+        $response->assertStatus(200);
+        $response->assertSee('_token'); # Verificar se tem proteção CSRF
+    }
+
+    /**
+     * Testa se exibe a página de edição de itens.
+     */
+    public function test_ItemController_edit(): void
+    {
+        $response = $this->withCookies(['suapToken' => 'token-falso'])
+            ->get(route('itens.editar'));
 
         $response->assertStatus(200);
         $response->assertSee('_token'); # Verificar se tem proteção CSRF
