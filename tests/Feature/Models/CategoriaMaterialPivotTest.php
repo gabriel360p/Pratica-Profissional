@@ -8,9 +8,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tests\TestCase;
-
-#[CoversClass('\App\Models\Material')]
-#[CoversClass('\App\Models\Categoria')]
+/**
+ * @covers App\Models\Material::categorias
+ * @covers App\Models\Categoria::materiais
+ */
 class CategoriaMaterialPivotTest extends TestCase
 {
     use RefreshDatabase;
