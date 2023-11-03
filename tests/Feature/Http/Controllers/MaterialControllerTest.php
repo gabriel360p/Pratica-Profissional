@@ -24,8 +24,9 @@ class MaterialControllerTest extends TestCase
     /**
      * TODO: Testar se exibe a lista de materiais.
      */
-    public function TODO_test_MaterialController_index(): void
+    public function test_MaterialController_index(): void
     {
+        $this->markTestSkipped('Funcionalidade ainda não implementada.');
         $response = $this->withCookies(['suapToken' => 'token-falso'])
             ->get(route('materiais.index'));
 
@@ -48,8 +49,9 @@ class MaterialControllerTest extends TestCase
     /**
      * TODO: Testar se exibe a página de edição.
      */
-    public function TODO_test_MaterialController_edit(): void
+    public function test_MaterialController_edit(): void
     {
+        $this->markTestSkipped('Funcionalidade ainda não implementada.');
         $material = Material::first();
 
         $response = $this
@@ -63,8 +65,9 @@ class MaterialControllerTest extends TestCase
     /**
      * TODO: Testar se deleta um material.
      */
-    public function TODO_test_MaterialController_delete(): void
+    public function test_MaterialController_delete(): void
     {
+        $this->markTestSkipped('Funcionalidade ainda não implementada.');
         $material = Material::first();
         $total = Material::count();
 
@@ -78,8 +81,9 @@ class MaterialControllerTest extends TestCase
     /**
      * TODO: Testar se atualiza um material.
      */
-    public function TODO_test_MaterialController_update(): void
+    public function test_MaterialController_update(): void
     {
+        $this->markTestSkipped('Funcionalidade ainda não implementada.');
         $material = Material::first();
 
         $dados = ['nome' => 'novo_nome'];
