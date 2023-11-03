@@ -4,6 +4,7 @@ namespace Tests\Feature\Models;
 
 use App\Models\Item;
 use App\Models\Local;
+use App\Models\Material;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -91,5 +92,35 @@ class ItemTest extends TestCase
 
         $this->assertDatabaseMissing('itens', ['local_id' => $local1->id]);
         $this->assertDatabaseHas('itens', ['local_id' => $local2->id]);
+    }
+
+
+    /**
+     * Testa se salva o material.
+     */
+    public function test_salva_material(): void
+    {
+        $material = Material::factory()->create();
+
+        Item::factory()->create(['material_id' => $material->id]);
+
+        $this->assertDatabaseHas('itens', ['material_id' => $material->id]);
+    }
+
+
+    /**
+     * Testa se altera o material.
+     */
+    public function test_altera_material(): void
+    {
+        $material1 = Material::factory()->create();
+        $material2 = Material::factory()->create();
+        $item = Item::factory()->create(['material_id' => $material1->id]);
+
+        $item->material()->associate($material2);
+        $item->save();
+
+        $this->assertDatabaseMissing('itens', ['material_id' => $material1->id]);
+        $this->assertDatabaseHas('itens', ['material_id' => $material2->id]);
     }
 }
