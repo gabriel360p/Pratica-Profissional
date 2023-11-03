@@ -75,4 +75,20 @@ class LocalTest extends TestCase
         $this->assertCount($total + 1, $local_no_banco->itens);
         $this->assertEquals($local_no_banco->itens[0]->id, $item->id);
     }
+
+    /**
+     * Testa se remove um item.
+     */
+    public function test_remove_item(): void
+    {
+        $local = Local::factory()->create();
+        Item::factory()->create(['local_id' => $local->id]);
+        $total = count($local->itens);
+
+        $local->itens()->first()->delete();
+
+        // Verifica se o local no banco tem o item
+        $local_no_banco = Local::find($local->id);
+        $this->assertCount($total - 1, $local_no_banco->itens);
+    }
 }
