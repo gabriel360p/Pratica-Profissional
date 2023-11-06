@@ -58,12 +58,25 @@
 
                 </div>
 
+
                 <div class="row" data-aos="fade-up" data-aos-delay="150">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="portfolio-flters">
+                            {{--
+                                <a href="/painel">
+                                    <li data-filter=".filter-todos">Todos</li>
+                                </a>
+                                @foreach ($categorias as $categoria)
+                                <a href="{{route('material.categoria',$categoria->id)}}">
+                                    <li data-filter=".filter-{{ $categoria->nome }}">{{ $categoria->nome }}</li>
+                                </a>
+                                @endforeach --}}
 
+
+
+
+                            <li data-filter=".filter-todos">Todos</li>
                             @foreach ($categorias as $categoria)
-                                <li data-filter=".filter-todos">Todos</li>
                                 <li data-filter=".filter-{{ $categoria->nome }}">{{ $categoria->nome }}</li>
                             @endforeach
 
@@ -115,7 +128,6 @@
                             </div>
                         </div>
                 @endforeach
-
 
             </div>
 

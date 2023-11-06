@@ -26,10 +26,10 @@
                                         <td>{{ $item->estado }}</td>
 
                                         <td>
-                                            <a class="btn btn-success"
-                                                href="{{ url('/itens/deletar', ['item' => $item->id]) }}">Apagar</a>
-                                            <a class="btn btn-success"
-                                                href="{{ route('itens.editar', ['item' => $item->id]) }}">Editar</a>
+                                            <button class="btn btn-success"
+                                                href="{{ url('/itens/deletar', ['item' => $item->id]) }}" > Apagar</button>
+                                            <button class="btn btn-success"
+                                                href="{{ route('itens.editar', ['item' => $item->id]) }}" >Editar</button>
                                         </td>
                                 </tr>
                 @endforeach

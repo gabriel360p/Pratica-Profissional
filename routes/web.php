@@ -41,6 +41,19 @@ Route::get('/authorization-view', function () {
 
 Route::middleware(['suapToken'])->group(function () { //middleware de proteção
 
+    // Route::get('/materiais/categoria/{categoria}', function ($categoria) {
+    //     try {
+    //         $cat = \DB::table('categoria_material')->where('categoria_id', '=', $categoria)->get();
+
+    //         $mat = \DB::table('materials')->where('id', '=', $cat[0]->material_id)->get();
+
+    //         return view('dashboard', ['materials' => $mat, 'categorias' => Categoria::all()]);
+    //     } catch (\Throwable $th) {
+    //         return back();
+    //     }
+    // })->name('material.categoria');
+
+
     Route::get('/painel', function () {
 
         /* 
