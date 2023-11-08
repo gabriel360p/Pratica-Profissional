@@ -54,7 +54,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2 id="portfolioname">Materiais</h2>
+                    <h2 id="portfolioname">itens</h2>
 
                 </div>
 
@@ -62,8 +62,8 @@
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="portfolio-flters">
 
+                            <li data-filter=".filter-todos">Todos</li>
                             @foreach ($categorias as $categoria)
-                                <li data-filter=".filter-todos">Todos</li>
                                 <li data-filter=".filter-{{ $categoria->nome }}">{{ $categoria->nome }}</li>
                             @endforeach
 
@@ -96,13 +96,14 @@
                 </div>
 
 
-                @foreach ($materiais as $material)
+                @foreach ($itens as $item)
                     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-basquete">
+                        {{-- TODO: Iterar em todas as Categorias do Material do Item --}}
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-{{$item->material->categorias->first()->nome}}">
                             <div class="portfolio-wrap">
                                 <img src="{{ asset('imagens/bbasquete.jpg') }}" class="img-fluid" alt="">
                                 <div class="portfolio-info">
-                                    <h4>{{ $material->nome }}</h4>
+                                    <h4>{{ $item->material->nome }}</h4>
                                     <p>Disponivel</p>
                                     <div class="portfolio-links">
                                         <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg"
@@ -111,59 +112,10 @@
                                         <a href="/itens/alugar" title="Alugar"><i class="bx bx-link"></i></a>
                                         <a href="/itens/editar" title="Editar"><i class="bx bx-edit"></i></a>
                                     </div>
-                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-basquete">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('imagens/bbasquete.jpg') }}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Item</h4>
-                                <p>Disponivel</p>
-                                <div class="portfolio-links">
-                                    <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox" title="Ampliar Foto"><i
-                                            class="bx bx-plus"></i></a>
-                                    <a href="{{route('itens.alugar')}}" title="Alugar"><i class="bx bx-link"></i></a>
-                                    <a href="{{route('itens.editar')}}" title="Editar"><i class="bx bx-edit"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-futebol">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('imagens/bfutebol.jpg') }}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Item</h4>
-                                <p>Disponivel</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('main/img/portfolio/portfolio-1.jpg') }}"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"
-                                        title="Ampliar Foto"><i class="bx bx-plus"></i></a>
-                                        <a href="{{route('itens.alugar')}}" title="Alugar"><i class="bx bx-link"></i></a>
-                                        <a href="{{route('itens.editar')}}" title="Editar"><i class="bx bx-edit"></i></a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-voleibol">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('imagens/bvolei.png') }}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Item</h4>
-                                <p>Disponivel</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('main/img/portfolio/portfolio-1.jpg') }}"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"
-                                        title="Ampliar Foto"><i class="bx bx-plus"></i></a>
-                                        <a href="{{route('itens.alugar')}}" title="Alugar"><i class="bx bx-link"></i></a>
-                                        <a href="{{route('itens.editar')}}" title="Editar"><i class="bx bx-edit"></i></a>
-
-                                </div>
-                            </div>
-                        </div>
                 @endforeach
 
 

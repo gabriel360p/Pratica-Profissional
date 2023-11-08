@@ -7,7 +7,7 @@ use App\Http\Controllers\EmprestimoController;
 use App\Http\Controllers\LocalController;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Route;
-use App\Models\Material;
+use App\Models\Item;
 use App\Models\Session;
 use Illuminate\Http\Request;
 
@@ -90,10 +90,8 @@ Route::name('dashboard')
         return view(
             'dashboard',
             [
-                /* Pegandos todas as categorias salvas no sistema*/
                 'categorias' => Categoria::all(),
-                /* Pegandos todos os materiais salvos no sistema*/
-                'materiais' => Material::all()
+                'itens' => Item::all()
             ]
         );
     });
