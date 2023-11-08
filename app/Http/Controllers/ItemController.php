@@ -13,12 +13,12 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function devolver()
+    public function index()
     {
         return view("itens.index", ['itens' => Item::with(['local', 'material'])->get()]);
     }
 
-    public function refund()
+    public function devolver()
     {
         return view('itens.refund');
     }

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -39,7 +40,7 @@ class ItemControllerTest extends TestCase
     public function test_ItemController_create(): void
     {
         $response = $this->withCookies(['suapToken' => 'token-falso'])
-            ->get(route('itens.create'));
+            ->get(route('itens.novo'));
 
         $response->assertStatus(200);
         $response->assertSee('_token'); # Verificar se tem proteção CSRF
@@ -50,8 +51,10 @@ class ItemControllerTest extends TestCase
      */
     public function test_ItemController_edit(): void
     {
+        $item = Item::factory()->create();
+
         $response = $this->withCookies(['suapToken' => 'token-falso'])
-            ->get(route('itens.editar'));
+            ->get(route('itens.editar', $item));
 
         $response->assertStatus(200);
         $response->assertSee('_token'); # Verificar se tem proteção CSRF
