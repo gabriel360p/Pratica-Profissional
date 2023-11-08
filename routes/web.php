@@ -106,7 +106,7 @@ Route::name('materiais.')
     ->controller(MaterialController::class)
     ->group(function () {
         Route::get('/novo', 'create')->name('novo');
-        
+
         Route::name('salvar')->post('', 'store');
 
         Route::get('/deletar/{material}', 'destroy');
@@ -215,11 +215,11 @@ Route::name('locais.')
     ->prefix('/locais')
     ->controller(LocalController::class)
     ->group(function () {
-        Route::get('/novo', 'create');
-        Route::post('', 'store');
-        Route::get('/deletar/{local}', 'destroy')->name('locais.delete');
-        Route::get('/{local}/edit', 'edit')->name('locais.editar');
-        Route::post('/{local}', 'update')->name('locais.update');
+        Route::name('create')->get('/novo', 'create');
+        Route::name('store')->post('', 'store');
+        Route::name('delete')->get('/deletar/{local}', 'destroy');
+        Route::name('editar')->get('/{local}/edit', 'edit');
+        Route::name('update')->post('/{local}', 'update');
 
         Route::get('', 'index');
     });
