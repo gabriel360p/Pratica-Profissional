@@ -105,17 +105,18 @@ Route::name('materiais.')
     ->prefix('/materiais')
     ->controller(MaterialController::class)
     ->group(function () {
-    Route::get('/novo', 'create')->name('materiais.novo');
-    Route::post('', 'store');
+        Route::get('/novo', 'create')->name('novo');
+        
+        Route::name('salvar')->post('', 'store');
 
-    Route::get('/deletar/{material}', 'destroy');
+        Route::get('/deletar/{material}', 'destroy');
 
-    Route::get('', 'index');
+        Route::get('', 'index');
 
-    Route::post('/{material}', 'update')->name('materiais.atualizar');
+        Route::post('/{material}', 'update')->name('atualizar');
 
-    Route::get('/{material}/editar', 'edit')->name('materiais.editar');
-});
+        Route::get('/{material}/editar', 'edit')->name('editar');
+    });
 
 // TODO: Retirar do grupo que usa SUAP, pois não precisa estar logado para tentar fazer logout.
 Route::name('logout')

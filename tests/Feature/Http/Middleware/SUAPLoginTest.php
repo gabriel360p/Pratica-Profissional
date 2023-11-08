@@ -103,7 +103,7 @@ class SUAPLoginTest extends TestCase
             ['itens.create', []],
             ['locais.create', []],
             ['logout', []], # TODO: retirar
-            ['materiais.create', []],
+            ['materiais.novo', []],
             ['dashboard', []],
         ];
     }
@@ -129,7 +129,7 @@ class SUAPLoginTest extends TestCase
     public function test_acessa_pagina_restrita($rota, $params): void
     {
         # Aplica os parâmetros à rota para produzir o URI final
-        $uri = route('materiais.create');
+        $uri = route('materiais.novo');
         $s = Session::factory()->create();
 
         # Verifica se acessa

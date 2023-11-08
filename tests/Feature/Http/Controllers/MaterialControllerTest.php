@@ -40,7 +40,7 @@ class MaterialControllerTest extends TestCase
     public function test_MaterialController_create(): void
     {
         $response = $this->withCookies(['suapToken' => 'token-falso'])
-            ->get(route('materiais.create'));
+            ->get(route('materiais.novo'));
 
         $response->assertStatus(200);
         $response->assertSee('_token'); # Verificar se tem proteção CSRF
@@ -102,7 +102,7 @@ class MaterialControllerTest extends TestCase
         $total = Material::count();
 
         $this->withCookies(['suapToken' => 'token-falso'])
-            ->post(route('materiais.store'), $dados);
+            ->post(route('materiais.salvar'), $dados);
             
         $this->assertDatabaseHas('materiais', $dados);
         $this->assertDatabaseCount('materiais', $total + 1);
