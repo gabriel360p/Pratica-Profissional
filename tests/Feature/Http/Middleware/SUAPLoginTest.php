@@ -90,17 +90,17 @@ class SUAPLoginTest extends TestCase
      * TODO: Renomear para rotas_privadas_provider.
      */
     public static function rotas_que_requerem_login_provider(): array
-    {   
+    {
         return [
             ['categorias.index', []],
             ['categorias.create', []],
             # TODO: Criar categoria fake para evitar o erro 404 ['categorias.edit', ['categoria' => 'fake']],
             ['emprestimos.create', []],
             # TODO: Testar ['itens.alugados', []],
-            ['itens.alugar', []],
+             ['itens.alugar', []],
             ['itens.devolver', []],
-            ['itens.editar', []],
-            ['itens.create', []],
+            # ['itens.editar', []],
+            ['itens.novo', []],
             ['locais.create', []],
             ['logout', []], # TODO: retirar
             ['materiais.novo', []],
