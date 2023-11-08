@@ -64,8 +64,8 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        
-        return view('itens.edit', ['item' => $item, 'materiais' => \App\Models\Material::all(), 'locais' => \App\Models\Local::all()]);
+
+        return view('itens.edit', ['item' => $item, 'materiais' => Material::all(), 'locais' => Local::all()]);
     }
 
     /**
