@@ -17,7 +17,7 @@ class Item extends Model
     protected $table = 'itens';
 
     protected $fillable=[
-        'estado',
+        'estado_conservacao',
         'local_id',
         'material_id',
         'foto',
