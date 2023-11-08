@@ -93,7 +93,7 @@ Route::name('dashboard')
                 /* Pegandos todas as categorias salvas no sistema*/
                 'categorias' => Categoria::all(),
                 /* Pegandos todos os materiais salvos no sistema*/
-                'materials' => Material::all()
+                'materiais' => Material::all()
             ]
         );
     });
