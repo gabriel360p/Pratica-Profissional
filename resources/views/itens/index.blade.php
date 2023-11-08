@@ -1,33 +1,35 @@
 @extends('layouts.master')
 
 @section('master-main')
-<div class="p-3">
-    <div class="row justify-content-center" style="margin-top: 90px">
-
-        <div>
-            <a href="/categorias/nova" class="btn btn-success mb-4">Adicionar Categoria</a>
-        </div>
-
+    <div class="p-3">
+        <div class="row justify-content-center" style="margin-top: 90px">
+            <div>
+                <a class="btn btn-success mt-3" href="/itens/novo">Adicionar Item</a>
+            </div>
             <div class="col-12">
-                @if (sizeof($categorias) != 0)
+                @if (sizeof($itens) != 0)
                     <div class="table-responsive bg-white">
                         <table class="table mb-0">
                             <thead>
                                 <tr>
+                                    <th scope="col">Item/Material</th>
                                     <th scope="col">Local</th>
+                                    <th scope="col">Estado</th>
                                     <th scope="col">Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    @foreach ($categorias as $categoria)
-                                        <td>{{ $categoria->nome }}</td>
+                                    @foreach ($itens as $item)
+                                        <td>{{ $item->material->nome }}</td>
+                                        <td>{{ $item->local->nome }}</td>
+                                        <td>{{ $item->estado }}</td>
 
                                         <td>
                                             <a class="btn btn-success"
-                                                href="{{ route('categorias.delete', ['categoria' => $categoria->id]) }}">Apagar</a>
+                                                href="{{ url('/itens/deletar', ['item' => $item->id]) }}">Apagar</a>
                                             <a class="btn btn-success"
-                                                href="{{ route('categorias.editar', ['categoria' => $categoria->id]) }}">Editar</a>
+                                                href="{{ route('itens.editar', ['item' => $item->id]) }}">Editar</a>
                                         </td>
                                 </tr>
                 @endforeach
@@ -37,7 +39,7 @@
             </div>
         @else
             <div class="text-center">
-                <h3>Nenhuma categoria foi cadastrada</h3>
+                <h3>Nenhum item foi cadastrado</h3>
             </div>
             @endif
 

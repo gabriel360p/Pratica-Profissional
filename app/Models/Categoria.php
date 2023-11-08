@@ -14,7 +14,7 @@ class Categoria extends Model
     ];
 
     /**
-     * The roles that belong to the Material
+     * The roles that belong to the Material    
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

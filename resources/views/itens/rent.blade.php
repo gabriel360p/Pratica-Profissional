@@ -71,7 +71,7 @@
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="1"
+                                        <input class="form-check-input" checked type="radio" value="1"
                                             name="flexRadioDefault" id="emprestar-agora">
                                         Emprestar Agora
                                     </div>
@@ -89,6 +89,5 @@
             </div>
         </section>
     </main>
-    
     <script src="{{asset('emprestimos/data-emprestimo-show.js')}}"></script>
 @endsection

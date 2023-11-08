@@ -23,10 +23,10 @@ use Illuminate\Http\Request;
 */
 
 Route::name('todo')
-    ->get('/inproduction', function () {
-        return view('inproduction');
-    }
-);
+    ->get('/em-producao', function () {
+            return view('inproduction');
+        }
+    );
 
 // GuestMiddleware desativado temporariamente porque estava entrando em loop de redirecionamento
 // Route::middleware(['GuestMiddleware'])
@@ -82,121 +82,144 @@ Route::name('login.')
 );
 
 
-Route::middleware(['suapToken'])
-    ->group(function () { //middleware de proteção
-        Route::name('dashboard')
-            ->get('/painel', function () {
-            /* 
-            Esta rota esta renderizando o painel principal (dashboard)
-            */
-
-            /* Pegandos todas as categorias salvas no sistema*/
-            $categorias = Categoria::all();
-
-            /* Pegandos todos os materiais salvos no sistema*/
-            $materiais = Material::all();
-
-            return view('dashboard', [
-                'categorias' => $categorias,
-                'materiais' => $materiais
-            ]);
-        });
-
-        Route::name('materiais.')
-            ->controller(MaterialController::class)
-            ->group(function () {
-                Route::get('/materiais/novo', 'create')->name('create');
-                Route::post('/materiais', 'store')->name('store');;
-            }
+/* 
+    Esta rota esta renderizando o painel principal (dashboard)
+*/
+Route::name('dashboard')
+    ->get('/painel', function () {
+        return view(
+            'dashboard',
+            [
+                /* Pegandos todas as categorias salvas no sistema*/
+                'categorias' => Categoria::all(),
+                /* Pegandos todos os materiais salvos no sistema*/
+                'materials' => Material::all()
+            ]
         );
+    });
+
+/**
+ * Rotas relacionadas a Materiais
+ */
+Route::name('materiais.')
+    ->prefix('/materiais')
+    ->controller(MaterialController::class)
+    ->group(function () {
+    Route::get('/novo', 'create')->name('materiais.novo');
+    Route::post('', 'store');
+
+    Route::get('/deletar/{material}', 'destroy');
+
+    Route::get('', 'index');
+
+    Route::post('/{material}', 'update')->name('materiais.atualizar');
+
+    Route::get('/{material}/editar', 'edit')->name('materiais.editar');
+});
+
+// TODO: Retirar do grupo que usa SUAP, pois não precisa estar logado para tentar fazer logout.
+Route::name('logout')
+    ->get('/logout', function (Request $request) {
+    unset($_COOKIE['suapToken']);
+    unset($_COOKIE['suapTokenExpirationTime']);
+    unset($_COOKIE['suapScope']);
+
+    setcookie('suapToken', null, -1);
+    setcookie('suapTokenExpirationTime', null, -1);
+    setcookie('suapScope', $request->scope, null, -1);
+
+    try {
+        Session::first()->delete();
+    } catch (\Throwable $th) {
+        return redirect(url('/'));
+    }
+    return redirect(url('/'));
+});
 
 
-        // TODO: Retirar do grupo que usa SUAP, pois não precisa estar logado para tentar fazer logout.
-        Route::name('logout')
-            ->get('/logout', function (Request $request) {
-            unset($_COOKIE['suapToken']);
-            unset($_COOKIE['suapTokenExpirationTime']);
-            unset($_COOKIE['suapScope']);
+/*
+    Rotas para o controlador de Item.
+*/
+Route::name('itens.')
+    ->prefix('/itens')
+    ->controller(ItemController::class)
+    ->group(function () {
+        Route::name('index')->get('', 'index');
 
-            setcookie('suapToken', null, -1);
-            setcookie('suapTokenExpirationTime', null, -1);
-            setcookie('suapScope', $request->scope, null, -1);
+        /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
+        Route::name('novo')->get('/novo', 'create');
 
-            try {
-                Session::first()->delete();
-            } catch (\Throwable $th) {
-                return redirect(url('/'));
-            }
-            return redirect(url('/'));
-        });
+        Route::name('store')->post('', 'store');
 
+        /*Esta rota está levando para a função vai processar o empréstimo do item*/
+        Route::name('alugar')->get('/alugar', 'alugar');
 
-        Route::name('itens.')
-            ->controller(ItemController::class)
-            ->group(function () {
+        /*Esta rota está retornando a view onde mostra o formulário para editar um item*/
+        Route::name('atualizar')->post('/{item}', 'update');
 
-            /*
-                Rotas para o controlador de Item.
-            */
-
-            /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
-            Route::get('/itens/novo', 'create')->name('create');
-
-            Route::post('/itens', 'store')->name('store');
-
-            /*Esta rota está levando para a função vai processar o empréstimo do item*/
-            Route::get('/itens/alugar', 'alugar')->name('alugar');
-
-            /*Esta rota está retornando a view onde mostra o formulário para editar um item*/
-            Route::get('/itens/editar', 'edit')->name('editar');
+        Route::name('editar')->get('/editar/{item}', 'edit');
 
         /*Esta rota está retornando a página que lista os items que estão alugados*/
-        // Route::get('/itens/alugados', 'rented')->name('itens.alugados');
+        // Route::name('alugados')->get('/alugados', 'rented');
 
-            /*Esta rota está levando para a função que processa a devolução do item*/
-            Route::get('/itens/devolver', 'devolver')->name('devolver');
-        });
+        /*Esta rota está levando para a função que processa a devolução do item*/
+        Route::name('devolver')->get('/itens/devolver', 'devolver');
 
-
-        Route::name('categorias.')
-            ->controller(CategoriaController::class)
-            ->group(function () {
-            /*
-                Rotas para o controlador de Categorias.
-            */
-
-            /*Esta rota está retornando a view index com uma lista de objetos da tabela categorias*/
-            Route::name('index')->get('/categorias', 'index');
-
-            /*Esta rota leva ao armazenamento de uma nova categoria*/
-            Route::name('store')->post('/categorias', 'store');
-
-            /*Esta rota está retornando a view create*/
-            Route::name('create')->get('/categorias/nova', 'create');
-
-            /*Esta rota serve para atualizar um objeto no banco, ela recebe um parâmetro que servirá para identifcar o objeto no banco*/
-            Route::name('atualizar')->patch('/categorias/{categoria}', 'update');
-
-            /*Esta rota está retornando a view edit, ela está recebendo um parâmetro que serve para identificar o objeto no banco*/
-            Route::name('editar')->get('/categorias/{categoria}/editar', 'edit');
-
-            /*Esta rota está serve para deletar um objeto do banco, ela recebe um parâmetro para identifcar o obejto no banco*/
-            # TODO: Deveria ser uma requisição DELETE
-            Route::name('delete')->get('/categorias/deletar/{categoria}', 'delete');
-        });
+        Route::name('deletar')->get('/itens/deletar/{item}', 'destroy');
+});
 
 
-        Route::name('emprestimos.')
-            ->controller(EmprestimoController::class)
-            ->group(function () {
-            Route::name('create')->get('emprestimos', 'create');
-        });
+/**
+ * Rotas relacionadas a Categorias.
+ */
+Route::name('categorias.')
+    ->prefix('/categorias')
+    ->controller(CategoriaController::class)
+    ->group(function () {
+        /*Esta rota está retornando a view index com uma lista de objetos da tabela categorias*/
+        Route::name('index')->get('', 'index');
+
+        /*Esta rota leva ao armazenamento de uma nova categoria*/
+        Route::name('store')->post('', 'store');
+
+        /*Esta rota está retornando a view create*/
+        Route::name('create')->get('/nova', 'create');
+
+        /*Esta rota serve para atualizar um objeto no banco, ela recebe um parâmetro que servirá para identifcar o objeto no banco*/
+        Route::name('atualizar')->patch('/{categoria}', 'update');
+
+        /*Esta rota está retornando a view edit, ela está recebendo um parâmetro que serve para identificar o objeto no banco*/
+        Route::name('editar')->get('/{categoria}/editar', 'edit');
+
+        /*Esta rota está serve para deletar um objeto do banco, ela recebe um parâmetro para identifcar o obejto no banco*/
+        # TODO: Deveria ser uma requisição DELETE
+        Route::name('delete')->get('/deletar/{categoria}', 'delete');
+    });
 
 
-        Route::name('locais.')
-            ->controller(LocalController::class)->group(function () {
-            Route::name('create')->get('/locais/novo', 'create');
-            Route::name('store')->post('/locais', 'store');
-        });
-    }
-);
+Route::name('emprestimos.')
+    ->controller(EmprestimoController::class)
+    ->group(function () {
+        Route::name('create')->get('emprestimos', 'create');
+    });
+
+
+Route::controller(EmprestimoController::class)
+    ->group(function () {
+        Route::get('emprestimos/novo', 'create')->name('emprestimos.pagina');
+    });
+
+
+Route::name('locais.')
+    ->prefix('/locais')
+    ->controller(LocalController::class)
+    ->group(function () {
+        Route::get('/novo', 'create');
+        Route::post('', 'store');
+        Route::get('/deletar/{local}', 'destroy')->name('locais.delete');
+        Route::get('/{local}/edit', 'edit')->name('locais.editar');
+        Route::post('/{local}', 'update')->name('locais.update');
+
+        Route::get('', 'index');
+    });
+

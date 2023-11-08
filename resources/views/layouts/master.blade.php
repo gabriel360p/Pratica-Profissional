@@ -55,15 +55,62 @@
             {{-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> --}}
             <nav id="navbar" class="navbar pe-4" style="">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="/painel">Início</a></li>
+                    <li>
+                        {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Itens
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/itens">Itens</a></li>
+                                <li><a class="dropdown-item" href="/itens/novo">Adicionar Item</a></li>
+                            </ul>
+                        </div>
+                    </li>
 
-                    <li><a class="nav-link scrollto" href="/itens/novo">Adicionar Item</a></li>
+                    <li>
+                        {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Materiais
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/materiais">Materiais</a></li>
+                                <li><a class="dropdown-item" href="/materiais/novo">Adicionar Material</a></li>
+                            </ul>
+                        </div>
+                    </li>
 
-                    <li><a class="nav-link scrollto" href="/materiais/novo">Adicionar Material</a></li>
+                    <li>
+                        {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Locais
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/locais">Locais</a></li>
+                                <li><a class="dropdown-item" href="/locais/novo">Adicionar Local</a></li>
+                            </ul>
+                        </div>
+                    </li>
 
-                    <li><a class="nav-link scrollto" href="/locais/novo">Adicionar Local</a></li>
 
-                    <li><a class="nav-link scrollto" href="/categorias/nova">Adicionar Categoria</a></li>
+                    <li>
+                        {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Categorias
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
+                                <li><a class="dropdown-item" href="/categorias/nova">Adicionar Categoria</a></li>
+                            </ul>
+                        </div>
+                    </li>
 
                     <li><a class="nav-link scrollto pe-5 " href="{{ url('logout') }}">Sair</a></li>
 
