@@ -24,7 +24,7 @@ class MaterialControllerTest extends TestCase
     /**
      * TODO: Testar se exibe a lista de materiais.
      */
-    public function test_MaterialController_index(): void
+    public function test_index(): void
     {
         $this->markTestSkipped('Funcionalidade ainda não implementada.');
         $response = $this->withCookies(['suapToken' => 'token-falso'])
@@ -37,7 +37,7 @@ class MaterialControllerTest extends TestCase
     /**
      * Testar se exibe a página de criação.
      */
-    public function test_MaterialController_create(): void
+    public function test_create(): void
     {
         $response = $this->withCookies(['suapToken' => 'token-falso'])
             ->get(route('materiais.novo'));
@@ -49,7 +49,7 @@ class MaterialControllerTest extends TestCase
     /**
      * TODO: Testar se exibe a página de edição.
      */
-    public function test_MaterialController_edit(): void
+    public function test_edit(): void
     {
         $this->markTestSkipped('Funcionalidade ainda não implementada.');
         $material = Material::first();
@@ -65,7 +65,7 @@ class MaterialControllerTest extends TestCase
     /**
      * TODO: Testar se deleta um material.
      */
-    public function test_MaterialController_delete(): void
+    public function test_delete(): void
     {
         $this->markTestSkipped('Funcionalidade ainda não implementada.');
         $material = Material::first();
@@ -81,7 +81,7 @@ class MaterialControllerTest extends TestCase
     /**
      * TODO: Testar se atualiza um material.
      */
-    public function test_MaterialController_update(): void
+    public function test_update(): void
     {
         $this->markTestSkipped('Funcionalidade ainda não implementada.');
         $material = Material::first();
@@ -96,7 +96,7 @@ class MaterialControllerTest extends TestCase
     /**
      * Testar se cria um material.
      */
-    public function test_MaterialController_store(): void
+    public function test_store(): void
     {
         $dados = ['nome' => 'Novo Material'];
         $total = Material::count();
