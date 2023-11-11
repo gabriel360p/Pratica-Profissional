@@ -22,16 +22,14 @@ class MaterialControllerTest extends TestCase
     }
 
     /**
-     * TODO: Testar se exibe a lista de materiais.
+     * Testar se exibe a lista de materiais.
      */
     public function test_index(): void
     {
-        $this->markTestSkipped('Funcionalidade ainda não implementada.');
         $response = $this->withCookies(['suapToken' => 'token-falso'])
             ->get(route('materiais.index'));
 
         $response->assertStatus(200);
-        # TODO: $response->assertSee('Basquete');
     }
 
     /**
