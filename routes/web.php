@@ -112,7 +112,7 @@ Route::middleware('suapToken')
 
             Route::get('/deletar/{material}', 'destroy');
 
-            Route::get('', 'index');
+            Route::name('index')->get('', 'index');
 
             Route::post('/{material}', 'update')->name('atualizar');
 
