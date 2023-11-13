@@ -45,7 +45,7 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
     //     try {
     //         $cat = \DB::table('categoria_material')->where('categoria_id', '=', $categoria)->get();
 
-    //         $mat = \DB::table('materials')->where('id', '=', $cat[0]->material_id)->get();
+    //         $mat = \DB::table('materials')->where('id', '=', $cat[0]->matexrial_id)->get();
 
     //         return view('dashboard', ['materials' => $mat, 'categorias' => Categoria::all()]);
     //     } catch (\Throwable $th) {
@@ -158,7 +158,7 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
         Route::get('emprestimos/novo', 'create')->name('emprestimos.novo');
 
         /*Esta rota está levando para a função vai processar o empréstimo do item*/
-        Route::post('/emprestimos', 'store')->name('emprestimos');
+        Route::post('/emprestimos/store', 'store')->name('emprestimos');
 
         /*Esta rota está retornando a página que lista os items que estão alugados*/
         Route::get('/emprestimos/emprestados', 'index')->name('emprestimos.emprestados');

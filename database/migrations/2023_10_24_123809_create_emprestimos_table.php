@@ -13,12 +13,22 @@ return new class extends Migration
     {
         Schema::create('emprestimos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('usuario_que_autorizou');
-            $table->unsignedBigInteger('usuario_que_emprestou');
-            $table->unsignedBigInteger('usuario_que_recebeu');
-            $table->unsignedBigInteger('usuario_que_devolveu');
+            // $table->unsignedBigInteger('usuario_que_autorizou');
+            $table->unsignedBigInteger('usuario_que_emprestou')->nullable();//pessoa logada no sistema
+            $table->unsignedBigInteger('usuario_que_recebeu')->nullable();//aluno que pegou
+
+            $table->unsignedBigInteger('usuario_que_devolveu')->nullable();//aluno que devolveu
             $table->timestamps();
         });
+
+        Schema::create('emprestimo_item', function (Blueprint $table) {
+            // $table->id();
+            $table->unsignedBigInteger('item_id');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->unsignedBigInteger('emprestimo_id');
+            $table->foreign('emprestimo_id')->references('id')->on('emprestimos')->onDelete('CASCADE')->onUpdate('CASCADE');
+        });
+
     }
 
     /**
@@ -27,5 +37,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('emprestimos');
+        Schema::dropIfExists('emprestimo_item');
     }
 };

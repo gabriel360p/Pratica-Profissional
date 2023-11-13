@@ -16,7 +16,7 @@ class EmprestimoController extends Controller
      */
     public function index()
     {
-        return view('emprestimos.index');
+        return view('emprestimos.index',['emprestimos'=>\App\Models\Emprestimo::all()]);
     }
 
     /**
@@ -24,11 +24,9 @@ class EmprestimoController extends Controller
      */
     public function create()
     {
-        return view('emprestimos.create',[
-            'materials'=>Material::all(),
-            'locais'=>Local::all(),
-            'itens'=>Item::all(),
-            'categorias'=>Categoria::all(),
+        return view('emprestimos.create', [
+            'materials' => Material::orderBy('nome', 'asc')->get(),
+            'itens' => Item::all(),
         ]);
     }
 
@@ -37,6 +35,20 @@ class EmprestimoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $emprestimo = Emprestimo::create([
+            'usuario_que_emprestou' => $request->usuario_que_emprestou,
+            'usuario_que_recebeu' => $request->usuario_que_recebeu,
+        ]);
+
+        $itens = $request->itens;
+
+
+        for ($i = 0; $i < sizeof($itens); $i++) {
+            
+            $emprestimo->itens()->attach($itens[$i]);   
+        }
+
         return redirect(route('emprestimos.emprestados'));
     }
 

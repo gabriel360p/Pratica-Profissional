@@ -20,7 +20,7 @@ return new class extends Migration
         Schema::create('categoria_material', function (Blueprint $table) 
         {
             //tabela pivot NxN
-            $table->id();
+            // $table->id();
             $table->unsignedBigInteger('material_id');
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('material_id')->references('id')->on('materials')->onDelete('CASCADE')->onUpdate('CASCADE');
@@ -34,5 +34,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('materials');
+        Schema::dropIfExists('categoria_material');
     }
 };

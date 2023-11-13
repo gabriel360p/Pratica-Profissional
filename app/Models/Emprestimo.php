@@ -13,7 +13,7 @@ class Emprestimo extends Model
     protected $fillable=[
 
         //quem autorziou o emprestimo
-        'usuario_que_autorizou',
+        // 'usuario_que_autorizou',
         // 'user_who_authorized_id',
 
         //quem emprestou o item
@@ -28,4 +28,9 @@ class Emprestimo extends Model
         'usuario_que_devolveu',
         // 'user_who_returned_id',
     ];
+
+    public function itens()
+    {
+        return $this->belongsToMany(Item::class);
+    }
 }

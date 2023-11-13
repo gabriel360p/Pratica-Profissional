@@ -51,7 +51,7 @@
                         @csrf
                         <div class="form-group">
                             <input type="text" required name="nome" id="name" placeholder="Nome Da Categoria"
-                                value="{{ @old('nome') }}" />
+                                />
                         </div>
                         @error('nome')
                             <span class="badge bg-warning">{{ $message }}</span>
