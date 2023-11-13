@@ -12,7 +12,6 @@
                 <form method="POST" class="register-form " action="/emprestimos/store">
                     @csrf
                     
-                    <input type="text" class="form-control mb-4" readonly value="{{\App\Models\Session::first()->identificacao}}" name="usuario_que_emprestou" placeholder="Matricula de quem emprestou" required>
                     <input type="text" class="form-control mb-4"  name="usuario_que_recebeu" placeholder="Matricula de quem recebeu" required>
 
                     @foreach ($itens as $item)

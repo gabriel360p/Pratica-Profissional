@@ -37,7 +37,7 @@ class EmprestimoController extends Controller
     {
 
         $emprestimo = Emprestimo::create([
-            'usuario_que_emprestou' => $request->usuario_que_emprestou,
+            'usuario_que_emprestou' => \App\Models\Session::fisrt()->identificacao,
             'usuario_que_recebeu' => $request->usuario_que_recebeu,
         ]);
 

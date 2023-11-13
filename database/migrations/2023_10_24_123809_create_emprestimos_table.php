@@ -16,8 +16,11 @@ return new class extends Migration
             // $table->unsignedBigInteger('usuario_que_autorizou');
             $table->unsignedBigInteger('usuario_que_emprestou')->nullable();//pessoa logada no sistema
             $table->unsignedBigInteger('usuario_que_recebeu')->nullable();//aluno que pegou
-
             $table->unsignedBigInteger('usuario_que_devolveu')->nullable();//aluno que devolveu
+
+            $table->string('estado_emprestimo',255)->nullable();
+            $table->string('estado_devolucao',255)->nullable();
+            
             $table->timestamps();
         });
 
