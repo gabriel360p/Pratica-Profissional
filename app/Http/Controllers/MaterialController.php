@@ -14,7 +14,8 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        return view('materials.index',['materiais'=> Material::with('categorias')->get()]);
+        Material::with('categorias')->orderBy('nome','asc')->get();
+        return view('materials.index');
     }
 
     /**
@@ -22,7 +23,7 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::orderBy('nome','asc')->get();
         return view('materials.create', ['categorias' => $categorias]);
     }
 
@@ -56,7 +57,7 @@ class MaterialController extends Controller
     public function edit(Material $material)
     {
         // dd($material->categorias);
-        return view('materials.edit',['material'=> $material,'categorias'=>\App\Models\Categoria::all()]);
+        return view('materials.edit',['material'=> $material,'categorias'=>\App\Models\Categoria::orderBy('nome','asc')->get()]);
     }
 
     /**

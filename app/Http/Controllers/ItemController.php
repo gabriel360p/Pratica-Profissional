@@ -15,12 +15,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view("itens.index", ['itens' => Item::with(['local', 'material'])->get()]);
-    }
-
-    public function refund()
-    {
-        return view('itens.refund');
+        // Item::with(['local', 'material'])->orderBy('nome','asc')->get();
+        return view("itens.index");
     }
 
     /**
@@ -28,8 +24,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $locais = Local::all();
-        $materiais = Material::all();
+        $locais = Local::orderBy('nome','asc')->get();
+        $materiais = Material::orderBy('nome','asc')->get();
 
         return view(
             'itens.create',
@@ -38,11 +34,6 @@ class ItemController extends Controller
                 'materiais' => $materiais,
             ]
         );
-    }
-
-    public function rent()
-    {
-        return view('itens.rent');
     }
 
     /**
@@ -54,32 +45,10 @@ class ItemController extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Item $item)
-    {
-        //
-    }
-    /**
-     * 
-     * Show the form for editing the specified resource.
-     */
-    public function rented(Item $item)
-    {
-        return view('itens.rented');
-    }
-
-
-    /**
-     * 
-     * 
-     * Show the form for editing the specified resource.
-     */
     public function edit(Item $item)
     {
-        
-        return view('itens.edit', ['item' => $item, 'materiais' => \App\Models\Material::all(), 'locais' => \App\Models\Local::all()]);
+
+        return view('itens.edit', ['item' => $item, 'materiais' => \App\Models\Material::orderBy('nome','asc')->get(), 'locais' => \App\Models\Local::orderBy('nome','asc')->get()]);
     }
 
     /**

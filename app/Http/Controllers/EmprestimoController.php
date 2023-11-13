@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Emprestimo;
+use App\Models\Material;
+use App\Models\Categoria;
+use App\Models\Item;
+use App\Models\Local;
 use Illuminate\Http\Request;
 
 class EmprestimoController extends Controller
@@ -12,7 +16,7 @@ class EmprestimoController extends Controller
      */
     public function index()
     {
-        //
+        return view('emprestimos.index');
     }
 
     /**
@@ -20,7 +24,12 @@ class EmprestimoController extends Controller
      */
     public function create()
     {
-        return view('emprestimos.create');
+        return view('emprestimos.create',[
+            'materials'=>Material::all(),
+            'locais'=>Local::all(),
+            'itens'=>Item::all(),
+            'categorias'=>Categoria::all(),
+        ]);
     }
 
     /**
@@ -28,7 +37,7 @@ class EmprestimoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect(route('emprestimos.emprestados'));
     }
 
     /**

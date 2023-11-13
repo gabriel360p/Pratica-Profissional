@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Material extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'nome',
     ];
 
@@ -17,11 +17,9 @@ class Material extends Model
     {
         return $this->hasOne(Item::class);
     }
-    
-    //o mesmo material pode pertencer a vários categorias
-    public function categorias(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+
+    public function categorias()
     {
         return $this->belongsToMany(Categoria::class);
     }
-
 }

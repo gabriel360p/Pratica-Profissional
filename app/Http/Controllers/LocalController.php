@@ -13,7 +13,8 @@ class LocalController extends Controller
      */
     public function index()
     {
-        return view('locais.index',['locais'=>\App\Models\Local::all()]);
+        // Local::orderBy('nome','asc')->get();
+        return view('locais.index');
     }
 
     /**

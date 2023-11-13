@@ -1,11 +1,15 @@
 @extends('layouts.master')
 
-<!-- Main css -->
-<link rel="stylesheet" href="{{ asset('cadastro_itens/css/style.css') }}">
-
-
 @section('master-main')
+    <div >
+
+        <div class="row" >
+
+            <div class="col">
+                aaa
+            </div>
+
+        </div>
+
+    </div>
 @endsection
-<!-- JS -->
-<script src="{{ asset('cadastro_itens/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('cadastro_itens/js/main.js') }}"></script>

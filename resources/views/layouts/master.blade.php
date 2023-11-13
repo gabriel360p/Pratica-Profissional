@@ -54,6 +54,8 @@
             {{-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> --}}
             <nav id="navbar" class="navbar pe-4" style="">
                 <ul>
+                    <a class="nav-link scrollto" href="{{url('/emprestimos/novo')}}">Emprestar</a>
+                    <a class="nav-link scrollto" href="/emprestimos/emprestados">Emprestados</a>
                     <li>
                         {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
                         <div class="dropdown">

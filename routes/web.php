@@ -62,9 +62,9 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
 
         return view('dashboard', [
             /* Pegandos todas as categorias salvas no sistema*/
-            'categorias' => Categoria::all(),
+            'categorias' => Categoria::orderBy('nome','asc')->get(),
             /* Pegandos todos os materiais salvos no sistema*/
-            'materials' => Material::all()
+            'materials' => Material::orderBy('nome','asc')->get(),
         ]);
     })->name('dashboard');
 
@@ -116,18 +116,12 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
 
         Route::post('/itens', 'store')->name('itens.salvar');
 
-        /*Esta rota está levando para a função vai processar o empréstimo do item*/
-        Route::get('/itens/alugar', 'rent')->name('itens.alugar');
-
         /*Esta rota está retornando a view onde mostra o formulário para editar um item*/
         Route::post('/itens/{item}', 'update')->name('itens.atualizar');
         Route::get('/itens/editar/{item}', 'edit')->name('itens.editar');
 
-        /*Esta rota está retornando a página que lista os items que estão alugados*/
-        // Route::get('/itens/alugados', 'rented')->name('itens.alugados');
 
         /*Esta rota está levando para a função que processa a devolução do item*/
-        Route::get('/itens/devolver', 'refund')->name('itens.devolver');
 
         Route::get('/itens/deletar/{item}', 'destroy')->name('itens.deletar');
     });
@@ -161,7 +155,13 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
 
 
     Route::controller(EmprestimoController::class)->group(function () {
-        Route::get('emprestimos/novo', 'create')->name('emprestimos.pagina');
+        Route::get('emprestimos/novo', 'create')->name('emprestimos.novo');
+
+        /*Esta rota está levando para a função vai processar o empréstimo do item*/
+        Route::post('/emprestimos', 'store')->name('emprestimos');
+
+        /*Esta rota está retornando a página que lista os items que estão alugados*/
+        Route::get('/emprestimos/emprestados', 'index')->name('emprestimos.emprestados');
     });
 
 
