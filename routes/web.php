@@ -139,8 +139,12 @@ Route::middleware(['suapToken', 'UserAuthenticate'])->group(function () { //midd
 
 
     Route::controller(EmprestimoController::class)->group(function () {
+        
+        Route::get('/emprestimos/novo', 'create')->name('emprestimos.novo');
+        
+        Route::post('/emprestimos/devolver/{emprestimo}', 'devolver')->name('emprestimos.devolver');
 
-        Route::get('emprestimos/novo', 'create')->name('emprestimos.novo');
+        Route::get('/emprestimos/itens/{emprestimo}', 'itens')->name('emprestimos.itens');
 
         /*Esta rota está levando para a função vai processar o empréstimo do item*/
         Route::post('/emprestimos/salvar', 'store')->name('emprestimos');

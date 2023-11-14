@@ -23,13 +23,13 @@ class ValidacaoMaterial extends FormRequest
     {
         return [
             'nome' => ['required', 'max:50'],
-            'categorias[]' => ['required']
+            // 'categorias[]' => ['required']
         ];
     }
     public function messages(): array
     {
         return [
-            'categorias[].required' => 'É preciso informar pelo menos uma categoria',
+            // 'categorias[].required' => 'É preciso informar pelo menos uma categoria',
         ];
     }
 }

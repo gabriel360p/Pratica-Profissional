@@ -30,6 +30,29 @@ class EmprestimoController extends Controller
         ]);
     }
 
+    public function itens(Emprestimo $emprestimo)
+    {
+        return view('emprestimos.itens', [
+            'emprestimo' => $emprestimo,
+        ]);
+    }
+
+    public function devolver(Request $request,Emprestimo $emprestimo)
+    {
+        $itens = $request->itens;
+
+        if(sizeof($itens)==sizeof($emprestimo->itens)){
+            //esta comparando se a quantidade de itens, se for a mesma quantidade significa que todos os itens do empréstimo foram devolvido, portanto posso apagar o empréstimo de uma vez
+            $emprestimo->delete();  
+        }else{
+            //se a quantidade não for igual, então nem todos os itens foram devolvidos, logo eu apago apenas os itens que foram devolvidos
+            for ($i=0; $i < sizeof($itens) ; $i++) { 
+                Item::find($itens[$i])->delete();
+            }    
+        }
+        
+        return redirect(url('/emprestimos/emprestados'));
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -37,7 +60,7 @@ class EmprestimoController extends Controller
     {
 
         $emprestimo = Emprestimo::create([
-            'usuario_que_emprestou' => \App\Models\Session::fisrt()->identificacao,
+            'usuario_que_emprestou' => \App\Models\Session::first()->identificacao,
             'usuario_que_recebeu' => $request->usuario_que_recebeu,
         ]);
 

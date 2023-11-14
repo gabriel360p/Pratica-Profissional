@@ -13,6 +13,7 @@
                             <th scope="col">Quem Emprestou</th>
                             <th scope="col">Quem Recebeu</th>
                             <th scope="col">Item(s)</th>
+                            <th scope="col">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +36,9 @@
                                     @foreach ($emp->itens as $item)
                                         {{ $item->material->nome }};
                                     @endforeach
+                                </td>
+                                <td>
+                                    <a class="btn btn-success" href="{{url('/emprestimos/itens',$emp->id)}}">Itens Emprestados</a>
                                 </td>
                             </tr>
                             @endforeach

@@ -40,7 +40,7 @@ Route::post(
         if (Session::first()) {
             return redirect('/painel');
         }
-        
+
         Session::create([
             'nome_usual' => $res['nome_usual'],
             'identificacao' => $res['identificacao'],

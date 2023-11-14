@@ -32,5 +32,6 @@ class Emprestimo extends Model
     public function itens()
     {
         return $this->belongsToMany(Item::class);
+        
     }
 }
