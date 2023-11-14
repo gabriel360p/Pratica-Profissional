@@ -22,7 +22,10 @@ class ValidacaoLocal extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome_local' => [
+                'required',
+                'max:50'
+            ]
         ];
     }
 }

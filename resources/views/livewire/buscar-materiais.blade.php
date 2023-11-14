@@ -1,6 +1,6 @@
 <div>
     <div>
-        <input type="text" placeholder="Buscar Categoria" class="form-control" name="categoria"
+        <input type="text" placeholder="Buscar Material" class="form-control" name="categoria"
             wire:model.live="material">
     </div>
 

@@ -29,7 +29,7 @@ class CategoriaController extends Controller
      */
     public function store(ValidacaoCategoria $request)
     {
-        Categoria::Create($request->all());
+        Categoria::create(['nome'=>$request->nome_categoria]);
         return back();
     }
 

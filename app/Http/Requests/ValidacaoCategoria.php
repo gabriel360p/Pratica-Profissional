@@ -22,7 +22,10 @@ class ValidacaoCategoria extends FormRequest
     public function rules(): array
     {
         return [
-            'nome'=>['required','unique:categorias','max:50']
+            'nome_categoria' => [
+                'required',
+                'max:50'
+            ]
         ];
     }
 }

@@ -13,16 +13,24 @@
                  <div class="form-group">
                      <input type="text" required name="estado" placeholder="Estado do item"
                          value="{{ @old('estado') }}" />
+
+                     @error('estado')
+                         <span class="badge bg-warning">{{ $message }}</span>
+                     @enderror
                  </div>
 
 
                  <div class="form-group">
                      <select class="custom-select " required id="CustomSelect" name="local_id" value="{{ @old('local') }}">
+
                          @foreach ($locais as $local)
                              <option value="{{ $local->id }}">{{ $local->nome }}</option>
                          @endforeach
                      </select>
                      <div id="fileHelpId" class="form-text">Escolher Lugar</div>
+                     @error('local_id')
+                         <span class="badge bg-warning">{{ $message }}</span>
+                     @enderror
                  </div>
 
                  <div class="form-group">
@@ -32,6 +40,9 @@
                          @endforeach
                      </select>
                      <div id="fileHelpId" class="form-text">Escolher Material</div>
+                     @error('material_id')
+                         <span class="badge bg-warning">{{ $message }}</span>
+                     @enderror
                  </div>
 
                  <div class="mb-3">

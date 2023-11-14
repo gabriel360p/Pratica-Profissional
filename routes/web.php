@@ -26,8 +26,6 @@ Route::get('/em-producao', function () {
     return view('inproduction');
 });
 
-// Route::middleware(['GuestMiddleware'])->group(function () { //middleware de proteção
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -36,23 +34,9 @@ Route::get('/authorization-view', function () {
     return view('authorization-view');
 });
 
-// });
 
 
-Route::middleware(['suapToken'])->group(function () { //middleware de proteção
-
-    // Route::get('/materiais/categoria/{categoria}', function ($categoria) {
-    //     try {
-    //         $cat = \DB::table('categoria_material')->where('categoria_id', '=', $categoria)->get();
-
-    //         $mat = \DB::table('materials')->where('id', '=', $cat[0]->matexrial_id)->get();
-
-    //         return view('dashboard', ['materials' => $mat, 'categorias' => Categoria::all()]);
-    //     } catch (\Throwable $th) {
-    //         return back();
-    //     }
-    // })->name('material.categoria');
-
+Route::middleware(['suapToken', 'UserAuthenticate'])->group(function () { //middleware de proteção
 
     Route::get('/painel', function () {
 
@@ -62,9 +46,9 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
 
         return view('dashboard', [
             /* Pegandos todas as categorias salvas no sistema*/
-            'categorias' => Categoria::orderBy('nome','asc')->get(),
+            'categorias' => Categoria::orderBy('nome', 'asc')->get(),
             /* Pegandos todos os materiais salvos no sistema*/
-            'materials' => Material::orderBy('nome','asc')->get(),
+            'materials' => Material::orderBy('nome', 'asc')->get(),
         ]);
     })->name('dashboard');
 
@@ -155,10 +139,11 @@ Route::middleware(['suapToken'])->group(function () { //middleware de proteção
 
 
     Route::controller(EmprestimoController::class)->group(function () {
+
         Route::get('emprestimos/novo', 'create')->name('emprestimos.novo');
 
         /*Esta rota está levando para a função vai processar o empréstimo do item*/
-        Route::post('/emprestimos/store', 'store')->name('emprestimos');
+        Route::post('/emprestimos/salvar', 'store')->name('emprestimos');
 
         /*Esta rota está retornando a página que lista os items que estão alugados*/
         Route::get('/emprestimos/emprestados', 'index')->name('emprestimos.emprestados');

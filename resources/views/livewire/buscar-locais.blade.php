@@ -1,7 +1,7 @@
 <div>
 
     <div class="mb-4">
-        <input type="text" placeholder="Buscar Categoria" class="form-control" name="categoria" wire:model.live="local">
+        <input type="text" placeholder="Buscar Local" class="form-control" name="categoria" wire:model.live="local">
     </div>
 
     <div>
