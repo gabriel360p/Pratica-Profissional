@@ -89,11 +89,7 @@ Route::middleware(['suapToken', 'UserAuthenticate'])->group(function () { //midd
         /*
         Rotas para o controlador de Item.
     */
-
-
         Route::get('/itens', 'index')->name('itens.index');
-
-
 
         /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
         Route::get('/itens/novo', 'create')->name('itens.novo');
@@ -139,9 +135,9 @@ Route::middleware(['suapToken', 'UserAuthenticate'])->group(function () { //midd
 
 
     Route::controller(EmprestimoController::class)->group(function () {
-        
+
         Route::get('/emprestimos/novo', 'create')->name('emprestimos.novo');
-        
+
         Route::post('/emprestimos/devolver/{emprestimo}', 'devolver')->name('emprestimos.devolver');
 
         Route::get('/emprestimos/itens/{emprestimo}', 'itens')->name('emprestimos.itens');
