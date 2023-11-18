@@ -12,14 +12,6 @@ use Illuminate\Http\Request;
 class EmprestimoController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return view('emprestimos.index',['emprestimos'=>\App\Models\Emprestimo::all()]);
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create()

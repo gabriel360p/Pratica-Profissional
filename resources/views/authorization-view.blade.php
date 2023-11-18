@@ -32,35 +32,44 @@
     <script src="js/client.js"></script>
     <script src="js/settings.js"></script>
     <script>
-        var suap = new SuapClient(SUAP_URL, CLIENT_ID, HOME_URI, REDIRECT_URI, SCOPE);
-        suap.init();
-        if (suap.isAuthenticated()) {
-            // Aguarda o documento carregar para exibir o conteúdo
-            $(document).ready(function() {
-                let token = suap.getToken().getValue();
-
-                $.ajax({
-                    url: '/api/authorization-callback',
-                    data: {
-                        'token': token
-                    },
-                    type: 'POST',
-                    success: function(response) {
-                        // console.log(response);
-                        window.location = 'http://localhost:8000/painel'
-                    },
-                    error: function(response) {
-                        alert('Falha na comunicação com o servidor');
-                        console.log(response);
-                    }
-                });
-            });
-        } else {
-            // O usuário não está autenticado
-            alert('A autenticação via SUAP falhou.');
-            window.location = HOME_URI;
-        }
+      var suap = new SuapClient(
+        "{{ config('suap.uri') }}",
+        "{{ config('suap.client_id') }}",
+        "{{ config('suap.redirect_uri') }}", 
+        "{{ config('suap.scope') }}"
+      );
+      suap.init();
+      if (suap.isAuthenticated()) {
+        // Aguarda o documento carregar para exibir o conteúdo
+        $(document).ready(function () {
+          // Token de autenticação do SUAP
+          const suapToken = suap.getToken().getValue();
+          // Token CSRF fornecido pelo Laravel
+          const csrfToken = document.getElementsByName('_token')[0].value;
+          
+          // Envia a o token do SUAP para o callback
+          $.ajax({
+            url: '/authorization-callback',
+            data: {
+              '_token' : csrfToken,
+              'suap_token' : suapToken,
+            },
+            type: 'POST',
+            success: function(response) {
+              window.location='/painel'
+            },
+            error: function(response) {
+              alert('Falha na comunicação com o servidor');
+              console.log(response);
+            }
+          });
+        });
+      } else {
+        // O usuário não está autenticado
+        alert('A autenticação via SUAP falhou.');
+        window.location = "{{route('home')}}";
+      }
     </script>
-</body>
-
+    @csrf <!-- Necessário para evitar ataques CSRF, não remova -->
+  </body>
 </html>

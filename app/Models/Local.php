@@ -9,6 +9,13 @@ class Local extends Model
 {
     use HasFactory;
 
+    /**
+     * Nome da tabela no banco.
+     *
+     * @var string
+     */
+    protected $table = 'locais';
+
     protected $fillable=[
         'nome'
     ];

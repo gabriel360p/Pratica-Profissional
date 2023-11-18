@@ -6,6 +6,11 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Verifica se o token de login do SUAP já foi gerado.
+ * Se foi gerado, significa que o usuário já está logado e, logo, não deve logar de novo.
+ * Então é redirecionado painel de controle.
+ */
 class GuestMiddleware
 {
     /**
@@ -15,14 +20,10 @@ class GuestMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        try {
-            if ($_COOKIE['suapToken']) {
-                return back();
-            }
-        } catch (\Throwable $th) {
-            //throw $th;
-            return $next($request);
-
-        }
+        // TODO: Reativar. Desativado temporariamente porque estava entrando em loop de redirecionamento.
+        // if (isset($_COOKIE['suapToken'])) {
+        //     return back();
+        // }
+        return $next($request);
     }
 }

@@ -66,35 +66,39 @@ Route::middleware(['suapToken', 'UserAuthenticate'])->group(function () { //midd
     });
 
 
-    Route::get('/logout', function (Request $request) {
-        unset($_COOKIE['suapToken']);
-        unset($_COOKIE['suapTokenExpirationTime']);
-        unset($_COOKIE['suapScope']);
+        // TODO: Retirar do grupo que usa SUAP, pois não precisa estar logado para tentar fazer logout.
+        Route::name('logout')
+            ->get('/logout', function (Request $request) {
+            unset($_COOKIE['suapToken']);
+            unset($_COOKIE['suapTokenExpirationTime']);
+            unset($_COOKIE['suapScope']);
 
-        setcookie('suapToken', null, -1);
-        setcookie('suapTokenExpirationTime', null, -1);
-        setcookie('suapScope', $request->scope, null, -1);
+            setcookie('suapToken', null, -1);
+            setcookie('suapTokenExpirationTime', null, -1);
+            setcookie('suapScope', $request->scope, null, -1);
 
-        try {
-            Session::first()->delete();
-        } catch (\Throwable $th) {
+            try {
+                Session::first()->delete();
+            } catch (\Throwable $th) {
+                return redirect(url('/'));
+            }
             return redirect(url('/'));
-        }
-        return redirect(url('/'));
-    });
+        });
 
 
-    Route::controller(ItemController::class)->group(function () {
+        Route::name('itens.')
+            ->controller(ItemController::class)
+            ->group(function () {
 
         /*
         Rotas para o controlador de Item.
     */
         Route::get('/itens', 'index')->name('itens.index');
 
-        /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
-        Route::get('/itens/novo', 'create')->name('itens.novo');
+            /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
+            Route::get('/itens/novo', 'create')->name('create');
 
-        Route::post('/itens', 'store')->name('itens.salvar');
+            Route::post('/itens', 'store')->name('store');
 
         /*Esta rota está retornando a view onde mostra o formulário para editar um item*/
         Route::post('/itens/{item}', 'update')->name('itens.atualizar');
@@ -107,31 +111,32 @@ Route::middleware(['suapToken', 'UserAuthenticate'])->group(function () { //midd
     });
 
 
+        Route::name('categorias.')
+            ->controller(CategoriaController::class)
+            ->group(function () {
+            /*
+                Rotas para o controlador de Categorias.
+            */
 
-    Route::controller(CategoriaController::class)->group(function () {
+            /*Esta rota está retornando a view index com uma lista de objetos da tabela categorias*/
+            Route::name('index')->get('/categorias', 'index');
 
-        /*
-        Rotas para o controlador de Categorias.
-    */
+            /*Esta rota leva ao armazenamento de uma nova categoria*/
+            Route::name('store')->post('/categorias', 'store');
 
-        /*Esta rota está retornando a view index com uma lista de objetos da tabela categorias*/
-        Route::get('/categorias', 'index');
+            /*Esta rota está retornando a view create*/
+            Route::name('create')->get('/categorias/nova', 'create');
 
-        /*Esta rota leva ao armazenamento de uma nova categoria*/
-        Route::post('/categorias', 'store');
+            /*Esta rota serve para atualizar um objeto no banco, ela recebe um parâmetro que servirá para identifcar o objeto no banco*/
+            Route::name('atualizar')->patch('/categorias/{categoria}', 'update');
 
-        /*Esta rota está retornando a view create*/
-        Route::get('/categorias/nova', 'create');
+            /*Esta rota está retornando a view edit, ela está recebendo um parâmetro que serve para identificar o objeto no banco*/
+            Route::name('editar')->get('/categorias/{categoria}/editar', 'edit');
 
-        /*Esta rota serve para atualizar um objeto no banco, ela recebe um parâmetro que servirá para identifcar o objeto no banco*/
-        Route::post('/categorias/{categoria}', 'update')->name('categorias.atualizar');
-
-        /*Esta rota está retornando a view edit, ela está recebendo um parâmetro que serve para identificar o objeto no banco*/
-        Route::get('/categorias/{categoria}/editar', 'edit')->name('categorias.editar');
-
-        /*Esta rota está serve para deletar um objeto do banco, ela recebe um parâmetro para identifcar o obejto no banco*/
-        Route::get('/categorias/deletar/{categoria}', 'destroy');
-    });
+            /*Esta rota está serve para deletar um objeto do banco, ela recebe um parâmetro para identifcar o obejto no banco*/
+            # TODO: Deveria ser uma requisição DELETE
+            Route::name('delete')->get('/categorias/deletar/{categoria}', 'delete');
+        });
 
 
     Route::controller(EmprestimoController::class)->group(function () {
