@@ -23,10 +23,10 @@ use Illuminate\Http\Request;
 */
 
 Route::name('todo')
-    ->get('/em-producao', function () {
-            return view('inproduction');
-        }
-    );
+    ->get('/inproduction', function () {
+        return view('inproduction');
+    }
+);
 
 // GuestMiddleware desativado temporariamente porque estava entrando em loop de redirecionamento
 // Route::middleware(['GuestMiddleware'])
@@ -82,93 +82,95 @@ Route::name('login.')
 );
 
 
-/* Rotas privadas */
-Route::middleware('suapToken')
-    ->group(function() {
-    /* 
-        Esta rota esta renderizando o painel principal (dashboard)
-    */
-    Route::name('dashboard')
-        ->get('/painel', function () {
-            return view(
-                'dashboard',
-                [
-                    'categorias' => Categoria::all(),
-                    'itens' => Item::all()
-                ]
-            );
+Route::middleware(['suapToken'])
+    ->group(function () { //middleware de proteção
+        Route::name('dashboard')
+            ->get('/painel', function () {
+            /* 
+            Esta rota esta renderizando o painel principal (dashboard)
+            */
+
+            /* Pegandos todas as categorias salvas no sistema*/
+            $categorias = Categoria::orderBy('nome', 'asc')->get();
+            
+            /* Pegandos todos os materiais salvos no sistema*/
+            $materiais = Material::orderBy('nome', 'asc')->get();
+
+            return view('dashboard', [
+                'categorias' => $categorias,
+                'materiais' => $materiais
+            ]);
         });
 
-    /**
-     * Rotas relacionadas a Materiais
-     */
-    Route::name('materiais.')
-        ->prefix('/materiais')
-        ->controller(MaterialController::class)
-        ->group(function () {
-            Route::get('/novo', 'create')->name('novo');
-
-            Route::name('salvar')->post('', 'store');
-
-            Route::get('/deletar/{material}', 'destroy');
-
-            Route::name('index')->get('', 'index');
-
-            Route::post('/{material}', 'update')->name('atualizar');
-
-            Route::get('/{material}/editar', 'edit')->name('editar');
-        });
-
-    // TODO: Retirar do grupo que usa SUAP, pois não precisa estar logado para tentar fazer logout.
-    Route::name('logout')
-        ->get('/logout', function (Request $request) {
-        unset($_COOKIE['suapToken']);
-        unset($_COOKIE['suapTokenExpirationTime']);
-        unset($_COOKIE['suapScope']);
-
-        setcookie('suapToken', null, -1);
-        setcookie('suapTokenExpirationTime', null, -1);
-        setcookie('suapScope', $request->scope, null, -1);
-
-        try {
-            Session::first()->delete();
-        } catch (\Throwable $th) {
-            return redirect(url('/'));
-        }
-        return redirect(url('/'));
-    });
+        Route::name('materiais.')
+            ->controller(MaterialController::class)
+            ->prefix('/materiais')
+            ->group(function () {
+                Route::name('novo')->get('/novo', 'create');
+                Route::name('salvar')->post('', 'store');
+        
+                Route::name('destroy')->get('/deletar/{material}', 'destroy');
+        
+                Route::name('index')->get('', 'index');
+                
+                # TODO: Deveria ser PUT para alterar
+                Route::name('atualizar')->post('/{material}', 'update');
+        
+                Route::name('editar')->get('/{material}/editar', 'edit');
+            });
 
 
-    /*
-        Rotas para o controlador de Item.
-    */
-    Route::name('itens.')
-        ->prefix('/itens')
-        ->controller(ItemController::class)
-        ->group(function () {
-            Route::name('index')->get('', 'index');
+        // TODO: Retirar do grupo que usa SUAP, pois não precisa estar logado para tentar fazer logout.
+        Route::name('logout')
+            ->get('/logout', function (Request $request) {
+                unset($_COOKIE['suapToken']);
+                unset($_COOKIE['suapTokenExpirationTime']);
+                unset($_COOKIE['suapScope']);
 
-            /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
-            Route::name('novo')->get('/novo', 'create');
+                setcookie('suapToken', null, -1);
+                setcookie('suapTokenExpirationTime', null, -1);
+                setcookie('suapScope', $request->scope, null, -1);
 
-            Route::name('store')->post('', 'store');
+                try {
+                    Session::first()->delete();
+                } catch (\Throwable $th) {
+                    return redirect(url('/'));
+                }
+            });
 
-            /*Esta rota está levando para a função vai processar o empréstimo do item*/
-            Route::name('alugar')->get('/alugar', 'alugar');
 
-            /*Esta rota está retornando a view onde mostra o formulário para editar um item*/
-            Route::name('atualizar')->post('/{item}', 'update');
+        Route::name('itens.')
+            ->prefix('/itens')
+            ->controller(ItemController::class)
+            ->group(function () {
 
-            Route::name('editar')->get('/editar/{item}', 'edit');
+                /*
+                    Rotas para o controlador de Item.
+                */
+                Route::name('index')->get('', 'index');
 
-            /*Esta rota está retornando a página que lista os items que estão alugados*/
-            // Route::name('alugados')->get('/alugados', 'rented');
+                /*Esta rota está retornando a view onde mostra o formulário para cadastrar um novo item*/
+                Route::name('novo')->get('/novo', 'create');
+                
+                Route::name('store')->post('', 'store');
 
-            /*Esta rota está levando para a função que processa a devolução do item*/
-            Route::name('devolver')->get('/itens/devolver', 'devolver');
+                /*Esta rota está levando para a função vai processar o empréstimo do item*/
+                Route::name('alugar')->get('/alugar', 'alugar');
 
-            Route::name('deletar')->get('/itens/deletar/{item}', 'destroy');
-    });
+                /*Esta rota está retornando a view onde mostra o formulário para editar um item*/
+                Route::name('editar')->get('/editar/{item}', 'edit');
+
+                /*Esta rota está retornando a página que lista os items que estão alugados*/
+                Route::name('alugados')->get('/alugados', 'alugados');
+
+                # TODO: Deveria ser um PUT.
+                Route::name('update')->post('/{item}', 'update');
+
+                Route::name('deletar')->get('/deletar/{item}', 'destroy');
+
+                /*Esta rota está levando para a função que processa a devolução do item*/
+                Route::name('devolver')->get('/devolver', 'devolver');
+            });
 
 
     /**
@@ -202,27 +204,19 @@ Route::middleware('suapToken')
     Route::name('emprestimos.')
         ->controller(EmprestimoController::class)
         ->group(function () {
-            Route::name('create')->get('emprestimos', 'create');
-        });
-
-
-    Route::controller(EmprestimoController::class)
-        ->group(function () {
-            Route::get('emprestimos/novo', 'create')->name('emprestimos.pagina');
-        });
+        Route::name('create')->get('emprestimos', 'create');
+    });
 
 
     Route::name('locais.')
         ->prefix('/locais')
-        ->controller(LocalController::class)
-        ->group(function () {
-            Route::name('create')->get('/novo', 'create');
-            Route::name('store')->post('', 'store');
+        ->controller(LocalController::class)->group(function () {
+            Route::get('', 'index');
+            Route::name('novo')->get('/novo', 'create');
+            Route::name('salvar')->post('', 'store');
             Route::name('delete')->get('/deletar/{local}', 'destroy');
             Route::name('editar')->get('/{local}/edit', 'edit');
             Route::name('update')->post('/{local}', 'update');
 
-            Route::get('', 'index');
         });
-
 });

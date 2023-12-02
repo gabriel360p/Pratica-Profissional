@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Material extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'nome',
     ];
 

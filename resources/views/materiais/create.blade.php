@@ -11,8 +11,11 @@
                 @csrf
                 <div class="form-group">
                     <input type="text" required name="nome"value="{{ @old('nome') }}" placeholder="Nome do material"
-                        value="" />
+                        value="{{@old('nome')}}" />
                 </div>
+                @error('nome')
+                    <span class="badge bg-warning">{{ $message }}</span>
+                @enderror
 
                 @foreach ($categorias as $categoria)
                     <div class="form-check">
@@ -22,7 +25,7 @@
                     </div>
                 @endforeach
 
-                @error('name')
+               @error('categorias[]')
                     <span class="badge bg-warning">{{ $message }}</span>
                 @enderror
 
@@ -50,10 +53,10 @@
                     <form method="POST" class="register-form " action="/categorias">
                         @csrf
                         <div class="form-group">
-                            <input type="text" required name="nome" id="name" placeholder="Nome Da Categoria"
-                                value="{{ @old('nome') }}" />
+                            <input type="text" required name="nome_categoria" id="name" placeholder="Nome Da Categoria"
+                               value="{{@old('nome_categoria')}}" />
                         </div>
-                        @error('nome')
+                        @error('nome_categoria')
                             <span class="badge bg-warning">{{ $message }}</span>
                         @enderror
 

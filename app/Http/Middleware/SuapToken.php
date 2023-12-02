@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Models\Session;
 use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,7 +17,8 @@ class SuapToken
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->cookie('suapToken'))
+        # Verifica se tem o cookie e se a sessão está criada
+        if (($request->cookie('suapToken')) && (Session::first()))
             # TODO: Verificar se o token é válido no SUAP?
             # TODO: Vertificar se o token passado é o mesmo da Session atual
             return $next($request);

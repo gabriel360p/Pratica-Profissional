@@ -14,7 +14,8 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        return view('materiais.index',['materiais'=> Material::with('categorias')->get()]);
+        Material::with('categorias')->orderBy('nome','asc')->get();
+        return view('materiais.index');
     }
 
     /**
@@ -22,15 +23,16 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::orderBy('nome','asc')->get();
         return view('materiais.create', ['categorias' => $categorias]);
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(ValidacaoMaterial $request)
-    {
+    {   
         $material = Material::create($request->all());
 
         $categorias = $request->categorias;
@@ -42,13 +44,13 @@ class MaterialController extends Controller
         return back();
     }
 
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Material $material)
     {
-        // dd($material->categorias);
-        return view('materiais.edit',['material'=> $material,'categorias'=>\App\Models\Categoria::all()]);
+        return view('materiais.edit',['material'=> $material,'categorias'=>\App\Models\Categoria::orderBy('nome','asc')->get()]);
     }
 
     /**

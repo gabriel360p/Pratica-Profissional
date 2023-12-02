@@ -33,4 +33,9 @@ class Item extends Model
         return $this->belongsTo(Local::class);
     }
 
+    public function emprestimos()
+    {
+        return $this->belongsToMany(Emprestimo::class);
+    }
+
 }

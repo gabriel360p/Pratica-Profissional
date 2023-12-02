@@ -22,13 +22,14 @@ class ValidacaoMaterial extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => ['required', 'max:50', 'unique:categorias'],
+            'nome' => ['required', 'max:50'],
+            // 'categorias[]' => ['required']
         ];
     }
     public function messages(): array
     {
         return [
-            'nome.unique' => 'Este nome já está registrado no banco',
+            // 'categorias[].required' => 'É preciso informar pelo menos uma categoria',
         ];
     }
 }

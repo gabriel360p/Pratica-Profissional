@@ -11,9 +11,9 @@
             <form method="POST" class="register-form " action="/categorias">
                 @csrf
                 <div class="form-group">
-                    <input type="text" required name="nome" id="name" placeholder="Nome Da Categoria" value="{{@old('name')}}" />
+                    <input type="text" required name="nome_categoria" id="name" placeholder="Nome Da Categoria" value="{{@old('nome_categoria')}}" />
                 </div>
-                @error('nome')
+                @error('nome_categoria')
                     <span class="badge bg-warning">{{$message}}</span>
                 @enderror
 

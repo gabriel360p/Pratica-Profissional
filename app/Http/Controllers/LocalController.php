@@ -13,7 +13,7 @@ class LocalController extends Controller
      */
     public function index()
     {
-        return view('locais.index',['locais'=>\App\Models\Local::all()]);
+        return view('locais.index');
     }
 
     /**
@@ -32,12 +32,14 @@ class LocalController extends Controller
         Local::create($request->all());
         return back();
     }
+
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Local $local)
     {
-        return view('locais.edit',['local'=>$local]);
+        return view('locais.edit', ['local' => $local]);
     }
 
     /**
@@ -57,5 +59,4 @@ class LocalController extends Controller
         $local->delete();
         return back();
     }
-
 }

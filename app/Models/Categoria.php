@@ -13,14 +13,10 @@ class Categoria extends Model
         'nome',
     ];
 
-    /**
-     * The roles that belong to the Material    
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    //a mesma categoria pode pertencer a vários materiais
-    public function materiais(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function materiais()
     {
         return $this->belongsToMany(Material::class);
     }
+
+    
 }

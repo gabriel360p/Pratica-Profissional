@@ -2,7 +2,7 @@
 
 @section('master-main')
     <!-- ======= Hero Section ======= -->
-    <section class="d-flex align-items-center">
+    {{-- <section class="d-flex align-items-center">
         <div class="container-fluid position-relative mt-4" data-aos="fade-up" data-aos-delay="100">
             <div class="row justify-content-center">
 
@@ -45,7 +45,7 @@
 
         </div>
         </div>
-    </section><!-- End Hero -->
+    </section><!-- End Hero --> --}}
 
     <main id="main">
 
@@ -58,9 +58,21 @@
 
                 </div>
 
+
                 <div class="row" data-aos="fade-up" data-aos-delay="150">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="portfolio-flters">
+                            {{--
+                                <a href="/painel">
+                                    <li data-filter=".filter-todos">Todos</li>
+                                </a>
+                                @foreach ($categorias as $categoria)
+                                <a href="{{route('material.categoria',$categoria->id)}}">
+                                    <li data-filter=".filter-{{ $categoria->nome }}">{{ $categoria->nome }}</li>
+                                </a>
+                                @endforeach --}}
+
+
 
                             <li data-filter=".filter-todos">Todos</li>
                             @foreach ($categorias as $categoria)
@@ -96,7 +108,7 @@
                 </div>
 
 
-                @foreach ($itens as $item)
+                @foreach ($materiais as $material)
                     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
                         {{-- TODO: Iterar em todas as Categorias do Material do Item --}}
                         <div class="col-lg-4 col-md-6 portfolio-item filter-{{$item->material->categorias->first()->nome}}">
@@ -117,7 +129,6 @@
                         </div>
                     </div>
                 @endforeach
-
 
             </div>
 

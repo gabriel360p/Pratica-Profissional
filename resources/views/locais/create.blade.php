@@ -10,8 +10,14 @@
                 @csrf
 
                 <div class="form-group">
-                    <input type="text" required name="nome" placeholder="Nome Do Local" value="{{ @old('nome') }}" />
+                    <input type="text" required name="nome_local" placeholder="Nome Do Local"
+                        value="{{ @old('nome_local') }}" />
                 </div>
+                @error('nome_local')
+                    <span class="badge bg-warning">{{ $message }}</span>
+                @enderror
+
+
 
                 <div class="form-group form-button">
                     <button class="form-submit border border-none">Salvar</button>

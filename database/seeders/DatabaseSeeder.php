@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Categoria;
+use App\Models\Local;
 use Illuminate\Database\Seeder;
+use Illuminate\Validation\Rules\Can;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +23,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call(CategoriaSeeder::class);
+        $this->call([
+                CategoriaSeeder::class,
+                LocalSeeder::class,
+                MaterialSeeder::class,
+                SessionSeeder::class,
+        ]);
     }
 }

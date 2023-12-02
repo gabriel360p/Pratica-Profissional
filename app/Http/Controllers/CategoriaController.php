@@ -12,8 +12,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias=Categoria::all();
-        return view('categorias.index',['categorias'=>$categorias]);
+        // $categorias=Categoria::orderBy('nome','asc');
+        return view('categorias.index');
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoriaController extends Controller
      */
     public function store(ValidacaoCategoria $request)
     {
-        Categoria::Create($request->all());
+        Categoria::create(['nome'=>$request->nome_categoria]);
         return back();
     }
 

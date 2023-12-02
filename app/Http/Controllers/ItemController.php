@@ -11,13 +11,16 @@ use App\Http\Requests\ValidacaoItem;
 class ItemController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Exibe a lista de itens.
      */
     public function index()
     {
         return view("itens.index", ['itens' => Item::with(['local', 'material'])->get()]);
     }
 
+    /**
+     * Exibe a view para devolver itens.
+     */
     public function devolver()
     {
         return view('itens.refund');
@@ -28,8 +31,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $locais = Local::all();
-        $materiais = Material::all();
+        $locais = Local::orderBy('nome','asc')->get();
+        $materiais = Material::orderBy('nome','asc')->get();
 
         return view(
             'itens.create',
@@ -50,10 +53,9 @@ class ItemController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Exibe os itens alugados.
      */
-    # TODO: Traduzir para `alugados`.
-    public function rented(Item $item)
+    public function alugados(Item $item)
     {
         return view('itens.rented');
     }
@@ -64,8 +66,11 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-
-        return view('itens.edit', ['item' => $item, 'materiais' => Material::all(), 'locais' => Local::all()]);
+        return view('itens.edit', [
+            'item' => $item,
+            'materiais' => \App\Models\Material::all(),
+            'locais' => \App\Models\Local::all()
+        ]);
     }
 
     /**

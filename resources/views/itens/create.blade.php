@@ -8,31 +8,47 @@
          <div class="signup-form mt-4">
              <h2 class="form-title">Cadastro de item</h2>
                  @csrf
-                 <form method="post" class="register-form " id="register-form" action="{{route('itens.store')}}">
 
-                    <div class="form-group">
-                        <input type="text" required name="estado" placeholder="Estado do item"
-                            value="{{ @old('estado') }}" />
-                    </div>
+                 <div class="form-group">
+                     <input type="text" required name="estado_conservacao" placeholder="Estado do item"
+                         value="{{ @old('estado_conservacao') }}" />
+
+                     @error('estado_conservacao')
+                         <span class="badge bg-warning">{{ $message }}</span>
+                     @enderror
+                 </div>
 
 
-                    <div class="form-group">
-                        <select class="custom-select " required id="CustomSelect" name="local_id" value="{{ @old('local') }}">
-                            @foreach ($locais as $local)
-                                <option value="{{ $local->id }}">{{ $local->nome }}</option>
-                            @endforeach
-                        </select>
-                        <div id="fileHelpId" class="form-text">Escolher Lugar</div>
-                    </div>
+                 <div class="form-group">
+                     <select class="custom-select " required id="CustomSelect" name="local_id" value="{{ @old('local') }}">
 
-                    <div class="form-group">
-                        <select class="custom-select " required id="CustomSelect" name="material_id">
-                            @foreach ($materiais as $material)
-                                <option value="{{ $material->id }}">{{ $material->nome }}</option>
-                            @endforeach
-                        </select>
-                        <div id="fileHelpId" class="form-text">Escolher Material</div>
-                    </div>
+                         @foreach ($locais as $local)
+                             <option value="{{ $local->id }}">{{ $local->nome }}</option>
+                         @endforeach
+                     </select>
+                     <div id="fileHelpId" class="form-text">Escolher Lugar</div>
+                     @error('local_id')
+                         <span class="badge bg-warning">{{ $message }}</span>
+                     @enderror
+                 </div>
+
+                 <div class="form-group">
+                     <select class="custom-select " required id="CustomSelect" name="material_id">
+                         @foreach ($materiais as $material)
+                             <option value="{{ $material->id }}">{{ $material->nome }}</option>
+                         @endforeach
+                     </select>
+                     <div id="fileHelpId" class="form-text">Escolher Material</div>
+                     @error('material_id')
+                         <span class="badge bg-warning">{{ $message }}</span>
+                     @enderror
+                 </div>
+
+                 <div class="mb-3">
+                     <input type="file" class="form-control" value="{{ @old('foto') }}" name="photo"
+                         aria-describedby="fileHelpId">
+                     <div id="fileHelpId" class="form-text">Escolher Foto</div>
+                 </div>
 
                     <div class="mb-3">
                         <input type="file" class="form-control" value="{{ @old('foto') }}" name="photo"
