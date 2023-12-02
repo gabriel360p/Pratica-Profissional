@@ -9,6 +9,7 @@
 
             <form method="POST" class="register-form "
                 action="{{ route('categorias.atualizar', ['categoria' => $categoria->id]) }}">
+                @method('patch')
                 @csrf
                 <div class="form-group">
                     <input type="text" value="{{ $categoria->nome }}" required name="nome" id="name"

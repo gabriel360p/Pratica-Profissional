@@ -22,6 +22,17 @@ class EmprestimoController extends Controller
         ]);
     }
 
+
+    /**
+     * Listar empréstimos.
+     */
+    public function index()
+    {   
+        return 'chegou aqui';
+        return view('emprestimos.index', ['emprestimos' => Emprestimo::all()]);
+    }
+
+
     public function itens(Emprestimo $emprestimo)
     {
         return view('emprestimos.itens', [
@@ -43,7 +54,7 @@ class EmprestimoController extends Controller
             }    
         }
         
-        return redirect(url('/emprestimos/emprestados'));
+        return redirect(route('emprestimos.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -58,13 +69,12 @@ class EmprestimoController extends Controller
 
         $itens = $request->itens;
 
-
         for ($i = 0; $i < sizeof($itens); $i++) {
             
             $emprestimo->itens()->attach($itens[$i]);   
         }
 
-        return redirect(route('emprestimos.emprestados'));
+        return redirect(route('emprestimos.index'));
     }
 
     /**
