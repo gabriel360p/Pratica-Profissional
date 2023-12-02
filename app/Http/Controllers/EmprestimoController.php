@@ -17,7 +17,7 @@ class EmprestimoController extends Controller
     public function create()
     {
         return view('emprestimos.create', [
-            'materials' => Material::orderBy('nome', 'asc')->get(),
+            'materiais' => Material::orderBy('nome', 'asc')->get(),
             'itens' => Item::all(),
         ]);
     }

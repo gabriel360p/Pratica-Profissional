@@ -98,7 +98,7 @@ class CategoriaControllerTest extends TestCase
 
         $this->withCookies(['suapToken' => 'token-falso'])
             ->post(route('categorias.store'), $dados);
-            
+        
         $this->assertDatabaseHas('categorias', $dados);
         $this->assertDatabaseCount('categorias', $total + 1);
     }

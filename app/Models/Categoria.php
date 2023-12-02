@@ -13,7 +13,7 @@ class Categoria extends Model
         'nome',
     ];
 
-    public function materiais()
+    public function materiais(): BelongsToMany
     {
         return $this->belongsToMany(Material::class);
     }

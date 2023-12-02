@@ -101,7 +101,7 @@ class SUAPLoginTest extends TestCase
             ['itens.devolver', []],
             # ['itens.editar', []],
             ['itens.novo', []],
-            ['locais.create', []],
+            ['locais.novo', []],
             ['logout', []], # TODO: retirar
             ['materiais.novo', []],
             ['dashboard', []],
@@ -155,7 +155,7 @@ class SUAPLoginTest extends TestCase
 
     /* TODO: Testar as seguintes rotas [
         ['itens.salvar', []],
-        ['locais.store', []],
+        ['locais.salvar', []],
         ['materiais.store', []],
         ['categorias.store', []], # Não deveria aceitar get
         ['categorias.delete', ['categoria' => 'fake']],

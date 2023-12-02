@@ -39,7 +39,7 @@ class LocalControllerTest extends TestCase
     public function test_LocalController_create(): void
     {
         $response = $this->withCookies(['suapToken' => 'token-falso'])
-            ->get(route('locais.create'));
+            ->get(route('locais.novo'));
 
         $response->assertStatus(200);
         $response->assertSee('_token'); # Verificar se tem proteção CSRF
@@ -98,7 +98,7 @@ class LocalControllerTest extends TestCase
         $total = Local::count();
 
         $this->withCookies(['suapToken' => 'token-falso'])
-            ->post(route('locais.store'), $dados);
+            ->post(route('locais.salvar'), $dados);
             
         $this->assertDatabaseHas('locais', $dados);
         $this->assertDatabaseCount('locais', $total + 1);

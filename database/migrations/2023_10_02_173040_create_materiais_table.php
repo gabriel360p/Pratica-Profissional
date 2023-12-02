@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('material_id');
             $table->unsignedBigInteger('categoria_id');
             # TODO: Remover CASCADEs
-            $table->foreign('material_id')->references('id')->on('materials')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('material_id')->references('id')->on('materiais')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
@@ -34,7 +34,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('materials');
+        Schema::dropIfExists('materiais');
         Schema::dropIfExists('categoria_material');
     }
 };

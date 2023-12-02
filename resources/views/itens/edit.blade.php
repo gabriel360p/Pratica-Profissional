@@ -7,7 +7,7 @@
     <div class="signup-content ">
         <div class="signup-form mt-4">
             <h2 class="form-title">Cadastro de item</h2>
-            <form method="post" class="register-form " id="register-form" action="{{ route('itens.atualizar', $item->id) }}">
+            <form method="post" class="register-form " id="register-form" action="{{ route('itens.update', $item->id) }}">
                 @csrf
 
                 <div class="form-group">
