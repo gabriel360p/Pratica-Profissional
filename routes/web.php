@@ -6,8 +6,8 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\EmprestimoController;
 use App\Http\Controllers\LocalController;
 use App\Models\Categoria;
+use App\Models\Material;
 use Illuminate\Support\Facades\Route;
-use App\Models\Item;
 use App\Models\Session;
 use Illuminate\Http\Request;
 
@@ -200,12 +200,14 @@ Route::middleware(['suapToken'])
             Route::name('delete')->get('/deletar/{categoria}', 'delete');
         });
 
-
+    
     Route::name('emprestimos.')
+        ->prefix('/emprestimos')
         ->controller(EmprestimoController::class)
         ->group(function () {
-        Route::name('create')->get('emprestimos', 'create');
-    });
+            Route::name('create')->get('/novo', 'create');
+            Route::name('index')->get('', 'index');
+        });
 
 
     Route::name('locais.')
