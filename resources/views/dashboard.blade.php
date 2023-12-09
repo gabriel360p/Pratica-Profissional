@@ -111,11 +111,11 @@
                 @foreach ($materiais as $material)
                     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
                         {{-- TODO: Iterar em todas as Categorias do Material do Item --}}
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-{{$item->material->categorias->first()->nome}}">
+                        {{-- <div class="col-lg-4 col-md-6 portfolio-item filter-{{$item->material->categorias->first()->nome}}"> --}}
                             <div class="portfolio-wrap">
                                 <img src="{{ asset('imagens/bbasquete.jpg') }}" class="img-fluid" alt="">
                                 <div class="portfolio-info">
-                                    <h4>{{ $item->material->nome }}</h4>
+                                    {{-- <h4>{{ $item->material->nome }}</h4> --}}
                                     <p>Disponivel</p>
                                     <div class="portfolio-links">
                                         <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg"
@@ -124,7 +124,7 @@
                                         <a href="/itens/alugar" title="Alugar"><i class="bx bx-link"></i></a>
                                         <a href="/itens/editar" title="Editar"><i class="bx bx-edit"></i></a>
                                     </div>
-                                </div>
+                                </div>  
                             </div>
                         </div>
                     </div>
