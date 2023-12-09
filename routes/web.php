@@ -24,7 +24,6 @@ use App\Livewire\BuscarCategorias;
 |
 */
 
-
 Route::name('em-producao')
     ->get('/em-producao', function () {
         return view('inproduction');
