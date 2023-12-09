@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Emprestimo extends Model
@@ -29,7 +30,7 @@ class Emprestimo extends Model
         // 'user_who_returned_id',
     ];
 
-    public function itens()
+    public function itens(): BelongsToMany
     {
         return $this->belongsToMany(Item::class);
         

@@ -30,7 +30,7 @@
                             @foreach ($itens as $item)
                                 <td>{{ $item->material->nome }}</td>
                                 <td>{{ $item->local->nome }}</td>
-                                <td>{{ $item->estado }}</td>
+                                <td>{{ $item->estado_conservacao }}</td>
 
                                 <td>
                                     <a class="btn btn-success"

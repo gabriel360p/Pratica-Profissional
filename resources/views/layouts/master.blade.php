@@ -54,7 +54,7 @@
             <nav id="navbar" class="navbar pe-4" style="">
                 <ul>
                     <a class="nav-link scrollto" href="{{url('/emprestimos/novo')}}">Emprestar</a>
-                    <a class="nav-link scrollto" href="{{ route('emprestimos.index') }}">Emprestados</a>
+                    <a class="nav-link scrollto" href="{{ url('emprestimos/todos') }}">Emprestados</a>
                     <li>
                         {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
                         <div class="dropdown">

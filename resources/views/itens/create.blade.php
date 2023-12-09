@@ -7,6 +7,8 @@
      <div class="signup-content ">
          <div class="signup-form mt-4">
              <h2 class="form-title">Cadastro de item</h2>
+
+             <form action="{{route('itens.store')}}" method="POST">
                  @csrf
 
                  <div class="form-group">
@@ -20,7 +22,7 @@
 
 
                  <div class="form-group">
-                     <select class="custom-select " required id="CustomSelect" name="local_id" value="{{ @old('local') }}">
+                     <select class="custom-select " required id="CustomSelect" name="local_id" value="{{ @old('local_id') }}">
 
                          @foreach ($locais as $local)
                              <option value="{{ $local->id }}">{{ $local->nome }}</option>
@@ -45,26 +47,21 @@
                  </div>
 
                  <div class="mb-3">
-                     <input type="file" class="form-control" value="{{ @old('foto') }}" name="photo"
+                     <input type="file" class="form-control" value="{{ @old('foto') }}" name="foto"
                          aria-describedby="fileHelpId">
                      <div id="fileHelpId" class="form-text">Escolher Foto</div>
                  </div>
 
-                    <div class="mb-3">
-                        <input type="file" class="form-control" value="{{ @old('foto') }}" name="photo"
-                            aria-describedby="fileHelpId">
-                        <div id="fileHelpId" class="form-text">Escolher Foto</div>
-                    </div>
-
-                    <div class="form-group form-button">
-                        <button class="form-submit border border-none">Salvar</button>
-                    </div>
+                 <div class="form-group form-button">
+                     <button class="form-submit border border-none">Salvar</button>
+                 </div>
              </form>
 
              <button type="button" class="form-submit border border-none" data-bs-toggle="modal"
                  data-bs-target="#exampleModal">
                  Novo Local
              </button>
+             </form>
 
          </div>
 
@@ -101,4 +98,5 @@
 
              </div>
          </div>
+     </div> 
      @endsection

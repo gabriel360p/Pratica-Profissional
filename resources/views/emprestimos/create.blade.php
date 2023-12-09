@@ -9,7 +9,7 @@
             <div style="margin-top: 100px;" class="p-5">
 
 
-                <form method="POST" class="register-form " action="/emprestimos/salvar">
+                <form method="POST" class="register-form " action="/emprestimos/store">
                     @csrf
                     
                     <input type="text" class="form-control mb-4"  name="usuario_que_recebeu" placeholder="Matricula de quem recebeu" required>

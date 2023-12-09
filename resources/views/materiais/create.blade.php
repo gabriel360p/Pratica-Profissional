@@ -7,7 +7,7 @@
         <div class="signup-form mt-4">
             <h2 class="form-title">Cadastro de Material</h2>
 
-            <form method="POST" class="register-form " action="{{ url('materiais') }}">
+            <form method="POST" class="register-form " action="{{ route('materiais.salvar') }}">
                 @csrf
                 <div class="form-group">
                     <input type="text" required name="nome"value="{{ @old('nome') }}" placeholder="Nome do material"
@@ -50,7 +50,7 @@
                 <div class="m-5">
                     <h2 class="form-title">Nova Categoria</h2>
 
-                    <form method="POST" class="register-form " action="/categorias">
+                    <form method="POST" class="register-form " action="{{route('categorias.store')}}">
                         @csrf
                         <div class="form-group">
                             <input type="text" required name="nome_categoria" id="name" placeholder="Nome Da Categoria"
