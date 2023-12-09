@@ -82,7 +82,7 @@
                      <form method="POST" class="register-form " action="/locais">
                          @csrf
                          <div class="form-group">
-                             <input type="text" required name="nome" id="name" placeholder="Nome Do Local"
+                             <input type="text"  name="nome" id="name" placeholder="Nome Do Local"
                                  value="{{ @old('nome') }}" />
                          </div>
                          @error('nome')

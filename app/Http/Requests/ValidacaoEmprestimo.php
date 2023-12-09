@@ -11,7 +11,7 @@ class ValidacaoEmprestimo extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class ValidacaoEmprestimo extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'usuario_que_recebeu'=>['required','min:2','max:255'],
         ];
     }
 }

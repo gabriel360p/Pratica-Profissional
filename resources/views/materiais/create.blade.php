@@ -53,7 +53,7 @@
                     <form method="POST" class="register-form " action="{{route('categorias.store')}}">
                         @csrf
                         <div class="form-group">
-                            <input type="text" required name="nome_categoria" id="name" placeholder="Nome Da Categoria"
+                            <input type="text" name="nome_categoria" id="name" placeholder="Nome Da Categoria"
                                value="{{@old('nome_categoria')}}" />
                         </div>
                         @error('nome_categoria')

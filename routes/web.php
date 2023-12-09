@@ -25,12 +25,8 @@ use App\Livewire\BuscarCategorias;
 */
 
 
-Route::get('/cat', BuscarCategorias::class);
-
-
-
-Route::name('todo')
-    ->get('/inproduction', function () {
+Route::name('em-producao')
+    ->get('/em-producao', function () {
         return view('inproduction');
     }
 );

@@ -1,7 +1,6 @@
 <div>
     <div>
-        <input type="text" placeholder="Buscar Material" class="form-control" name="categoria"
-            wire:model.live="material">
+        <input type="text" placeholder="Buscar Material" class="form-control" name="categoria" wire:model.live="material">
     </div>
 
     <div>
@@ -32,7 +31,8 @@
                                 <td>
                                     <a class="btn btn-success"
                                         href="{{ url('/materiais/deletar', ['material' => $material->id]) }}">Apagar</a>
-                                    <a class="btn btn-success" href="{{ url('em-producao') }}">Editar</a>
+                                    <a class="btn btn-success"
+                                        href="{{ route('materiais.editar', $material->id) }}">Editar</a>
 
                                 </td>
                         </tr>

@@ -15,7 +15,7 @@
                     <table class="table mb-0">
                         <thead>
                             <tr>
-                                <th scope="col">Local</th>
+                                <th scope="col">Nome</th>
                                 <th scope="col">Ação</th>
                             </tr>
                         </thead>

@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Emprestimo;
 use App\Models\Material;
-use App\Models\Categoria;
 use App\Models\Item;
-use App\Models\Local;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidacaoEmprestimo;
 
 class EmprestimoController extends Controller
 {
@@ -44,39 +43,43 @@ class EmprestimoController extends Controller
     {
         $ids = $request->itens; //capturando os ids  dos itens que foram passados pelo usuário através da checkbox
 
-         if (sizeof($ids) == sizeof($emprestimo->itens)) {
-             //esta comparando se a quantidade de itens, se for a mesma quantidade significa que todos os itens do empréstimo foram devolvido,logo eu dissocio apenas os itens e apago o empréstimo
-              $emprestimo->itens()->detach();
-              $emprestimo->delete();
+        if (sizeof($ids) == sizeof($emprestimo->itens)) {
+            //esta comparando se a quantidade de itens, se for a mesma quantidade significa que todos os itens do empréstimo foram devolvido,logo eu dissocio apenas os itens e apago o empréstimo
+            $emprestimo->itens()->detach();
+            $emprestimo->delete();
         } else {
-              //se a quantidade não for igual, então nem todos os itens foram devolvidos, logo dissocio apenas os itens que foram devolvidos
-             for ($i = 0; $i < sizeof($ids); $i++) {
-                 $emprestimo->itens()->detach($ids[$i]);
-             }
-         }
+            //se a quantidade não for igual, então nem todos os itens foram devolvidos, logo dissocio apenas os itens que foram devolvidos
+            for ($i = 0; $i < sizeof($ids); $i++) {
+                $emprestimo->itens()->detach($ids[$i]);
+            }
+        }
 
-         return redirect(route('emprestimos.index'));
+        return redirect(route('emprestimos.index'));
     }
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ValidacaoEmprestimo $request)
     {
-        $emprestimo = Emprestimo::create([
-            'usuario_que_emprestou' => \App\Models\Session::first()->identificacao,
-            'usuario_que_recebeu' => $request->usuario_que_recebeu,
-        ]);
+        if (!$request->itens) {
+            return back()->withErrors(['nenhum-item-erro' => "Escolha um ou mais itens a serem emprestados"]);
+        } else {
+            $emprestimo = Emprestimo::create([
+                'usuario_que_emprestou' => \App\Models\Session::first()->identificacao,
+                'usuario_que_recebeu' => $request->usuario_que_recebeu,
+            ]);
 
-        try {
-            $itens = $request->itens;
-            for ($i = 0; $i < sizeof($itens); $i++) {
-                $emprestimo->itens()->attach($itens[$i]);
+            try {
+                $itens = $request->itens;
+                for ($i = 0; $i < sizeof($itens); $i++) {
+                    $emprestimo->itens()->attach($itens[$i]);
+                }
+                return redirect(route('emprestimos.index'));
+            } catch (\Throwable $th) {
+                $emprestimo->itens()->detach();
+                $emprestimo->delete();
+                return redirect(route('emprestimos.index'));
             }
-            return redirect(route('emprestimos.index'));
-        } catch (\Throwable $th) {
-            $emprestimo->itens()->detach();
-            $emprestimo->delete();
-            return redirect(route('emprestimos.index'));
         }
     }
 

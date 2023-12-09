@@ -14,33 +14,47 @@
                         value="" />
                 </div>
 
-
-
-                @foreach ($categorias as $categoria)
-                    <div class="form-check">
-
-                        <input class="form-check-input" type="checkbox" value="{{ $categoria->id }}" name="categorias[]"
-                            id="flexCheckDefault">
-                        {{ $categoria->nome }}
-
-                    </div>
-                @endforeach
-
-                {{-- <hr> --}}
-                {{-- @foreach ($material->categorias as $categoria)
-                    <div class="form-check">
-
-                        <input class="form-check-input" type="checkbox" value="{{ $categoria->id }}"
-                            name="categorias[]">
-                        {{ $categoria->nome }}
+                <div class="row">
+                    <div class="col">
+                        <h5>Categorias desse material</h5>
+                        <small>Selecione a que deseja remover</small>
+                        @foreach ($material->categorias as $categoria)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{ $categoria->id }}"
+                                    name="categorias_remover[]">
+                                {{ $categoria->nome }}
+                            </div>
+                        @endforeach
 
                     </div>
-                @endforeach --}}
+                    <div class="col mt-4 mt-sm-0">
+                        <h5>Categorias salvas</h5>
+                        <small>Selecione a que deseja adicionar (categorias repetidas não vão ser associadas)</small>
+                        @foreach ($categorias as $categoria)
+                            <div class="form-check">
 
+                                <input class="form-check-input" type="checkbox" value="{{ $categoria->id }}"
+                                    name="categorias_adicionar[]" id="flexCheckDefault">
+                                {{ $categoria->nome }}
+
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
 
                 @error('name')
                     <span class="badge bg-warning">{{ $message }}</span>
                 @enderror
+
+
+                @if ($errors->any())
+                    <div>
+                        @foreach ($errors->all() as $error)
+                            <p class="badge bg-warning">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
 
                 <div class="form-group form-button">
                     <button class="form-submit border border-none">Salvar</button>
@@ -66,11 +80,11 @@
                     <form method="POST" class="register-form " action="/categorias">
                         @csrf
                         <div class="form-group">
-                            <input type="text" required name="nome" id="name" placeholder="Nome Da Categoria"
-                                value="{{ @old('nome') }}" />
+                            <input type="text" required name="nome_categoria" id="name"
+                                placeholder="Nome Da Categoria" value="{{ @old('nome_categoria') }}" />
                         </div>
-                        @error('nome')
-                            <span class="badge bg-warning">{{ $message }}</span>
+                        @error('nome_categoria')
+                            <span class="badge bg-warning">(Cadastro de categoria){{ $message }}</span>
                         @enderror
 
                         <div class="form-group form-button">
@@ -83,4 +97,7 @@
             </div>
         </div>
     </div>
+
+
+
 @endsection
