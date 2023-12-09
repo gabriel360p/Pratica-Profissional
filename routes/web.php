@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Session;
 use Illuminate\Http\Request;
 
+use App\Livewire\BuscarCategorias;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +23,11 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+Route::get('/cat', BuscarCategorias::class);
+
+
 
 Route::name('todo')
     ->get('/inproduction', function () {
@@ -206,8 +213,11 @@ Route::middleware(['suapToken'])
         ->controller(EmprestimoController::class)
         ->group(function () {
             Route::name('create')->get('/novo', 'create');
-            Route::name('index')->get('', 'index');
-        });
+            Route::name('store')->post('/store', 'store');
+            Route::name('index')->get('/todos', 'index');
+            Route::name('itens')->get('/{emprestimo}/itens', 'itens');
+            Route::name('devolver')->post('/{emprestimo}', 'devolver');
+        }); 
 
 
     Route::name('locais.')

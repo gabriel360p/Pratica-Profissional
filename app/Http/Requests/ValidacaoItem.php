@@ -22,7 +22,7 @@ class ValidacaoItem extends FormRequest
     public function rules(): array
     {
         return [
-            'estado'=>['required','max:50'],
+            'estado_conservacao'=>['required','max:50'],
             'local_id'=>['required'],
             'material_id'=>['required'],
         ];

@@ -1,4 +1,4 @@
-<div>
+{{-- <div>
     <div>
         <div>
             <input type="text" placeholder="Buscar Categoria" class="form-control" name="categoria"
@@ -46,4 +46,4 @@
     
     </div>
     
-</div>
+</div> --}}

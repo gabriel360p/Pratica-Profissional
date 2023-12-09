@@ -38,7 +38,7 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    <a class="btn btn-success" href="{{url('/emprestimos/itens',$emp->id)}}">Itens Emprestados</a>
+                                    <a class="btn btn-success" href="{{route('emprestimos.itens',$emp->id)}}">Itens Emprestados</a>
                                 </td>
                             </tr>
                             @endforeach

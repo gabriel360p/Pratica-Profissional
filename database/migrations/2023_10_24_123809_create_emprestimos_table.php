@@ -27,7 +27,7 @@ return new class extends Migration
         Schema::create('emprestimo_item', function (Blueprint $table) {
             // $table->id();
             $table->unsignedBigInteger('item_id');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('item_id')->references('id')->on('itens')->onDelete('no action')->onUpdate('CASCADE');
             $table->unsignedBigInteger('emprestimo_id');
             $table->foreign('emprestimo_id')->references('id')->on('emprestimos')->onDelete('CASCADE')->onUpdate('CASCADE');
         });

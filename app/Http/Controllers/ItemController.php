@@ -48,6 +48,7 @@ class ItemController extends Controller
      */
     public function store(ValidacaoItem $request)
     {
+
         Item::create($request->all());
         return back();
     }
