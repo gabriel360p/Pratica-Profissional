@@ -2,7 +2,7 @@
 
 @section('master-main')
 
-
+{{--    
     <div>
         <div class="row">
             <div style="margin-top: 100px;" class="p-5">
@@ -28,5 +28,11 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div>  --}}
+
+
+    <livewire:tela-emprestimos>
+
+
+
 @endsection

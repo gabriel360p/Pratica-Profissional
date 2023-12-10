@@ -224,6 +224,5 @@ Route::middleware(['suapToken'])
             Route::name('delete')->get('/deletar/{local}', 'destroy');
             Route::name('editar')->get('/{local}/edit', 'edit');
             Route::name('update')->post('/{local}', 'update');
-
         });
 });

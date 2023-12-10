@@ -19,6 +19,8 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
 
+    <script src="https://kit.fontawesome.com/065cbb313e.js" crossorigin="anonymous"></script>
+
     <!-- Vendor CSS Files -->
     <link href="{{ asset('main/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('main/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -30,6 +32,8 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('main/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('tela_emprestimos/style.css') }}" rel="stylesheet">
+
 
 </head>
 
@@ -53,7 +57,7 @@
             {{-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> --}}
             <nav id="navbar" class="navbar pe-4" style="">
                 <ul>
-                    <a class="nav-link scrollto" href="{{url('/emprestimos/novo')}}">Emprestar</a>
+                    <a class="nav-link scrollto" href="{{ url('/emprestimos/novo') }}">Emprestar</a>
                     <a class="nav-link scrollto" href="{{ url('emprestimos/todos') }}">Emprestados</a>
                     <li>
                         {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
