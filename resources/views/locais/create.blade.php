@@ -10,10 +10,10 @@
                 @csrf
 
                 <div class="form-group">
-                    <input type="text" required name="nome_local" placeholder="Nome Do Local"
-                        value="{{ @old('nome_local') }}" />
+                    <input type="text" required name="nome" placeholder="Nome Do Local"
+                        value="{{ @old('nome') }}" />
                 </div>
-                @error('nome_local')
+                @error('nome')
                     <span class="badge bg-warning">{{ $message }}</span>
                 @enderror
 

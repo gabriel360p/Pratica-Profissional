@@ -11,11 +11,19 @@
                 @csrf
                 <div class="form-group">
                     <input type="text" required name="nome"value="{{ @old('nome') }}" placeholder="Nome do material"
-                        value="{{@old('nome')}}" />
+                        value="{{ @old('nome') }}" />
                 </div>
                 @error('nome')
                     <span class="badge bg-warning">{{ $message }}</span>
                 @enderror
+                
+                @if ($errors->any())
+                    <div>
+                        @foreach ($errors->all() as $error)
+                            <p class="badge bg-warning">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
 
                 @foreach ($categorias as $categoria)
                     <div class="form-check">
@@ -25,9 +33,6 @@
                     </div>
                 @endforeach
 
-               @error('categorias[]')
-                    <span class="badge bg-warning">{{ $message }}</span>
-                @enderror
 
                 <div class="form-group form-button">
                     <button class="form-submit border border-none">Salvar</button>
@@ -50,11 +55,11 @@
                 <div class="m-5">
                     <h2 class="form-title">Nova Categoria</h2>
 
-                    <form method="POST" class="register-form " action="{{route('categorias.store')}}">
+                    <form method="POST" class="register-form " action="{{ route('categorias.store') }}">
                         @csrf
                         <div class="form-group">
                             <input type="text" name="nome_categoria" id="name" placeholder="Nome Da Categoria"
-                               value="{{@old('nome_categoria')}}" />
+                                value="{{ @old('nome_categoria') }}" />
                         </div>
                         @error('nome_categoria')
                             <span class="badge bg-warning">{{ $message }}</span>

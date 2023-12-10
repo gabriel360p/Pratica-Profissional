@@ -26,7 +26,7 @@ class MaterialController extends Controller
         $categorias = Categoria::orderBy('nome', 'asc')->get();
         return view('materiais.create', ['categorias' => $categorias]);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      */
@@ -36,10 +36,15 @@ class MaterialController extends Controller
 
         $categorias = $request->categorias;
 
-        for ($i = 0; $i < sizeof($categorias); $i++) {
-            $material->categorias()->attach($categorias[$i]);
+        if ($categorias) {
+            for ($i = 0; $i < sizeof($categorias); $i++) {
+                $material->categorias()->attach($categorias[$i]);
+            }
+            return back();
+        }else{
+            return back()->withErrors(['categoria-erro'=>"Nenhuma categoria foi fornecida"]);
         }
-        return back();
+        
     }
 
     /**
