@@ -19,6 +19,7 @@ class Item extends Model
 
     protected $fillable=[
         'estado_conservacao',
+        'disponibilidade',
         'local_id',
         'material_id',
         'foto',
@@ -38,5 +39,6 @@ class Item extends Model
     {
         return $this->belongsToMany(Emprestimo::class);
     }
+
 
 }

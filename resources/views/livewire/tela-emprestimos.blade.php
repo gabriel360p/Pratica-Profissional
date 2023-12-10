@@ -18,11 +18,27 @@
                         <li class="mt-2" id="boxleftmain">
                             <div class="d-flex flex-row justify-content-between align-items-center p-1">
                                 <div class="d-flex flex-column p-2 justify-content-center">
-
                                     <h3 class="mb-0">{{ $item->material->nome }}</h3>
                                     <p class="mb-0"><span class="">Local: {{ $item->local->nome }}</span></p>
                                     <p class="mb-0"><span class="">Estado de conservação:
                                             {{ $item->estado_conservacao }}</span></p>
+                                    <p class="mb-0">
+                                        @switch($item->disponibilidade)
+                                            @case(1)
+                                                <span class="badge bg-success">Disponível</span>
+                                            @break
+
+                                            @case(0)
+                                                {{-- <p class="mb-0">
+                                                    <span>Emprestado a {{\App\Models\Emprestimo::where()}}</span>
+                                                </p> --}}
+
+                                                <span class="badge bg-warning">Indisponível</span>
+                                            @break
+
+                                        @default
+                                    @endswitch
+                                    </p>
                                 </div>
 
                                 <div class="p-2 align-items-center justify-content-center">
@@ -49,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                <h3 class="mt-5 mb-4" id="">Itens serem emprestados</h3>
+                <h3 class="mt-5 mb-4" id="">Itens a serem emprestados</h3>
                 <!-- Conteúdo da div que tem o formulário -->
                 <div class="container " id="divform">
                     <div class="row">
@@ -68,3 +84,54 @@
             </div>
         </div>
     </div>
+
+    {{-- @php
+
+        foreach ($itens as $chave => $valor) {
+            echo "<pre>";
+                // echo ($valor['estado_conservacao']);
+                print_r ($valor);
+            echo "</pre>";
+        }
+
+    @endphp --}}
+
+
+
+
+    {{-- <ul class="list-unstyled " id="ulitem">
+    @foreach ($itens as $chave => $valor)
+        <li class="mt-2" id="boxleftmain">
+            <div class="d-flex flex-row justify-content-between align-items-center p-1">
+                <div class="d-flex flex-column p-2 justify-content-center">
+                    <h3 class="mb-0">{{ \App\Models\Material::find($valor['material_id'])->nome }}
+                    </h3>
+                    <p class="mb-0"><span class="">Local:
+                            {{ \App\Models\Local::find($valor['local_id'])->nome }}</span></p>
+                    <p class="mb-0"><span class="">Estado de conservação:
+                            {{ $valor['estado_conservacao'] }}</span></p>
+                    <p class="mb-0">
+                        @switch($valor['disponibilidade'])
+                            @case(1)
+                                <span class="badge bg-success">Disponível</span>
+                            @break
+
+                            @case(0)
+                                <span class="badge bg-warning">Indisponível</span>
+                            @break
+
+                            @default
+                        @endswitch
+                    </p>
+                </div>
+
+                <div class="p-2 align-items-center justify-content-center">
+                    <button class=" btn btn-success text-center"
+                        wire:click="adicionar({{ $valor['id'] }})" id="addbutton">+</button>
+                </div>
+            </div>
+        </li>
+    @endforeach
+</ul> --}}
+
+</div>

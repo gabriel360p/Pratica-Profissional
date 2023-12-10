@@ -30,7 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/js.cookie.js"></script>
     <script src="js/client.js"></script>
-    <script src="js/settings.js"></script>
+    {{-- <script src="js/settings.js"></script> --}}
     <script>
       var suap = new SuapClient(
         "{{ config('suap.uri') }}",
@@ -39,8 +39,9 @@
         "{{ config('suap.scope') }}"
       );
       suap.init();
-      if (suap.isAuthenticated()) {
-        // Aguarda o documento carregar para exibir o conteúdo
+
+      // if (suap.isAuthenticated()) {
+      
         $(document).ready(function () {
           // Token de autenticação do SUAP
           const suapToken = suap.getToken().getValue();
@@ -64,11 +65,16 @@
             }
           });
         });
-      } else {
-        // O usuário não está autenticado
-        alert('A autenticação via SUAP falhou.');
-        window.location = "{{route('home')}}";
-      }
+
+        // Aguarda o documento carregar para exibir o conteúdo
+      // }
+      
+      //  else {
+      //   // O usuário não está autenticado
+      //   alert('A autenticação via SUAP falhou.');
+      //   window.location = "{{route('home')}}";
+      // }
+
     </script>
     @csrf <!-- Necessário para evitar ataques CSRF, não remova -->
   </body>

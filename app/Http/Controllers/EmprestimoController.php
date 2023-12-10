@@ -45,12 +45,20 @@ class EmprestimoController extends Controller
 
         if (sizeof($ids) == sizeof($emprestimo->itens)) {
             //esta comparando se a quantidade de itens, se for a mesma quantidade significa que todos os itens do empréstimo foram devolvido,logo eu dissocio apenas os itens e apago o empréstimo
+            foreach ($emprestimo->itens as $item) {
+                $item->disponibilidade = true;
+                $item->save();
+            }
             $emprestimo->itens()->detach();
             $emprestimo->delete();
         } else {
             //se a quantidade não for igual, então nem todos os itens foram devolvidos, logo dissocio apenas os itens que foram devolvidos
             for ($i = 0; $i < sizeof($ids); $i++) {
                 $emprestimo->itens()->detach($ids[$i]);
+                foreach ($emprestimo->itens as $item) {
+                    $item->disponibilidade = true;
+                    $item->save();
+                }
             }
         }
 
