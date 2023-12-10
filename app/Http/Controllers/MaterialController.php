@@ -35,7 +35,6 @@ class MaterialController extends Controller
         $material = Material::create($request->all());
 
         $categorias = $request->categorias;
-        dd($categorias);
 
         for ($i = 0; $i < sizeof($categorias); $i++) {
             $material->categorias()->attach($categorias[$i]);
