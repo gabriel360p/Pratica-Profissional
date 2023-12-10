@@ -13,11 +13,9 @@
                     <input type="text" required name="nome" placeholder="Nome Do Local"
                         value="{{ @old('nome') }}" />
                 </div>
-                @error('nome_local')
+                @error('nome')
                     <span class="badge bg-warning">{{ $message }}</span>
                 @enderror
-
-
 
                 <div class="form-group form-button">
                     <button class="form-submit border border-none">Salvar</button>

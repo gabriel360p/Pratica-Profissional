@@ -4,13 +4,17 @@ namespace App\Livewire;
 
 use App\Models\Item;
 use App\Models\Emprestimo;
+use App\Models\Material;
 use Livewire\Component;
 
 class TelaEmprestimos extends Component
 {
     public $itens = [];
+    public $materiais = [];
     public $carrinho = [];
+    public $remove = [];
     public $responsavel = null;
+    public $filtro_material = null;
 
     public function mount()
     {
@@ -20,8 +24,7 @@ class TelaEmprestimos extends Component
     public function emprestar()
     {
 
-        if (!$this->carrinho && !$this->responsavel) {
-            // return back()->withErrors(['nenhum-item-erro' => "Escolha um ou mais itens a serem emprestados"]);
+        if (!$this->carrinho || !$this->responsavel) {
         } else {
             $emprestimo = Emprestimo::create([
                 'usuario_que_emprestou' => \App\Models\Session::first()->identificacao,
@@ -33,9 +36,8 @@ class TelaEmprestimos extends Component
                 $emprestimo->itens()->attach($itens[$i]);
             }
 
-            $this->carrinho=[];
-            $this->responsavel="";
-
+            $this->carrinho = [];
+            $this->responsavel = "";
         }
     }
 
@@ -43,18 +45,21 @@ class TelaEmprestimos extends Component
     {
         $this->carrinho[] = $item;
     }
+
     public function remover(Item $item)
     {
-        // $this->carrinho[] = $item;
-
-        // $num = array_search($item, $this->carrinho);
-        // dd(
-        //     $this->carrinho,$num
-        // );
-    }
+        $num = array_search($item, $this->carrinho);
+        unset($this->carrinho[$num]);
+       }
 
     public function render()
     {
-        return view('livewire.tela-emprestimos', ['itens' => $this->itens, 'carrinho_itens' => $this->carrinho]);
+        $this->materiais = Material::orderBy('nome', 'asc')->get();
+        if (!$this->filtro_material == 0) {
+            $this->itens = Item::where('material_id', $this->filtro_material)->get();
+        }else{
+            $this->mount();
+        }
+        return view('livewire.tela-emprestimos', ['carrinho_itens' => $this->carrinho]);
     }
 }
