@@ -54,7 +54,7 @@ class CategoriaController extends Controller
      */
     public function update(ValidacaoCategoria $request, Categoria $categoria)
     {
-        $categoria->update($request->all());
+        $categoria->update(['nome' => $request->nome_categoria]);
         return back();
     }
 

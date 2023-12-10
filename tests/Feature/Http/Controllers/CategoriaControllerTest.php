@@ -81,11 +81,14 @@ class CategoriaControllerTest extends TestCase
     {
         $categoria = Categoria::first();
 
-        $dados = ['nome' => 'novo_nome'];
+        $dados = ['nome_categoria' => 'novo_nome'];
+
         $this->withCookies(['suapToken' => 'token-falso'])
             ->patch(route('categorias.atualizar', $categoria), $dados);
 
-        $this->assertDatabaseHas('categorias', $dados);
+        $this->assertDatabaseHas('categorias', [
+            'nome' => $dados['nome_categoria']
+        ]);
     }
 
     /**
@@ -93,13 +96,15 @@ class CategoriaControllerTest extends TestCase
      */
     public function test_CategoriaController_store(): void
     {
-        $dados = ['nome' => 'Minha nova categoria'];
+        $dados = ['nome_categoria' => 'Minha nova categoria'];
         $total = Categoria::count();
 
         $this->withCookies(['suapToken' => 'token-falso'])
             ->post(route('categorias.store'), $dados);
         
-        $this->assertDatabaseHas('categorias', $dados);
+        $this->assertDatabaseHas('categorias', [
+            'nome' => $dados['nome_categoria']
+        ]);
         $this->assertDatabaseCount('categorias', $total + 1);
     }
 }
