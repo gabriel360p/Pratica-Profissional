@@ -80,7 +80,7 @@ class SUAPLoginTest extends TestCase
         return [
             ['home', []],
             ['login.view', []],
-            ['todo', []],
+            ['em-producao', []],
             # TODO: Adicionar ['logout', []],
         ];
     }
