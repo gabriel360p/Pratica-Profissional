@@ -55,9 +55,8 @@ class EmprestimoController extends Controller
             //se a quantidade não for igual, então nem todos os itens foram devolvidos, logo dissocio apenas os itens que foram devolvidos
             for ($i = 0; $i < sizeof($ids); $i++) {
                 $emprestimo->itens()->detach($ids[$i]);
-                foreach ($emprestimo->itens as $item) {
-                    $item->disponibilidade = true;
-                    $item->save();
+                foreach (Item::find($ids)as $item) {
+                    $item->disponibilidade = true; $item->save();
                 }
             }
         }

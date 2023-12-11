@@ -24,10 +24,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-                // CategoriaSeeder::class,
-                // LocalSeeder::class,
-                // MaterialSeeder::class,
-                 SessionSeeder::class,
+            CategoriaSeeder::class,
+            LocalSeeder::class,
+            MaterialSeeder::class,
+            SessionSeeder::class,
         ]);
     }
 }
