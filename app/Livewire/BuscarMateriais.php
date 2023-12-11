@@ -13,7 +13,7 @@ class BuscarMateriais extends Component
 
     public function mount(){
         $this->materiais = Material::orderBy('nome','asc')->get();     
-    }
+    }   
 
     public function render()
     {

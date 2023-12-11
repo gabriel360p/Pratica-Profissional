@@ -11,8 +11,8 @@
                 @csrf
 
                 <div class="form-group">
-                    <input type="text" required name="estado" placeholder="Estado do item"
-                        value="{{ $item->estado }}" />
+                    <input type="text" required name="estado_conservacao" placeholder="Estado do item"
+                        value="{{ $item->estado_conservacao }}" />
                 </div>
 
 

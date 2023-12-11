@@ -16,6 +16,8 @@ return new class extends Migration {
             // Estado de conservação
             $table->string('estado_conservacao', 255);
 
+            $table->boolean('disponibilidade')->default(true)->nullable();
+
             $table->timestamps();
 
             $table->text('foto')->nullable();
