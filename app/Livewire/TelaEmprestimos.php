@@ -24,14 +24,16 @@ class TelaEmprestimos extends Component
 
     public function emprestar()
     {
-
-        if (!$this->carrinho || !$this->responsavel) {
-        } else {
+        if (!$this->carrinho || !$this->responsavel) {//verifica algum dos campos está vazio, se tiver nada faz
+        } else {//se não tiver vazio, cai dentro desse else
             $emprestimo = Emprestimo::create([
                 'usuario_que_emprestou' => \App\Models\Session::first()->identificacao,
                 'usuario_que_recebeu' => $this->responsavel,
             ]);
             $itens = $this->carrinho;
+            
+            //Esse try/catch é importante porque caso exista algum erro em anexar os itens a um emprestimo, ele desnexa se algum existir e apagar o empréstimo para que ele
+            //não fique redundante
             try {
                 for ($i = 0; $i < sizeof($itens); $i++) {
                     $emprestimo->itens()->attach($itens[$i]);
@@ -51,7 +53,8 @@ class TelaEmprestimos extends Component
 
     public function adicionar(Item $item)
     {
-        //NÃO APAGAR!!!!!!!!!!!!!!!1
+        //NÃO APAGAR!!!!!!!!!!!!!!!
+        //essa função remove o item da array itens e coloca o item na lista de carrinho, é apenas visual, deixei salva caso precise modificar
         // if (!$item->disponibilidade ==  0) {
         //     foreach ($this->itens as $key => $value) {
         //         if ($item->id == $value->id) {
