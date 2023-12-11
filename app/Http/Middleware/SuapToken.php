@@ -27,6 +27,7 @@ class SuapToken
            Senão, apenas diz que é proibido.
            TODO: Adicionar mensagem ou página inteira indicando para o usuário
            que ele precisa fazer login. */
-        return $request->method() == 'GET' ? redirect(route('home')) : abort(403);
+           return $request->method() == 'GET' ? redirect(route('home')) : abort(403);
+      
     }
 }
