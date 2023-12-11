@@ -25,7 +25,13 @@
                     <br>
                 @endforeach
                 <button class="btn btn-success">Devolver</button>
-
+            </form>
+            <form action="{{ route('emprestimos.devolver', $emprestimo->id) }}" class="mt-2" method="POST">
+                @csrf
+                @foreach ($emprestimo->itens as $item)
+                    <input name="itens[]" value="{{ $item->id }}" hidden checked type="checkbox">
+                @endforeach
+                <button class="btn btn-success">Devolver todos</button>
             </form>
         </div>
     </div>
