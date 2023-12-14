@@ -104,7 +104,7 @@ class SUAPLoginTest extends TestCase
             ['locais.novo', []],
             ['logout', []], # TODO: retirar
             ['materiais.novo', []],
-            ['dashboard', []],
+            ['painel', []],
         ];
     }
     

@@ -85,7 +85,7 @@ Route::name('login.')
 
                             return response($res)->cookie('suapToken', $request->suap_token);
                         } else {
-                            return redirect(route('dashboard'));
+                            return redirect(route('painel'));
                         }
                     }
                 );
@@ -95,7 +95,7 @@ Route::name('login.')
 
 Route::middleware(['suapToken'])
     ->group(function () { //middleware de proteção
-        Route::name('dashboard')
+        Route::name('painel')
             ->get('/painel', function () {
                 /* 
             Esta rota esta renderizando o painel principal (dashboard)
@@ -107,7 +107,7 @@ Route::middleware(['suapToken'])
                 /* Pegandos todos os materiais salvos no sistema*/
                 $materiais = Material::orderBy('nome', 'asc')->get();
 
-                return view('dashboard', [
+                return view('painel', [
                     'categorias' => $categorias,
                     'materiais' => $materiais
                 ]);
