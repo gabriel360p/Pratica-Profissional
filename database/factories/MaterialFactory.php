@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Material;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,10 +17,11 @@ class MaterialFactory extends Factory
      */
     public function definition(): array
     {
+        $id = Material::max('id') + 1; // Pega o próximo id
+
         return [
-            // Usar duas palavras diminui a chance dois materiais terem o
-            // mesmo nome
-            'nome' => fake()->word() . ' ' . fake()->word(),
+            // Usar o id garante que não haverá materiais iguais
+            'nome' => "Mat $id " . fake()->word(),
         ];
     }
 }
