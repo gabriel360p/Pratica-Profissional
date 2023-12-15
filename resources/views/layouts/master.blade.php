@@ -44,7 +44,7 @@
 
             <a href="/painel">
                 <h1 class="logo">
-                    Deff - Ifrn - CA
+                    DEFF - IFRN/CA
                     @php
                         if (\App\Models\Session::first()->nome_social) {
                             echo \App\Models\Session::first()->nome_social;
