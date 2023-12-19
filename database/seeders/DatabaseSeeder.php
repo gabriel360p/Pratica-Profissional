@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             CategoriaSeeder::class,
             LocalSeeder::class,
             MaterialSeeder::class,
+            ItemSeeder::class,
             SessionSeeder::class,
         ]);
     }
