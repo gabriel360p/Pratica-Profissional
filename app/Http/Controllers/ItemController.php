@@ -88,7 +88,11 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        $item->delete();
-        return back();
+        try {
+            $item->delete();
+            return back();
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

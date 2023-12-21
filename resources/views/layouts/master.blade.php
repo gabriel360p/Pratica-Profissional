@@ -44,7 +44,7 @@
 
             <a href="/painel">
                 <h1 class="logo">
-                    Deff - Ifrn - CA
+                    DEFF - IFRN
                     @php
                         if (\App\Models\Session::first()->nome_social) {
                             echo \App\Models\Session::first()->nome_social;
@@ -62,10 +62,11 @@
                     <li>
                         {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a style="background:transparent; border:none;" class="btn btn-secondary dropdown-toggle"
+                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Itens
-                            </button>
+                            </a>
+
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/itens">Itens</a></li>
                                 <li><a class="dropdown-item" href="/itens/novo">Adicionar Item</a></li>
@@ -76,10 +77,11 @@
                     <li>
                         {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a style="background:transparent; border:none;" class="btn btn-secondary dropdown-toggle"
+                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Materiais
-                            </button>
+                            </a>
+
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/materiais">Materiais</a></li>
                                 <li><a class="dropdown-item" href="/materiais/novo">Adicionar Material</a></li>
@@ -90,10 +92,11 @@
                     <li>
                         {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a style="background:transparent; border:none;" class="btn btn-secondary dropdown-toggle"
+                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Locais
-                            </button>
+                            </a>
+
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/locais">Locais</a></li>
                                 <li><a class="dropdown-item" href="/locais/novo">Adicionar Local</a></li>
@@ -105,10 +108,12 @@
                     <li>
                         {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a style="background:transparent; border:none;" class="btn btn-secondary dropdown-toggle"
+                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categorias
-                            </button>
+
+                            </a>
+
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
                                 <li><a class="dropdown-item" href="/categorias/nova">Adicionar Categoria</a></li>
@@ -117,9 +122,7 @@
                     </li>
 
                     <li><a class="nav-link scrollto pe-5 " href="{{ url('logout') }}">Sair</a></li>
-
                 </ul>
-
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-list mobile-nav-toggle" viewBox="0 0 16 16">

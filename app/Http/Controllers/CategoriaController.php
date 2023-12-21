@@ -63,7 +63,11 @@ class CategoriaController extends Controller
      */
     public function delete(Categoria $categoria)
     {
-        $categoria->delete(); 
-        return back();
+        try {
+            $categoria->delete();
+            return back();
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

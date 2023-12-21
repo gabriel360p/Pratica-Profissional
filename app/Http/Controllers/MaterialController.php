@@ -101,7 +101,11 @@ class MaterialController extends Controller
      */
     public function destroy(Material $material)
     {
-        $material->delete();
-        return back();
+        try {
+            $material->delete();
+            return back();
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

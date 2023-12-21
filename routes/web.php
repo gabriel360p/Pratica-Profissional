@@ -95,7 +95,7 @@ Route::name('login.')
 
 Route::middleware(['suapToken'])
     ->group(function () { //middleware de proteção
-        Route::name('dashboard')
+        Route::name('painel')
             ->get('/painel', function () {
                 /* 
             Esta rota esta renderizando o painel principal (dashboard)
