@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Session;
 use Illuminate\Http\Request;
 
-use App\Livewire\BuscarCategorias;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,10 +81,9 @@ Route::name('login.')
                                 'tipo_usuario' => $res['tipo_usuario'],
                                 'ultimo_nome' => $res['ultimo_nome'],
                             ]);
-
                             return response($res)->cookie('suapToken', $request->suap_token);
                         } else {
-                            return redirect(route('dashboard'));
+                            return redirect(route('painel'));
                         }
                     }
                 );
@@ -95,6 +93,8 @@ Route::name('login.')
 
 Route::middleware(['suapToken'])
     ->group(function () { //middleware de proteção
+
+
         Route::name('painel')
             ->get('/painel', function () {
                 /* 

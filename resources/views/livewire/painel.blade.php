@@ -45,7 +45,6 @@
         </div>
     </div>
 
-
     <div class="row portfolio-container">
         {{-- TODO: Iterar em todas as Categorias do Material do Item --}}
         @foreach ($materiais as $material)
@@ -53,7 +52,7 @@
                 <div class="portfolio-wrap">
                     <img src="{{ asset('imagens/bbasquete.jpg') }}" class="img-fluid" alt="">
                     <div class="portfolio-info">
-                        {{-- <p>Disponivel</p> --}}
+                        <p>{{$material->nome}}</p>
                         <div class="portfolio-links">
                             {{-- <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg"
                                 data-gallery="portfolioGallery" class="portfolio-lightbox" title="Ampliar Foto"><i

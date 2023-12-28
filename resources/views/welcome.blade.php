@@ -29,6 +29,7 @@
                 <h1 style="color:white;">Bem vindo(a) ao DEFF-IFRN!</h1>
                 <h2 style="color:white"><b>Clique no botão abaixo para fazer login</b></h2>
                 <a href="{{ config('suap.uri_login') }}" class="btn-about"><b>Login</b></a>
+                    
             </div>
         </section><!-- End Hero -->
     </div>
