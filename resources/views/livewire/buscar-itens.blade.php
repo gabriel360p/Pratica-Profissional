@@ -19,6 +19,7 @@
                 <table class="table mb-0">
                     <thead>
                         <tr>
+                            <th scope="col">Foto</th>
                             <th scope="col">Item</th>
                             <th scope="col">Local</th>
                             <th scope="col">Estado</th>
@@ -28,6 +29,13 @@
                     <tbody>
                         <tr>
                             @foreach ($itens as $item)
+                                <td>
+                                    <div class="mx-2" style="width:100%;">
+                                        <img style="height: 100px" src="{{ Storage::url($item->arquivo->path) }}"
+                                            alt="Foto">
+                                    </div>
+
+                                </td>
                                 <td>{{ $item->material->nome }}</td>
                                 <td>{{ $item->local->nome }}</td>
                                 <td>{{ $item->estado_conservacao }}</td>

@@ -8,7 +8,7 @@
          <div class="signup-form mt-4">
              <h2 class="form-title">Cadastro de item</h2>
 
-             <form action="{{route('itens.store')}}" method="POST">
+             <form action="{{route('itens.store')}}" method="POST" enctype="multipart/form-data">
                  @csrf
 
                  <div class="form-group">

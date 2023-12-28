@@ -7,7 +7,7 @@
     <div class="signup-content ">
         <div class="signup-form mt-4">
             <h2 class="form-title">Cadastro de item</h2>
-            <form method="post" class="register-form " id="register-form" action="{{ route('itens.update', $item->id) }}">
+            <form method="post" class="register-form " id="register-form" action="{{ route('itens.update', $item->id) }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <input type="file" class="form-control" value="{{ @old('foto') }}" name="photo"
+                    <input type="file" class="form-control" value="{{ @old('foto') }}" name="foto"
                         aria-describedby="fileHelpId">
                     <div id="fileHelpId" class="form-text">Escolher Foto</div>
                 </div>
