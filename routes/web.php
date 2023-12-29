@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArquivoController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\CategoriaController;
@@ -234,4 +235,10 @@ Route::name('locais.')
         Route::name('editar')->get('/{local}/edit', 'edit');
         Route::name('update')->post('/{local}', 'update');
     });
+
+// Route::name('arquivos.')
+//     ->prefix('/arquivos')
+//     ->controller(ArquivoController::class)->group(function () {
+//         Route::name('apagar')->get('/apagar/{arquivo}', 'destroy');
+//     });
     // });

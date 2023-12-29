@@ -58,21 +58,22 @@
 
         </div>
 
+        @php
+            try {
+                $path = Storage::url($item->arquivo->path);
+            } catch (\Throwable $th) {
+                $path = '';
+            }
+        @endphp
+        {{-- @if (Storage::url($path)) --}}
         <div class="signup-image">
-
-            @php
-                try {
-                    $path = Storage::url($item->arquivo->path);
-                } catch (\Throwable $th) {
-                    $path = '';
-                }
-            @endphp
-
             <div class="text-center">
                 <h2>Foto do item:</h2>
             </div>
             <figure><img src="{{ $path }}"alt="Foto do item"></figure>
+            {{-- <a href="{{route('arquivos.apagar',$item->arquivo->id)}}" class="btn btn-success">Apagar</a> --}}
         </div>
+        {{-- @endif --}}
 
     </div>
     </div>
