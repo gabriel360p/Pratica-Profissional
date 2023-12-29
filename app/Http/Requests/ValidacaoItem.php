@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rules\File;
 class ValidacaoItem extends FormRequest
 {
     /**
@@ -25,6 +25,8 @@ class ValidacaoItem extends FormRequest
             'estado_conservacao'=>['required','max:50'],
             'local_id'=>['required'],
             'material_id'=>['required'],
+            'foto'=>'image',
+            'foto'=>File::image()->max('10mb'),
         ];
     }
 }

@@ -15,14 +15,23 @@
                 </div>
                 <ul class="list-unstyled " id="ulitem">
                     @foreach ($itens as $item)
+                        @php
+                            try {
+                                $path = Storage::url($item->arquivo->path);
+                            } catch (\Throwable $th) {
+                                $path = '';
+                            }
+                        @endphp
                         <li class="mt-2" id="boxleftmain">
                             <div class="d-flex flex-row justify-content-between align-items-center p-1">
-                                <div>
-                                    <div style="width:100%;" class="mx-2">
-                                        <img style="height: 100px" src="{{ Storage::url($item->arquivo->path) }}"
-                                            alt="Foto">
+                                @if ($path && Storage::exists($item->arquivo->path))
+                                    <div>
+
+                                        <div style="width:100%;" class="mx-2">
+                                            <img style="height: 100px" src="{{ $path }}" alt="Foto">
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                                 <div class="d-flex flex-column p-2 justify-content-center">
                                     <h3 class="mb-0">{{ $item->material->nome }}</h3>
                                     <p class="mb-0"><span class="">Local: {{ $item->local->nome }}</span></p>

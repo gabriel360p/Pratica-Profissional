@@ -10,6 +10,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">Foto</th>
                             <th scope="col">Nome do item</th>
                             <th scope="col">Estado de conservação</th>
                             <th scope="col">Quem emprestou</th>
@@ -20,7 +21,19 @@
                     <tbody>
                         {{-- <form action="{{ route('emprestimos.devolver', $emprestimo->id) }}" method="POST"> --}}
                         @foreach ($emprestimo->itens as $item)
+                            @php
+                                try {
+                                    $path = Storage::url($item->arquivo->path);
+                                } catch (\Throwable $th) {
+                                    $path = '';
+                                }
+                            @endphp
                             <tr class="">
+                                <td>
+                                    <div class="mx-2" style="width:100%;">
+                                        <img style="height: 100px" src="{{ $path }}" alt="Nenhuma foto encontrada">
+                                    </div>
+                                </td>
                                 <td>
                                     {{-- <input name="itens[]" value="{{ $item->id }}" type="checkbox"> --}}
                                     {{ $item->material->nome }}

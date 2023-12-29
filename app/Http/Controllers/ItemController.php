@@ -77,27 +77,93 @@ class ItemController extends Controller
     public function update(ValidacaoItem $request, Item $item)
     {
         $file = $request->file('foto');
-        if ($file) {
-            if (Storage::exists($item->arquivo->path)) {
-                $arq = Arquivo::find($item->arquivo->id);
-                Storage::delete($item->arquivo->path);
-                $path = $file->storeAs('public/img', $file->hashName());
-                $arq->path=$path;
-                $arq->save();
+
+        try {
+            //caso tenha foto, entra aqui
+            if ($file) {
+
+                if (Storage::exists($item->arquivo->path)) {
+
+                    //caso tenha uma foto, ele recupera o caminho dessa foto
+                    $path = $item->arquivo->path;
+
+                    //apaga a foto do sistema
+                    Storage::delete($path);
+
+                    //alterando a visibilidade da foto
+                    Storage::setVisibility($path, 'public');
+
+                    //salvando no sistema
+                    $path = $file->storeAs('public/img', $file->hashName());
+
+                    //buscando o registro no banco de dados
+                    $arq = Arquivo::find($item->arquivo->id);
+
+                    //atualizando o caminho 
+                    $arq->path = $path;
+                    $arq->save();
+
+                    //atualiza todos os dados do item em geral
+                    $item->update($request->all());
+
+                    //retorna para o anterior
+                    return back();
+                } else {
+                    //caso o arquivo seja apagado do sistema, ele não dá pau, pois é só entrar com ele de novo, por isso tem esse if
+
+                    //salvando no projeto
+                    $path = $file->storeAs('public/img', $file->hashName());
+
+                    //alterando a visibilidade
+                    Storage::setVisibility($path, 'public');
+
+                    //capturando os registros no banco de dados
+                    $arq = Arquivo::find($item->arquivo->id);
+
+                    //atualizando o registro
+                    $arq->path = $path;
+                    $arq->save();
+
+                    //atualizando tudo
+                    $item->update($request->all());
+
+                    // e deppois volta
+                    return back();
+                }
+            } else {
+                //atualizando tudo
                 $item->update($request->all());
-                Storage::setVisibility($path, 'public');
-                return back();
-            } {
-                $path = $file->storeAs('public/img', $file->hashName());
-                $arq = Arquivo::where('item_id', $item->id)->get();
-                $arq->path = $path;
-                $item->update($request->all());
-                Storage::setVisibility($path, 'public');
+
+                // e deppois volta
                 return back();
             }
-        } else {
-            $item->update($request->all());
-            return back();
+        } catch (\Throwable $th) {
+            //caso não tenha foto, entra aqui
+            if ($file) { //verifica se realmente foi passado um arquivo
+                //caso não tenha foto
+
+                //salva a foto no sistema
+                $path = $file->storeAs('public/img', $file->hashName());
+
+                //altera a visibilidade da foto
+                Storage::setVisibility($path, 'public');
+
+                //salva o caminho no banco
+                Arquivo::create([
+                    'item_id' => $item->id,
+                    'path' => $path,
+                ]);
+                //atualiza todos os dados
+                $item->update($request->all());
+
+                //retorna para o anterior
+                return back();
+            } else {
+                //caso não seja passado um arquivo, ele apenas atualiza tudo
+                $item->update($request->all());
+                // e deppois volta
+                return back();
+            }
         }
     }
 
@@ -106,10 +172,21 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
+
+        //caso não tenha foto
         try {
-            $item->delete();
-            return back();
+            //caso tenha foto
+            $path = $item->arquivo->path;
+            if (Storage::exists($path)) {
+                Storage::delete($path);
+                $arq = Arquivo::find($item->arquivo->id);
+                $arq->delete();
+                $item->delete();
+                return back();
+            }
         } catch (\Throwable $th) {
+            //caso não tenha foto
+            $item->delete();
             return back();
         }
     }

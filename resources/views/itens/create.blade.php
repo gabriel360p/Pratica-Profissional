@@ -8,7 +8,7 @@
          <div class="signup-form mt-4">
              <h2 class="form-title">Cadastro de item</h2>
 
-             <form action="{{route('itens.store')}}" method="POST" enctype="multipart/form-data">
+             <form action="{{ route('itens.store') }}" method="POST" enctype="multipart/form-data">
                  @csrf
 
                  <div class="form-group">
@@ -22,7 +22,8 @@
 
 
                  <div class="form-group">
-                     <select class="custom-select " required id="CustomSelect" name="local_id" value="{{ @old('local_id') }}">
+                     <select class="custom-select " required id="CustomSelect" name="local_id"
+                         value="{{ @old('local_id') }}">
 
                          @foreach ($locais as $local)
                              <option value="{{ $local->id }}">{{ $local->nome }}</option>
@@ -50,6 +51,9 @@
                      <input type="file" class="form-control" value="{{ @old('foto') }}" name="foto"
                          aria-describedby="fileHelpId">
                      <div id="fileHelpId" class="form-text">Escolher Foto</div>
+                     @error('foto')
+                         <span class="badge bg-warning">{{ $message }}</span>
+                     @enderror
                  </div>
 
                  <div class="form-group form-button">
@@ -65,10 +69,6 @@
 
          </div>
 
-         <div class="signup-image">
-             {{-- <figure><img src="{{asset('cadastro_itens/images/signup-image.jpg')}}"alt="sing up image"></figure> --}}
-         </div>
-
      </div>
      </div>
 
@@ -82,7 +82,7 @@
                      <form method="POST" class="register-form " action="/locais">
                          @csrf
                          <div class="form-group">
-                             <input type="text"  name="nome" id="name" placeholder="Nome Do Local"
+                             <input type="text" name="nome" id="name" placeholder="Nome Do Local"
                                  value="{{ @old('nome') }}" />
                          </div>
                          @error('nome')
@@ -98,5 +98,5 @@
 
              </div>
          </div>
-     </div> 
-     @endsection
+     </div>
+ @endsection

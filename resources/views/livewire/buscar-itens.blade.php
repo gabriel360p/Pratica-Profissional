@@ -28,13 +28,20 @@
                     </thead>
                     <tbody>
                         <tr>
+
                             @foreach ($itens as $item)
+                                @php
+                                    try {
+                                        $path = Storage::url($item->arquivo->path);
+                                    } catch (\Throwable $th) {
+                                        $path = '';
+                                }
+                                @endphp
                                 <td>
                                     <div class="mx-2" style="width:100%;">
-                                        <img style="height: 100px" src="{{ Storage::url($item->arquivo->path) }}"
-                                            alt="Foto">
+                                        <img style="height: 100px" src="{{ $path }}"
+                                            alt="Nenhuma foto encontrada">
                                     </div>
-
                                 </td>
                                 <td>{{ $item->material->nome }}</td>
                                 <td>{{ $item->local->nome }}</td>
