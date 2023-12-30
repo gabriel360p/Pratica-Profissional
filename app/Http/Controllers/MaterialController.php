@@ -178,8 +178,12 @@ class MaterialController extends Controller
             }
         } catch (\Throwable $th) {
             //caso não tenha foto
-            $material->delete();
-            return back();
+            try {
+                $material->delete();
+                return back();
+            } catch (\Throwable $th) {
+                return back()->withException($th);
+            }
         }
     }
 }

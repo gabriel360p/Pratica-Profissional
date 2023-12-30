@@ -76,6 +76,13 @@
                                     wire:model.live="responsavel" type="search"
                                     placeholder="Matrícula do aluno ou servidor" aria-label="Search">
                                 <button class="btn btn-success" type="submit" wire:click="emprestar">Emprestar</button>
+                                @if ($msg)
+                                    <div>
+                                        <span class="badge bg-warning">
+                                            {{ $msg }}
+                                        </span>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

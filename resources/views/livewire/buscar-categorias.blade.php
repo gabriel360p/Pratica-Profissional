@@ -8,6 +8,13 @@
         <a href="/categorias/nova" class="btn btn-success mb-4">Adicionar Categoria</a>
     </div>
 
+    {{-- @if (Session::has('errors'))   
+        Tentando tratar execptions, mas não qual seria a maneira mais apropriada para mostrar ao usuário
+        @foreach ($errors->all() as $item)
+            <span>{{ $item }}</span>
+        @endforeach
+    @endif --}}
+
     <div class="col-12">
         @if (sizeof($categorias) != 0)
             <div class="table-responsive bg-white">
@@ -42,5 +49,6 @@
     </div>
     @endif
 </div>
+
 
 </div>

@@ -9,7 +9,7 @@
 
 
                 <div class="section-title">
-                    <h2 id="portfolioname">itens</h2>
+                    <h2 id="portfolioname">Materiais</h2>
                 </div>
 
                 <livewire:painel/>

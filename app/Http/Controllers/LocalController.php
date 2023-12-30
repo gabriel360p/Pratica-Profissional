@@ -60,7 +60,7 @@ class LocalController extends Controller
             $local->delete();
             return back();
         } catch (\Throwable $th) {
-            return back();
+            return back()->withException($th);
         }
     }
 }

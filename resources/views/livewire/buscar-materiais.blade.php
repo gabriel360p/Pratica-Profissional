@@ -6,6 +6,14 @@
     <div>
         <a class="btn btn-success mt-3" href="/materiais/novo">Adicionar Material</a>
     </div>
+
+    {{-- @if (Session::has('errors'))   
+        Tentando tratar execptions, mas não qual seria a maneira mais apropriada para mostrar ao usuário
+        @foreach ($errors->all() as $item)
+            <span>{{ $item }}</span>
+        @endforeach
+    @endif --}}
+
     <div class="col-12">
         @if (sizeof($materiais) != 0)
             <div class="table-responsive bg-white">
@@ -35,8 +43,8 @@
                                             <img style="height: 100px" src="{{ $path }}"
                                                 alt="Nenhuma foto encontrada">
                                         @else
-                                            <img src="{{ asset('imagens/sem-imagem.jpg') }}" class="img-fluid" style="height: 100px"
-                                                alt="Imagem não encontrada">
+                                            <img src="{{ asset('imagens/sem-imagem.jpg') }}" class="img-fluid"
+                                                style="height: 100px" alt="Imagem não encontrada">
                                         @endif
                                     </div>
                                 </td>
@@ -67,4 +75,8 @@
     @endif
 
 </div>
+
+@foreach ($errors->all() as $item)
+    {{ $item }}
+@endforeach
 </div>

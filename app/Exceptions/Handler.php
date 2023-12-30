@@ -3,8 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\QueryException;
 use Throwable;
-
 class Handler extends ExceptionHandler
 {
     /**
@@ -23,8 +23,11 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
+        // $this->reportable(function (QueryException $e) {
+            // dd($e->getMessage());
+            // report($e);
+            // abort(500,$e->getMessage());
+            // return response()->view('inproduction', ['error'=>$e]);
+        // });
     }
 }

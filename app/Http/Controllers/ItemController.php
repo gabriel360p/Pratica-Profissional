@@ -185,8 +185,7 @@ class ItemController extends Controller
             }
         } catch (\Throwable $th) {
             //caso não tenha foto
-            $item->delete();
-            return back();
+            return back()->withException($th);
         }
     }
 }
