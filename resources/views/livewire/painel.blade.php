@@ -37,31 +37,36 @@
                     <div class="portfolio-wrap">
 
                         @if ($path != null)
-                            <img src="{{ $path }}" class="img-fluid" alt="Imagem não encontrada">
+                            <div class="text-center">
 
-                            <div class="portfolio-info">
-                                <div class="portfolio-links">
-                                    {{-- <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg"
+                                <img src="{{ $path }}" style="height: 200px" class="img-fluid" alt="Imagem não encontrada">
+
+                                <div class="portfolio-info">
+                                    <div class="portfolio-links">
+                                        {{-- <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox"
                                         title="Ampliar Foto"><i class="bx bx-plus"></i></a>
                                     <a href="/itens/editar" title="Editar"><i class="bx bx-edit"></i></a> --}}
-                                </div>
-                                <div class="card" style="border-radius:50px">
-                                    <p class="m-1" style="color: black;">{{ $material->nome }}</p>
+                                    </div>
+                                    <div class="card" style="border-radius:50px">
+                                        <p class="m-1" style="color: black;">{{ $material->nome }}</p>
+                                    </div>
                                 </div>
                             </div>
                         @else
-                            <img src="{{ asset('imagens/sem-imagem.jpg') }}" class="img-fluid"
-                                alt="Imagem não encontrada">
+                            <div class="text-center">
+                                <img src="{{ asset('imagens/sem-imagem.jpg') }}" style="height: 200px" class="img-fluid"
+                                    alt="Imagem não encontrada">
 
-                            <div class="portfolio-info">
-                                <div class="portfolio-links">
-                                    {{-- <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg"
+                                <div class="portfolio-info">
+                                    <div class="portfolio-links">
+                                        {{-- <a href="https://lncimg.lance.com.br/cdn-cgi/image/width=1920,quality=75,format=webp/uploads/2023/04/03/642aded4857be.jpeg"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox"
                                         title="Ampliar Foto"><i class="bx bx-plus"></i></a>
                                     <a href="/itens/editar" title="Editar"><i class="bx bx-edit"></i></a> --}}
-                                    <div class="card" style="border-radius:50px">
-                                        <p class="m-1" style="color: black;">{{ $material->nome }}</p>
+                                        <div class="card" style="border-radius:50px">
+                                            <p class="m-1" style="color: black;">{{ $material->nome }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

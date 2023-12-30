@@ -236,9 +236,9 @@ Route::middleware(['suapToken'])
                 Route::name('update')->post('/{local}', 'update');
             });
 
-        // Route::name('arquivos.')
-        //     ->prefix('/arquivos')
-        //     ->controller(ArquivoController::class)->group(function () {
-        //         Route::name('apagar')->get('/apagar/{arquivo}', 'destroy');
-        //     });
+        Route::name('arquivos.')
+            ->prefix('/arquivos')
+            ->controller(ArquivoController::class)->group(function () {
+                Route::name('apagar')->get('/apagar/{arquivo}', 'destroy');
+            });
     });

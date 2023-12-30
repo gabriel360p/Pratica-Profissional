@@ -83,14 +83,16 @@
             }
         @endphp
         @if ($path != null)
-            <div class="signup-image">
-                <div class="text-center">
-                    <h3>Foto do Material:</h3>
-                </div>
-                <figure><img src="{{ $path }}"alt="Foto do item" style="height:50%;"></figure>
-                {{-- <a href="{{ route('arquivos.apagar', $item->arquivo->id) }}" class="btn btn-success">Apagar</a> --}}
+        <div class="signup-image" style="display:flex; align-itens:center; flex-direction:column;">
+            <div class="text-center">
+                <h3>Foto do Material:</h3>
             </div>
-        @endif
+            <img src="{{ $path }}"alt="Foto do item" style="height:auto width:auto;">
+            <div class="mt-3">
+                <a href="{{ route('arquivos.apagar', $material->arquivo->id) }}" class="btn btn-success">Apagar</a>
+            </div>
+        </div>
+    @endif
     </div>
 
 
