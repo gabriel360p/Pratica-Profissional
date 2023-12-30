@@ -1,3 +1,7 @@
 *
 !public/
 !.gitignore
+
+#Ignore as pastas: (elas contém arquivos de imagens que podem pesar muito ao longo do tempo
+itens
+materiais

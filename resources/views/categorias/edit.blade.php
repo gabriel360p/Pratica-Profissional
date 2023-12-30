@@ -12,11 +12,11 @@
                 @method('patch')
                 @csrf
                 <div class="form-group">
-                    <input type="text" value="{{ $categoria->nome }}" required name="nome" id="name"
+                    <input type="text" value="{{ $categoria->nome }}" required name="nome_categoria" id="name"
                         placeholder="Nome Da Categoria" />
                 </div>
 
-                @error('nome')
+                @error('nome_categoria')
                     <span class="badge bg-warning">{{ $message }}</span>
                 @enderror
 
