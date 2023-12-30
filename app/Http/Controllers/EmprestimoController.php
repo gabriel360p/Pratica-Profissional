@@ -20,8 +20,6 @@ class EmprestimoController extends Controller
             'itens' => Item::all(),
         ]);
     }
-
-
     /**
      * Listar empréstimos.
      */
@@ -61,7 +59,7 @@ class EmprestimoController extends Controller
                     }
                 }
             }
-        }else{
+        } else {
             return back();
         }
 
@@ -94,36 +92,4 @@ class EmprestimoController extends Controller
     //         }
     //     }
     // }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Emprestimo $emprestimo)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Emprestimo $emprestimo)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Emprestimo $emprestimo)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Emprestimo $emprestimo)
-    {
-        //
-    }
 }

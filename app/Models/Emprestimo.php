@@ -10,8 +10,8 @@ class Emprestimo extends Model
 {
     use HasFactory;
 
-    
-    protected $fillable=[
+
+    protected $fillable = [
 
         //quem autorziou o emprestimo
         // 'usuario_que_autorizou',
@@ -28,11 +28,12 @@ class Emprestimo extends Model
         //aluno aue foi devolver ao servidor
         'usuario_que_devolveu',
         // 'user_who_returned_id',
+
+        // 'devolvido',
     ];
 
     public function itens(): BelongsToMany
     {
         return $this->belongsToMany(Item::class);
-        
     }
 }

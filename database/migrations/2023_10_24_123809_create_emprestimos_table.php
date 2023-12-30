@@ -20,6 +20,8 @@ return new class extends Migration
 
             $table->string('estado_emprestimo',255)->nullable();
             $table->string('estado_devolucao',255)->nullable();
+
+            // $table->boolean('devolvido')->default(false);
             
             $table->timestamps();
         });
