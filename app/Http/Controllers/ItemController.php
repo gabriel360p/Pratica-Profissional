@@ -48,7 +48,7 @@ class ItemController extends Controller
         $item = Item::create($request->all());
 
         if ($file) {
-            $path = $file->storeAs('public/img', $file->hashName());
+            $path = $file->storeAs('public/itens', $file->hashName());
 
             Storage::setVisibility($path, 'public');
 
@@ -94,7 +94,7 @@ class ItemController extends Controller
                     Storage::setVisibility($path, 'public');
 
                     //salvando no sistema
-                    $path = $file->storeAs('public/img', $file->hashName());
+                    $path = $file->storeAs('public/itens', $file->hashName());
 
                     //buscando o registro no banco de dados
                     $arq = Arquivo::find($item->arquivo->id);
@@ -112,7 +112,7 @@ class ItemController extends Controller
                     //caso o arquivo seja apagado do sistema, ele não dá pau, pois é só entrar com ele de novo, por isso tem esse if
 
                     //salvando no projeto
-                    $path = $file->storeAs('public/img', $file->hashName());
+                    $path = $file->storeAs('public/itens', $file->hashName());
 
                     //alterando a visibilidade
                     Storage::setVisibility($path, 'public');
@@ -143,7 +143,7 @@ class ItemController extends Controller
                 //caso não tenha foto
 
                 //salva a foto no sistema
-                $path = $file->storeAs('public/img', $file->hashName());
+                $path = $file->storeAs('public/itens', $file->hashName());
 
                 //altera a visibilidade da foto
                 Storage::setVisibility($path, 'public');

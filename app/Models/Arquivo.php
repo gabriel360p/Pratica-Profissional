@@ -8,12 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Arquivo extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'item_id',
+        'material_id',
         'path',
     ];
 
-    public function item(){
+    public function item()
+    {
         return $this->belongsTo(Item::class);
+    }
+
+    public function material()
+    {
+        return $this->belongsTo(Material::class);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Material;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacaoMaterial;
+use App\Models\Arquivo;
 use App\Models\Categoria;
 
 class MaterialController extends Controller
@@ -32,19 +33,41 @@ class MaterialController extends Controller
      */
     public function store(ValidacaoMaterial $request)
     {
-        $material = Material::create($request->all());
+        //pegando a possível foto
+        $file = $request->file('foto');
 
+        //capturando as categorias
         $categorias = $request->categorias;
 
         if ($categorias) {
+
+            //é preciso ter categorias para criar um material
+            $material = Material::create($request->all());
+
+            //verificando se tem foto
+            if ($file) {
+
+                //salvando a foto
+                $path = $file->storeAs('public/materiais', $file->hashName());
+
+                //salvando o registro
+                Arquivo::create([
+                    'material_id' => $material->id,
+                    'path' => $path,
+                ]);
+            }
+
+            //salvando as categorias
             for ($i = 0; $i < sizeof($categorias); $i++) {
                 $material->categorias()->attach($categorias[$i]);
             }
+
             return back();
-        }else{
-            return back()->withErrors(['categoria-erro'=>"Nenhuma categoria foi fornecida"]);
+        } else {
+
+            //caso nenhuma categoria seja passada
+            return back()->withErrors(['categoria-erro' => "Nenhuma categoria foi fornecida"]);
         }
-        
     }
 
     /**

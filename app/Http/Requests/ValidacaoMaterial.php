@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rules\File;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ValidacaoMaterial extends FormRequest
@@ -23,6 +24,8 @@ class ValidacaoMaterial extends FormRequest
     {
         return [
             'nome' => ['required', 'max:50'],
+            'foto' => ['image'],
+            'foto' => File::image()->max('10mb'),
             // 'categorias[]' => ['required']
         ];
     }

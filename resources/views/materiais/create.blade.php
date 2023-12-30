@@ -7,16 +7,18 @@
         <div class="signup-form mt-4">
             <h2 class="form-title">Cadastro de Material</h2>
 
-            <form method="POST" class="register-form " action="{{ route('materiais.salvar') }}">
+            <form method="POST" class="register-form " action="{{ route('materiais.salvar') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <input type="text" required name="nome"value="{{ @old('nome') }}" placeholder="Nome do material"
                         value="{{ @old('nome') }}" />
                 </div>
-                @error('nome')
-                    <span class="badge bg-warning">{{ $message }}</span>
-                @enderror
-                
+
+                <div class="mb-3">
+                    <input type="file" class="form-control" name="foto" id="" value="{{ @old('foto') }}"
+                        aria-describedby="fileHelpId" />
+                </div>
+
                 @if ($errors->any())
                     <div>
                         @foreach ($errors->all() as $error)

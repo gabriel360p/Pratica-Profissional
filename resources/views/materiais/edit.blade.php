@@ -29,7 +29,8 @@
                     </div>
                     <div class="col mt-4 mt-sm-0">
                         <h5>Categorias salvas</h5>
-                        <small>Selecione a que deseja adicionar (categorias repetidas não vão ser associadas)</small>
+                        <small>Selecione a categoria que deseja adicionar (categorias repetidas não vão ser
+                            associadas)</small>
                         @foreach ($categorias as $categoria)
                             <div class="form-check">
 
@@ -39,8 +40,8 @@
 
                             </div>
                         @endforeach
-
                     </div>
+
                 </div>
 
                 @error('name')
@@ -60,15 +61,32 @@
                     <button class="form-submit border border-none">Salvar</button>
                 </div>
 
-            </form>
 
-            <button type="button" class="form-submit border border-none" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-                Nova Categoria
-            </button>
+                <button type="button" class="form-submit border border-none" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    Nova Categoria
+                </button>
+            </form>
         </div>
 
+        @php
+            try {
+                $path = Storage::url($material->arquivo->path);
+            } catch (\Throwable $th) {
+                $path = null;
+            }
+        @endphp
+        @if ($path != null)
+            <div class="signup-image">
+                <div class="text-center">
+                    <h3>Foto do Material:</h3>
+                </div>
+                <figure><img src="{{ $path }}"alt="Foto do item" style="height:50%;"></figure>
+                {{-- <a href="{{ route('arquivos.apagar', $item->arquivo->id) }}" class="btn btn-success">Apagar</a> --}}
+            </div>
+        @endif
     </div>
+
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -97,6 +115,10 @@
             </div>
         </div>
     </div>
+
+
+
+
 
 
 

@@ -16,9 +16,11 @@ return new class extends Migration
 
             $table->text('path');
 
-            $table->foreign('item_id')->references('id')->on('itens');
+            $table->unsignedBigInteger('material_id')->nullable();
+            $table->foreign('material_id')->references('id')->on('materiais');
 
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('item_id')->nullable();
+            $table->foreign('item_id')->references('id')->on('itens');
             $table->timestamps();
         });
     }

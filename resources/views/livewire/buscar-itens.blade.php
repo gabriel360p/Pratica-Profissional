@@ -34,13 +34,18 @@
                                     try {
                                         $path = Storage::url($item->arquivo->path);
                                     } catch (\Throwable $th) {
-                                        $path = '';
-                                }
+                                        $path = null;
+                                    }
                                 @endphp
                                 <td>
                                     <div class="mx-2" style="width:100%;">
-                                        <img style="height: 100px" src="{{ $path }}"
-                                            alt="Nenhuma foto encontrada">
+                                        @if ($path != null)
+                                            <img style="height: 100px" src="{{ $path }}"
+                                                alt="Imagem não encontrada">
+                                        @else
+                                            <img src="{{ asset('imagens/sem-imagem.jpg') }}" class="img-fluid" style="height: 100px"
+                                                alt="Imagem não encontrada">
+                                        @endif
                                     </div>
                                 </td>
                                 <td>{{ $item->material->nome }}</td>

@@ -62,20 +62,18 @@
             try {
                 $path = Storage::url($item->arquivo->path);
             } catch (\Throwable $th) {
-                $path = '';
+                $path = null;
             }
         @endphp
-        {{-- @if (Storage::url($path)) --}}
-        <div class="signup-image">
-            <div class="text-center">
-                <h2>Foto do item:</h2>
+        @if ($path != null)
+            <div class="signup-image">
+                <div class="text-center">
+                    <h3>Foto do item:</h3>
+                </div>
+                <figure><img src="{{ $path }}"alt="Foto do item" style="height:50%;"></figure>
+                {{-- <a href="{{ route('arquivos.apagar', $item->arquivo->id) }}" class="btn btn-success">Apagar</a> --}}
             </div>
-            <figure><img src="{{ $path }}"alt="Foto do item"></figure>
-            {{-- <a href="{{route('arquivos.apagar',$item->arquivo->id)}}" class="btn btn-success">Apagar</a> --}}
-        </div>
-        {{-- @endif --}}
-
-    </div>
+        @endif
     </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
