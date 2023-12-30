@@ -7,11 +7,17 @@
         <div class="signup-form mt-4">
             <h2 class="form-title">Cadastro de Material</h2>
 
-            <form method="POST" class="register-form " action="{{ route('materiais.atualizar', $material->id) }}">
+            <form method="POST" class="register-form " action="{{ route('materiais.atualizar', $material->id) }}"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input type="text" required name="nome"value="{{ $material->nome }}" placeholder="Nome do material"
-                        value="" />
+                    <input type="text" required name="nome"value="{{ $material->nome }}"
+                        placeholder="Nome do material" value="" />
+                </div>
+
+                <div class="mb-3">
+                    <input type="file" class="form-control" name="foto" id="" value="{{ @old('foto') }}"
+                        aria-describedby="fileHelpId" />
                 </div>
 
                 <div class="row">

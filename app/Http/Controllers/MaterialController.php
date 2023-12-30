@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ValidacaoMaterial;
 use App\Models\Arquivo;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\Storage;
 
 class MaterialController extends Controller
 {
@@ -50,6 +51,8 @@ class MaterialController extends Controller
                 //salvando a foto
                 $path = $file->storeAs('public/materiais', $file->hashName());
 
+                Storage::setVisibility($path, 'public');
+
                 //salvando o registro
                 Arquivo::create([
                     'material_id' => $material->id,
@@ -83,6 +86,44 @@ class MaterialController extends Controller
      */
     public function update(ValidacaoMaterial $request, Material $material)
     {
+
+        $file = $request->file('foto');
+        try {
+            //caso tenha foto, entra aqui
+            if ($file) {
+                if (Storage::exists($material->arquivo->path)) {
+                    //caso tenha uma foto, ele recupera o caminho dessa foto
+                    $path = $material->arquivo->path;
+
+                    //apaga a foto do sistema
+                    Storage::delete($path);
+
+                    //alterando a visibilidade da foto
+                    Storage::setVisibility($path, 'public');
+
+                    //salvando no sistema
+                    $path = $file->storeAs('public/itens', $file->hashName());
+
+                    //buscando o registro no banco de dados
+                    $arq = Arquivo::find($material->arquivo->id);
+
+                    //atualizando o caminho 
+                    $arq->path = $path;
+                    $arq->save();
+                }
+            }
+        } catch (\Throwable $th) {
+            $path = $file->storeAs('public/materiais', $file->hashName());
+
+            Storage::setVisibility($path, 'public');
+
+            //salvando o registro
+            Arquivo::create([
+                'material_id' => $material->id,
+                'path' => $path,
+            ]);
+        }
+
         //capturando os ids das categorias que foram marcadas para serem removidas
         $categorias_remover = $request->categorias_remover;
         //capturando os ids das categorias que foram marcadas para serem associadas/adicionadas
@@ -124,10 +165,20 @@ class MaterialController extends Controller
      */
     public function destroy(Material $material)
     {
+        //caso não tenha foto
         try {
-            $material->delete();
-            return back();
+            //caso tenha foto
+            $path = $material->arquivo->path;
+            if (Storage::exists($path)) {
+                Storage::delete($path);
+                $arq = Arquivo::find($material->arquivo->id);
+                $arq->delete();
+                $material->delete();
+                return back();
+            }
         } catch (\Throwable $th) {
+            //caso não tenha foto
+            $material->delete();
             return back();
         }
     }

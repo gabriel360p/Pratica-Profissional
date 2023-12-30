@@ -172,7 +172,6 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-
         //caso não tenha foto
         try {
             //caso tenha foto
