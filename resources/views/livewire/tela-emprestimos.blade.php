@@ -4,7 +4,6 @@
             <div class="col-lg-7 col-sm-12 col-md-11  col-xs-12" style="margin-top: 100px">
                 <div class="d-flex justify-content-between mb-3">
                     <h3 class="pb-2 ">Emprestimos de itens</h3>
-
                     <select wire:model.live="filtro_material" class="form-control form-control-sm" id="FormControlSelect1">
                         <option selected value="0">Todos</option>
                         @foreach ($materiais as $material)

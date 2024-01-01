@@ -4,7 +4,7 @@
     <div class="p-3">
         <div class="row justify-content-center" style="margin-top: 90px">
             <div class="text-center mb-2">
-                <span class="display-5">Informações sobre o empréstimo</span>
+                <h1 class="display-5">Informações sobre o empréstimo</h1>
             </div>
             <div class="table-responsive mt-3">
                 <table class="table">

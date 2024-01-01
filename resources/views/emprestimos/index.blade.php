@@ -4,6 +4,9 @@
     <div class="p-3">
         <div class="row justify-content-center" style="margin-top: 90px">
             @if (sizeof($emprestimos) != 0)
+                <div class="text-center mb-2">
+                    <h1 class="display-5">Empréstimos pendentes</h1>
+                </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -57,8 +60,8 @@
         </div>
     </div>
 @else
-    <div class="text-center">
-        <h3>Nenhuma material foi emprestado</h3>
+    <div class="text-center mb-2">
+        <h1 class="display-5">Nenhum empréstimo pendente</h1>
     </div>
     @endif
 
