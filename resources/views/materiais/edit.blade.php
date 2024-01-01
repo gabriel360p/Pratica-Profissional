@@ -5,7 +5,7 @@
 @section('master-main')
     <div class="signup-content">
         <div class="signup-form mt-4">
-            <h2 class="form-title">Cadastro de Material</h2>
+            <h1 class="form-title">Edição do material</h1>
 
             <form method="POST" class="register-form " action="{{ route('materiais.atualizar', $material->id) }}"
                 enctype="multipart/form-data">
@@ -18,12 +18,13 @@
                 <div class="mb-3">
                     <input type="file" class="form-control" name="foto" id="" value="{{ @old('foto') }}"
                         aria-describedby="fileHelpId" />
+                    <small class="form-text">Foto do material</small>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <h5>Categorias desse material</h5>
-                        <small>Selecione a que deseja remover</small>
+                        <h2 style="font-size: 20px">Categorias desse material</h2>
+                        <p>Selecione a que deseja remover</p>
                         @foreach ($material->categorias as $categoria)
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="{{ $categoria->id }}"
@@ -34,9 +35,9 @@
 
                     </div>
                     <div class="col mt-4 mt-sm-0">
-                        <h5>Categorias salvas</h5>
-                        <small>Selecione a categoria que deseja adicionar (categorias repetidas não vão ser
-                            associadas)</small>
+                        <h2 style="font-size: 20px">Categorias</h2>
+                        <p>Selecione a categoria que deseja adicionar (categorias repetidas não vão ser
+                            associadas)</p>
                         @foreach ($categorias as $categoria)
                             <div class="form-check">
 
@@ -83,16 +84,16 @@
             }
         @endphp
         @if ($path != null)
-        <div class="signup-image" style="display:flex; align-itens:center; flex-direction:column;">
-            <div class="text-center">
-                <h3>Foto do Material:</h3>
+            <div class="signup-image" style="display:flex; align-itens:center; flex-direction:column;">
+                <div class="text-center">
+                    <h1>Foto do Material:</h1>
+                </div>
+                <img src="{{ $path }}"alt="Foto do item" style="height:auto width:auto;">
+                <div class="mt-3">
+                    <a href="{{ route('arquivos.apagar', $material->arquivo->id) }}" class="btn btn-success">Apagar</a>
+                </div>
             </div>
-            <img src="{{ $path }}"alt="Foto do item" style="height:auto width:auto;">
-            <div class="mt-3">
-                <a href="{{ route('arquivos.apagar', $material->arquivo->id) }}" class="btn btn-success">Apagar</a>
-            </div>
-        </div>
-    @endif
+        @endif
     </div>
 
 
@@ -101,7 +102,7 @@
             <div class="modal-content">
 
                 <div class="m-5">
-                    <h2 class="form-title">Nova Categoria</h2>
+                    <h1 class="form-title">Nova Categoria</h1>
 
                     <form method="POST" class="register-form " action="/categorias">
                         @csrf
@@ -123,11 +124,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 
 
 @endsection

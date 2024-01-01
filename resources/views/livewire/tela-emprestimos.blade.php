@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-7 col-sm-12 col-md-11  col-xs-12" style="margin-top: 100px">
                 <div class="d-flex justify-content-between mb-3">
-                    <h3 class="pb-2 ">Emprestimos de itens</h3>
+                    <h1 style="font-size: 30px" class="pb-2 ">Emprestimos de itens</h1>
                     <select wire:model.live="filtro_material" class="form-control form-control-sm" id="FormControlSelect1">
                         <option selected value="0">Todos</option>
                         @foreach ($materiais as $material)
@@ -65,7 +65,7 @@
                 </ul>
             </div>
             <div class="col-lg-5 col-md-11 col-sm-11 col-xs-1 " id="divpreenche" style="margin-top: 100px">
-                <h3 class=" mb-3" id="">Formulário</h3>
+                <h1 style="font-size: 30px" class="mb-3" id="">Formulário</h1>
                 <!-- Conteúdo da div que tem o formulário -->
                 <div class="container pb-3">
                     <div class="row">
@@ -88,7 +88,7 @@
                 </div>
 
                 @if (sizeof($carrinho_itens) != 0)
-                    <h3 class="mt-5 mb-4" id="">Itens a serem emprestados</h3>
+                    <h2 style="font-size: 30px" class="mb-4" id="">Itens a serem emprestados:</h2>
                     <!-- Conteúdo da div que tem o formulário -->
                     <div class="container " id="divform">
                         <div class="row">

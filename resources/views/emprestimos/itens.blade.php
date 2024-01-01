@@ -10,7 +10,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Foto</th>
+                            <th scope="col">Foto</th>   
                             <th scope="col">Nome do item</th>
                             <th scope="col">Estado de conservação</th>
                             <th scope="col">Quem emprestou</th>

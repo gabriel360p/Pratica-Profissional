@@ -5,7 +5,7 @@
 @section('master-main')
     <div class="signup-content">
         <div class="signup-form mt-4">
-            <h2 class="form-title">Cadastro de Material</h2>
+            <h1 class="form-title">Cadastro de material</h1>
 
             <form method="POST" class="register-form " action="{{ route('materiais.salvar') }}" enctype="multipart/form-data">
                 @csrf
@@ -17,6 +17,7 @@
                 <div class="mb-3">
                     <input type="file" class="form-control" name="foto" id="" value="{{ @old('foto') }}"
                         aria-describedby="fileHelpId" />
+                    <small class="form-text">Foto do material</small>
                 </div>
 
                 @if ($errors->any())
@@ -55,7 +56,7 @@
             <div class="modal-content">
 
                 <div class="m-5">
-                    <h2 class="form-title">Nova Categoria</h2>
+                    <h1 class="form-title">Nova Categoria</h1>
 
                     <form method="POST" class="register-form " action="{{ route('categorias.store') }}">
                         @csrf

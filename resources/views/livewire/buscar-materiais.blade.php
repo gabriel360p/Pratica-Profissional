@@ -50,9 +50,13 @@
                                 </td>
                                 <td>{{ $material->nome }}</td>
                                 <td>
-                                    @foreach ($material->categorias as $categoria)
-                                        {{ $categoria->nome }};
-                                    @endforeach
+                                    @if (sizeof($material->categorias) != 0)
+                                        @foreach ($material->categorias as $categoria)
+                                            {{ $categoria->nome }};
+                                        @endforeach
+                                    @else
+                                        <p>Sem categoria(s)</p>
+                                    @endif
                                 </td>
 
                                 <td>
@@ -60,7 +64,6 @@
                                         href="{{ url('/materiais/deletar', ['material' => $material->id]) }}">Apagar</a>
                                     <a class="btn btn-success"
                                         href="{{ route('materiais.editar', $material->id) }}">Editar</a>
-
                                 </td>
                         </tr>
         @endforeach

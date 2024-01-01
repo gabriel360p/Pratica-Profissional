@@ -5,7 +5,7 @@
 @section('master-main')
     <div class="signup-content">
         <div class="signup-form mt-4">
-            <h2 class="form-title">Editar de Categoria/Departamento</h2>
+            <h1 class="form-title">Editar de Categoria/Departamento</h1>
 
             <form method="POST" class="register-form "
                 action="{{ route('categorias.atualizar', ['categoria' => $categoria->id]) }}">

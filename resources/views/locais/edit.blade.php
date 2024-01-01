@@ -5,7 +5,7 @@
 @section('master-main')
     <div class="signup-content">
         <div class="signup-form mt-4">
-            <h2 class="form-title">Editar Local</h2>
+            <h1 class="form-title">Edição de Local</h1>
             <form method="POST" class="register-form " id="register-form" action="{{route('locais.update',$local->id) }}">
                 @csrf
 

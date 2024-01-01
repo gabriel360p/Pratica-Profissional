@@ -6,7 +6,7 @@
  @section('master-main')
      <div class="signup-content ">
          <div class="signup-form mt-4">
-             <h2 class="form-title">Cadastro de item</h2>
+             <h1 class="form-title">Cadastro de item</h1>
 
              <form action="{{ route('itens.store') }}" method="POST" enctype="multipart/form-data">
                  @csrf
@@ -29,7 +29,7 @@
                              <option value="{{ $local->id }}">{{ $local->nome }}</option>
                          @endforeach
                      </select>
-                     <div id="fileHelpId" class="form-text">Escolher Lugar</div>
+                     <div id="fileHelpId" class="form-text">Escolher Local</div>
                      @error('local_id')
                          <span class="badge bg-warning">{{ $message }}</span>
                      @enderror
@@ -50,7 +50,8 @@
                  <div class="mb-3">
                      <input type="file" class="form-control" value="{{ @old('foto') }}" name="foto"
                          aria-describedby="fileHelpId">
-                     <div id="fileHelpId" class="form-text">Escolher Foto</div>
+                     <small class="form-text">Foto do item</small>
+
                      @error('foto')
                          <span class="badge bg-warning">{{ $message }}</span>
                      @enderror

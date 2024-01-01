@@ -44,7 +44,7 @@
 
             <a href="/painel">
                 <h1 class="logo">
-                    SEF - 
+                    SEF -
                     @php
                         try {
                             if (\App\Models\Session::first()->nome_social) {
@@ -101,19 +101,21 @@
 
     </header><!-- End Header -->
 
-    <div class="container-fluid">
-        @yield('master-main')
+    <main>
+        <div class="container-fluid">
+            @yield('master-main')
 
-        <script src="{{ asset('main/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-        <script src="{{ asset('main/vendor/aos/aos.js') }}"></script>
-        <script src="{{ asset('main/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('main/vendor/glightbox/js/glightbox.min.js') }}"></script>
-        <script src="{{ asset('main/vendor/swiper/swiper-bundle.min.js') }}"></script>
-        <script src="{{ asset('main/vendor/php-email-form/validate.js') }}"></script>
+            <script src="{{ asset('main/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+            <script src="{{ asset('main/vendor/aos/aos.js') }}"></script>
+            <script src="{{ asset('main/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('main/vendor/glightbox/js/glightbox.min.js') }}"></script>
+            <script src="{{ asset('main/vendor/swiper/swiper-bundle.min.js') }}"></script>
+            <script src="{{ asset('main/vendor/php-email-form/validate.js') }}"></script>
 
-        <!-- Template Main JS File -->
-        <script src="{{ asset('main/js/main.js') }}"></script>
-    </div>
+            <!-- Template Main JS File -->
+            <script src="{{ asset('main/js/main.js') }}"></script>
+        </div>
+    </main>
 
 </body>
 

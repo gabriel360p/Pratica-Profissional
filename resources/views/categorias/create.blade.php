@@ -6,7 +6,7 @@
 
     <div class="signup-content">
         <div class="signup-form mt-4">
-            <h2 class="form-title">Cadastro de Categoria</h2>
+            <h1 class="form-title">Cadastro de Categoria</h1>
 
             <form method="POST" class="register-form " action="/categorias">
                 @csrf
