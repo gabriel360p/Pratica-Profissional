@@ -27,4 +27,9 @@ class Material extends Model
     {
         return $this->belongsToMany(Categoria::class);
     }
+
+    public function arquivo()
+    {
+        return $this->hasOne(Arquivo::class);
+    }
 }

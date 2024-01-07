@@ -16,6 +16,7 @@ class TelaEmprestimos extends Component
     public $ok = [];
     public $responsavel = null;
     public $filtro_material = null;
+    public $msg = null;
 
     public function mount()
     {
@@ -25,7 +26,11 @@ class TelaEmprestimos extends Component
     public function emprestar()
     {
         if (!$this->carrinho || !$this->responsavel) {//verifica algum dos campos está vazio, se tiver nada faz
+            // TODO: Reescrever ifs ternários na forma $a = teste ? valor_se_true : valor_se_false
+            $this->carrinho==null ?  $this->msg="Nada foi selecionado": "";
+            $this->responsavel==null ?  $this->msg="Informe uma matrícula": "";
         } else {//se não tiver vazio, cai dentro desse else
+            $this->msg=null;
             $emprestimo = Emprestimo::create([
                 'usuario_que_emprestou' => \App\Models\Session::first()->identificacao,
                 'usuario_que_recebeu' => $this->responsavel,

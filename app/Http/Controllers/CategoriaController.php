@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacaoCategoria;
+
 class CategoriaController extends Controller
 {
     /**
@@ -38,7 +39,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        return view('categorias.show',['categoria'=>$categoria]);
+        return view('categorias.show', ['categoria' => $categoria]);
     }
 
     /**
@@ -46,7 +47,7 @@ class CategoriaController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        return view('categorias.edit',['categoria'=>$categoria]);
+        return view('categorias.edit', ['categoria' => $categoria]);
     }
 
     /**
@@ -63,7 +64,11 @@ class CategoriaController extends Controller
      */
     public function delete(Categoria $categoria)
     {
-        $categoria->delete(); 
-        return back();
+        try {
+            $categoria->delete();
+            return back();
+        } catch (\Throwable $th) {
+            return back()->withErrors($th->getMessage());
+        }
     }
 }

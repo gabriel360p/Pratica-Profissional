@@ -44,12 +44,16 @@
 
             <a href="/painel">
                 <h1 class="logo">
-                    DEFF - IFRN/CA
+                    SEF -
                     @php
-                        if (\App\Models\Session::first()->nome_social) {
-                            echo \App\Models\Session::first()->nome_social;
-                        } else {
-                            echo \App\Models\Session::first()->nome;
+                        try {
+                            if (\App\Models\Session::first()->nome_social) {
+                                echo \App\Models\Session::first()->nome_social;
+                            } else {
+                                echo \App\Models\Session::first()->nome;
+                            }
+                        } catch (\Throwable $th) {
+                            echo 'Usuário indefinido, por favor faça logout e login novamente';
                         }
                     @endphp
                 </h1>
@@ -59,67 +63,30 @@
                 <ul>
                     <a class="nav-link scrollto" href="{{ url('/emprestimos/novo') }}">Emprestar</a>
                     <a class="nav-link scrollto" href="{{ url('emprestimos/todos') }}">Emprestados</a>
+
+                    <li><a class="nav-link scrollto  " href="{{ url('itens') }}">Itens</a></li>
+                    <li><a class="nav-link scrollto  " href="{{ url('materiais') }}">Materiais</a></li>
+                    <li><a class="nav-link scrollto  " href="{{ url('locais') }}">Locais</a></li>
+                    <li><a class="nav-link scrollto  " href="{{ url('categorias') }}">Categorias</a></li>
+
                     <li>
-                        {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Itens
-                            </button>
+                            <a style="background:transparent; border:none;" class="btn btn-secondary dropdown-toggle"
+                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Adicionar
+                            </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/itens">Itens</a></li>
                                 <li><a class="dropdown-item" href="/itens/novo">Adicionar Item</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Materiais
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/materiais">Materiais</a></li>
                                 <li><a class="dropdown-item" href="/materiais/novo">Adicionar Material</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Locais
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/locais">Locais</a></li>
                                 <li><a class="dropdown-item" href="/locais/novo">Adicionar Local</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-
-                    <li>
-                        {{-- <a class="nav-link scrollto active" href="/painel">Início</a> --}}
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Categorias
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
                                 <li><a class="dropdown-item" href="/categorias/nova">Adicionar Categoria</a></li>
                             </ul>
                         </div>
                     </li>
 
-                    <li><a class="nav-link scrollto pe-5 " href="{{ url('logout') }}">Sair</a></li>
+                    <li><a class="nav-link scrollto  " href="{{ url('logout') }}">Sair</a></li>
 
                 </ul>
-
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-list mobile-nav-toggle" viewBox="0 0 16 16">
@@ -134,19 +101,21 @@
 
     </header><!-- End Header -->
 
-    <div class="container-fluid">
-        @yield('master-main')
+    <main>
+        <div class="container-fluid">
+            @yield('master-main')
 
-        <script src="{{ asset('main/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-        <script src="{{ asset('main/vendor/aos/aos.js') }}"></script>
-        <script src="{{ asset('main/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('main/vendor/glightbox/js/glightbox.min.js') }}"></script>
-        <script src="{{ asset('main/vendor/swiper/swiper-bundle.min.js') }}"></script>
-        <script src="{{ asset('main/vendor/php-email-form/validate.js') }}"></script>
+            <script src="{{ asset('main/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+            <script src="{{ asset('main/vendor/aos/aos.js') }}"></script>
+            <script src="{{ asset('main/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('main/vendor/glightbox/js/glightbox.min.js') }}"></script>
+            <script src="{{ asset('main/vendor/swiper/swiper-bundle.min.js') }}"></script>
+            <script src="{{ asset('main/vendor/php-email-form/validate.js') }}"></script>
 
-        <!-- Template Main JS File -->
-        <script src="{{ asset('main/js/main.js') }}"></script>
-    </div>
+            <!-- Template Main JS File -->
+            <script src="{{ asset('main/js/main.js') }}"></script>
+        </div>
+    </main>
 
 </body>
 

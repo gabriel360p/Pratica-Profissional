@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Material;
-use Illuminate\Http\Request;
 use App\Http\Requests\ValidacaoMaterial;
+use App\Models\Arquivo;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\Storage;
 
 class MaterialController extends Controller
 {
@@ -32,19 +33,43 @@ class MaterialController extends Controller
      */
     public function store(ValidacaoMaterial $request)
     {
-        $material = Material::create($request->all());
+        //pegando a possível foto
+        $file = $request->file('foto');
 
+        //capturando as categorias
         $categorias = $request->categorias;
 
         if ($categorias) {
+
+            //é preciso ter categorias para criar um material
+            $material = Material::create($request->all());
+
+            //verificando se tem foto
+            if ($file) {
+
+                //salvando a foto
+                $path = $file->storeAs('public/materiais', $file->hashName());
+
+                Storage::setVisibility($path, 'public');
+
+                //salvando o registro
+                Arquivo::create([
+                    'material_id' => $material->id,
+                    'path' => $path,
+                ]);
+            }
+
+            //salvando as categorias
             for ($i = 0; $i < sizeof($categorias); $i++) {
                 $material->categorias()->attach($categorias[$i]);
             }
+
             return back();
-        }else{
-            return back()->withErrors(['categoria-erro'=>"Nenhuma categoria foi fornecida"]);
+        } else {
+
+            //caso nenhuma categoria seja passada
+            return back()->withErrors(['categoria-erro' => "Nenhuma categoria foi fornecida"]);
         }
-        
     }
 
     /**
@@ -60,6 +85,45 @@ class MaterialController extends Controller
      */
     public function update(ValidacaoMaterial $request, Material $material)
     {
+
+        $file = $request->file('foto');
+        try {
+            //caso tenha foto, entra aqui
+            if ($file) {
+                if (Storage::exists($material->arquivo->path)) {
+                    //caso tenha uma foto, ele recupera o caminho dessa foto
+                    $path = $material->arquivo->path;
+
+                    //apaga a foto do sistema
+                    Storage::delete($path);
+
+                    //alterando a visibilidade da foto
+                    Storage::setVisibility($path, 'public');
+
+                    //salvando no sistema
+                    $path = $file->storeAs('public/itens', $file->hashName());
+
+                    //buscando o registro no banco de dados
+                    $arq = Arquivo::find($material->arquivo->id);
+
+                    //atualizando o caminho 
+                    $arq->path = $path;
+                    $arq->save();
+                }
+            }
+        } catch (\Throwable $th) {
+            // TODO: Tratar excessão específica para caso não tenha foto
+            $path = $file->storeAs('public/materiais', $file->hashName());
+
+            Storage::setVisibility($path, 'public');
+
+            //salvando o registro
+            Arquivo::create([
+                'material_id' => $material->id,
+                'path' => $path,
+            ]);
+        }
+
         //capturando os ids das categorias que foram marcadas para serem removidas
         $categorias_remover = $request->categorias_remover;
         //capturando os ids das categorias que foram marcadas para serem associadas/adicionadas
@@ -101,7 +165,25 @@ class MaterialController extends Controller
      */
     public function destroy(Material $material)
     {
-        $material->delete();
-        return back();
+        //caso não tenha foto
+        try {
+            //caso tenha foto
+            $path = $material->arquivo->path;
+            if (Storage::exists($path)) {
+                Storage::delete($path);
+                $arq = Arquivo::find($material->arquivo->id);
+                $arq->delete();
+                $material->delete();
+                return back();
+            }
+        } catch (\Throwable $th) {
+            // TODO: Tratar excessão específica para caso não tenha foto
+            try {
+                $material->delete();
+                return back();
+            } catch (\Throwable $th) {
+                return back()->withException($th);
+            }
+        }
     }
 }

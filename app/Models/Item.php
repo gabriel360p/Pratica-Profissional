@@ -40,5 +40,10 @@ class Item extends Model
         return $this->belongsToMany(Emprestimo::class);
     }
 
+    public function arquivo()
+    {
+        return $this->hasOne(Arquivo::class);
+    }
+
 
 }

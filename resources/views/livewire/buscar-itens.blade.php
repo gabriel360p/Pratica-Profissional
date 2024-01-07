@@ -19,6 +19,7 @@
                 <table class="table mb-0">
                     <thead>
                         <tr>
+                            <th scope="col">Foto</th>
                             <th scope="col">Item</th>
                             <th scope="col">Local</th>
                             <th scope="col">Estado</th>
@@ -27,7 +28,26 @@
                     </thead>
                     <tbody>
                         <tr>
+
                             @foreach ($itens as $item)
+                                @php
+                                    try {
+                                        $path = Storage::url($item->arquivo->path);
+                                    } catch (\Throwable $th) {
+                                        $path = null;
+                                    }
+                                @endphp
+                                <td>
+                                    <div class="mx-2" style="width:100%;">
+                                        @if ($path != null)
+                                            <img style="height: 100px" src="{{ $path }}"
+                                                alt="Imagem não encontrada">
+                                        @else
+                                            <img src="{{ asset('imagens/sem-imagem.jpg') }}" class="img-fluid" style="height: 100px"
+                                                alt="Imagem não encontrada">
+                                        @endif
+                                    </div>
+                                </td>
                                 <td>{{ $item->material->nome }}</td>
                                 <td>{{ $item->local->nome }}</td>
                                 <td>{{ $item->estado_conservacao }}</td>

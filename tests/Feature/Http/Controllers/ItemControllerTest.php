@@ -23,18 +23,6 @@ class ItemControllerTest extends TestCase
     }
 
     /**
-     * Testa se exibe a página de devolução de itens.
-     */
-    public function test_ItemController_devolver(): void
-    {
-        $response = $this->withCookies(['suapToken' => 'token-falso'])
-            ->get(route('itens.devolver'));
-
-        $response->assertStatus(200);
-        $response->assertSee('_token'); # Verificar se tem proteção CSRF
-    }
-
-    /**
      * Testa se exibe a página de criação de itens.
      */
     public function test_ItemController_create(): void

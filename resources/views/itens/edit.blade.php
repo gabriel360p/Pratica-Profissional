@@ -6,8 +6,9 @@
 @section('master-main')
     <div class="signup-content ">
         <div class="signup-form mt-4">
-            <h2 class="form-title">Cadastro de item</h2>
-            <form method="post" class="register-form " id="register-form" action="{{ route('itens.update', $item->id) }}">
+            <h1 class="form-title">Edição do item</h1>
+            <form method="post" class="register-form " id="register-form" action="{{ route('itens.update', $item->id) }}"
+                enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
@@ -23,7 +24,7 @@
                             <option value="{{ $local->id }}">{{ $local->nome }}</option>
                         @endforeach
                     </select>
-                    <div id="fileHelpId" class="form-text">Escolher Lugar</div>
+                    <div id="fileHelpId" class="form-text">Escolher Local</div>
                 </div>
 
                 <div class="form-group">
@@ -37,9 +38,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <input type="file" class="form-control" value="{{ @old('foto') }}" name="photo"
+                    <input type="file" class="form-control" value="{{ @old('foto') }}" name="foto"
                         aria-describedby="fileHelpId">
-                    <div id="fileHelpId" class="form-text">Escolher Foto</div>
+                    <small class="form-text">Foto do Item</small>
+                    @error('foto')
+                        <span class="badge bg-warning">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group form-button">
@@ -54,11 +58,25 @@
 
         </div>
 
-        <div class="signup-image">
-            {{-- <figure><img src="{{asset('cadastro_itens/images/signup-image.jpg')}}"alt="sing up image"></figure> --}}
-        </div>
-
-    </div>
+        @php
+            try {
+                $path = Storage::url($item->arquivo->path);
+            } catch (\Throwable $th) {
+                $path = null;
+            }
+        @endphp
+        @if ($path != null)
+        <!-- Tratar o else -->
+            <div class="signup-image" style="display:flex; align-itens:center; flex-direction:column;">
+                <div class="text-center">
+                    <h2>Foto do item:</h2>
+                </div>
+                <img src="{{ $path }}"alt="Foto do item" style="height:auto width:auto;">
+                <div class="mt-3">
+                    <a href="{{ route('arquivos.apagar', $item->arquivo->id) }}" class="btn btn-success">Apagar</a>
+                </div>
+            </div>
+        @endif
     </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

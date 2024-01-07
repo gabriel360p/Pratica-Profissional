@@ -26,9 +26,10 @@
     <div class="div-hero">
         <section id="hero" class="d-flex align-items-center">
             <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-                <h1 style="color:white;">Bem vindo(a) ao DEFF-IFRN!</h1>
+                <h1 style="color:white;">Bem vindo(a) ao SEF!</h1>
                 <h2 style="color:white"><b>Clique no botão abaixo para fazer login</b></h2>
                 <a href="{{ config('suap.uri_login') }}" class="btn-about"><b>Login</b></a>
+                    
             </div>
         </section><!-- End Hero -->
     </div>

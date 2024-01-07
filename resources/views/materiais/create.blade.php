@@ -5,18 +5,21 @@
 @section('master-main')
     <div class="signup-content">
         <div class="signup-form mt-4">
-            <h2 class="form-title">Cadastro de Material</h2>
+            <h1 class="form-title">Cadastro de material</h1>
 
-            <form method="POST" class="register-form " action="{{ route('materiais.salvar') }}">
+            <form method="POST" class="register-form " action="{{ route('materiais.salvar') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <input type="text" required name="nome"value="{{ @old('nome') }}" placeholder="Nome do material"
                         value="{{ @old('nome') }}" />
                 </div>
-                @error('nome')
-                    <span class="badge bg-warning">{{ $message }}</span>
-                @enderror
-                
+
+                <div class="mb-3">
+                    <input type="file" class="form-control" name="foto" id="" value="{{ @old('foto') }}"
+                        aria-describedby="fileHelpId" />
+                    <small class="form-text">Foto do material</small>
+                </div>
+
                 @if ($errors->any())
                     <div>
                         @foreach ($errors->all() as $error)
@@ -53,13 +56,13 @@
             <div class="modal-content">
 
                 <div class="m-5">
-                    <h2 class="form-title">Nova Categoria</h2>
+                    <h1 class="form-title">Nova Categoria</h1>
 
                     <form method="POST" class="register-form " action="{{ route('categorias.store') }}">
                         @csrf
                         <div class="form-group">
                             <input type="text" name="nome_categoria" id="name" placeholder="Nome Da Categoria"
-                                value="{{ @old('nome_categoria') }}" />
+                                value="{{ @old('nome') }}" />
                         </div>
                         @error('nome_categoria')
                             <span class="badge bg-warning">{{ $message }}</span>

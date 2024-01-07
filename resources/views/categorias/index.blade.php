@@ -6,8 +6,6 @@
 
             <div class="mb-4">
                 <livewire:buscar-categorias>
-                {{-- <livewire:teste-comp> --}}
-
             </div>
 
         </div>

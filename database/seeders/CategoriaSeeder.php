@@ -22,6 +22,7 @@ class CategoriaSeeder extends Seeder
         Categoria::create(['nome'=>'Fardamento']);
         Categoria::create(['nome'=>'Permanente']);
         Categoria::create(['nome'=>'Consumo']);
+        Categoria::create(['nome'=>'Boxe']);
         Categoria::create(['nome'=>'Outros']);
     }
 }

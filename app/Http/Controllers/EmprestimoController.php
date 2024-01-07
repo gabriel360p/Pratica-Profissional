@@ -20,8 +20,6 @@ class EmprestimoController extends Controller
             'itens' => Item::all(),
         ]);
     }
-
-
     /**
      * Listar empréstimos.
      */
@@ -42,23 +40,27 @@ class EmprestimoController extends Controller
     public function devolver(Request $request, Emprestimo $emprestimo)
     {
         $ids = $request->itens; //capturando os ids  dos itens que foram passados pelo usuário através da checkbox
-
-        if (sizeof($ids) == sizeof($emprestimo->itens)) {
-            //esta comparando se a quantidade de itens, se for a mesma quantidade significa que todos os itens do empréstimo foram devolvido,logo eu dissocio apenas os itens e apago o empréstimo
-            foreach ($emprestimo->itens as $item) {
-                $item->disponibilidade = true;
-                $item->save();
-            }
-            $emprestimo->itens()->detach();
-            $emprestimo->delete();
-        } else {
-            //se a quantidade não for igual, então nem todos os itens foram devolvidos, logo dissocio apenas os itens que foram devolvidos
-            for ($i = 0; $i < sizeof($ids); $i++) {
-                $emprestimo->itens()->detach($ids[$i]);
-                foreach (Item::find($ids)as $item) {
-                    $item->disponibilidade = true; $item->save();
+        if ($ids) {
+            if (sizeof($ids) == sizeof($emprestimo->itens)) {
+                //esta comparando se a quantidade de itens, se for a mesma quantidade significa que todos os itens do empréstimo foram devolvido,logo eu dissocio apenas os itens e apago o empréstimo
+                foreach ($emprestimo->itens as $item) {
+                    $item->disponibilidade = true;
+                    $item->save();
+                }
+                $emprestimo->itens()->detach();
+                $emprestimo->delete();
+            } else {
+                //se a quantidade não for igual, então nem todos os itens foram devolvidos, logo dissocio apenas os itens que foram devolvidos
+                for ($i = 0; $i < sizeof($ids); $i++) {
+                    $emprestimo->itens()->detach($ids[$i]);
+                    foreach (Item::find($ids) as $item) {
+                        $item->disponibilidade = true;
+                        $item->save();
+                    }
                 }
             }
+        } else {
+            return back();
         }
 
         return redirect(route('emprestimos.index'));
@@ -90,36 +92,4 @@ class EmprestimoController extends Controller
     //         }
     //     }
     // }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Emprestimo $emprestimo)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Emprestimo $emprestimo)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Emprestimo $emprestimo)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Emprestimo $emprestimo)
-    {
-        //
-    }
 }

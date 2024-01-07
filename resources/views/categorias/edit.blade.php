@@ -5,18 +5,18 @@
 @section('master-main')
     <div class="signup-content">
         <div class="signup-form mt-4">
-            <h2 class="form-title">Editar de Categoria/Departamento</h2>
+            <h1 class="form-title">Editar de Categoria/Departamento</h1>
 
             <form method="POST" class="register-form "
                 action="{{ route('categorias.atualizar', ['categoria' => $categoria->id]) }}">
                 @method('patch')
                 @csrf
                 <div class="form-group">
-                    <input type="text" value="{{ $categoria->nome }}" required name="nome" id="name"
+                    <input type="text" value="{{ $categoria->nome }}" required name="nome_categoria" id="name"
                         placeholder="Nome Da Categoria" />
                 </div>
 
-                @error('nome')
+                @error('nome_categoria')
                     <span class="badge bg-warning">{{ $message }}</span>
                 @enderror
 

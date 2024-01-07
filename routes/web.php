@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArquivoController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\CategoriaController;
@@ -10,8 +11,6 @@ use App\Models\Material;
 use Illuminate\Support\Facades\Route;
 use App\Models\Session;
 use Illuminate\Http\Request;
-
-use App\Livewire\BuscarCategorias;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,7 +81,6 @@ Route::name('login.')
                                 'tipo_usuario' => $res['tipo_usuario'],
                                 'ultimo_nome' => $res['ultimo_nome'],
                             ]);
-
                             return response($res)->cookie('suapToken', $request->suap_token);
                         } else {
                             return redirect(route('painel'));
@@ -149,7 +147,6 @@ Route::middleware(['suapToken'])
                     return redirect(url('/'));
                 }
             });
-
 
         Route::name('itens.')
             ->prefix('/itens')
@@ -234,5 +231,11 @@ Route::middleware(['suapToken'])
                 Route::name('delete')->get('/deletar/{local}', 'destroy');
                 Route::name('editar')->get('/{local}/edit', 'edit');
                 Route::name('update')->post('/{local}', 'update');
+            });
+
+        Route::name('arquivos.')
+            ->prefix('/arquivos')
+            ->controller(ArquivoController::class)->group(function () {
+                Route::name('apagar')->get('/apagar/{arquivo}', 'destroy');
             });
     });

@@ -56,7 +56,11 @@ class LocalController extends Controller
      */
     public function destroy(Local $local)
     {
-        $local->delete();
-        return back();
+        try {
+            $local->delete();
+            return back();
+        } catch (\Throwable $th) {
+            return back()->withException($th);
+        }
     }
 }
