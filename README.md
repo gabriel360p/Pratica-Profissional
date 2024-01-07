@@ -61,3 +61,20 @@ php artisan test --coverage
 ```
 Você verá uma pasta `tests/coverage`, que contém o relatório de testes em HTML.
 Abra o arquivo `index.html`.
+
+
+## Colaboradores
+#### jul/2023 - jan/2024
+Agnaldo Bezerra
+
+Ciro Medeiros - [@ciromdrs](https://github.com/ciromdrs)
+
+Edjane Ramalho
+
+Gabriel Costa - [@gabriel360p](https://github.com/gabriel360p/)
+
+Gabriel Fernandes - [@GabrielVictor1](https://github.com/GabrielVictor1)
+
+Giovanna Tomaz
+
+Mariana Freitas - [@mmvmariana](https://github.com/mmvmariana)
